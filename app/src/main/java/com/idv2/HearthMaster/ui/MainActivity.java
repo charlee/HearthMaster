@@ -6,6 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.idv2.HearthMaster.R;
+import com.idv2.HearthMaster.model.Card;
+import com.idv2.HearthMaster.model.DatabaseHelper;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
+
+import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -14,6 +20,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DatabaseHelper dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
+
+        RuntimeExceptionDao<Card, Integer> cardDao = dbHelper.getCardDao();
+        List<Card> cards = cardDao.queryForAll();
+
     }
 
 
@@ -22,6 +34,7 @@ public class MainActivity extends Activity {
         
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
