@@ -11,8 +11,17 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class Card {
 
-    public static final int CARD_HEIGHT = 465;
     public static final int CARD_WIDTH = 307;
+    public static final int CARD_HEIGHT = 465;
+
+    public static final int SPELL_ART_WIDTH = 196;
+    public static final int SPELL_ART_HEIGHT = 145;
+
+    public static final int MINION_ART_WIDTH = 154;
+    public static final int MINION_ART_HEIGHT = 186;
+
+    public static final int WEAPON_ART_WIDTH = 175;
+    public static final int WEAPON_ART_HEIGHT = 153;
 
     @DatabaseField(id = true)
     public int id;
