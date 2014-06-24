@@ -59,4 +59,16 @@ public class Card {
     @DatabaseField(canBeNull = false)
     public boolean collectible;
 
+
+    public boolean isSpell() {
+        return CardManager.getInstance().getCardType(cardType.id).equals(CardType.SPELL);
+    }
+
+    public boolean isWeapon() {
+        return CardManager.getInstance().getCardType(cardType.id).equals(CardType.WEAPON);
+    }
+
+    public boolean isMinion() {
+        return CardManager.getInstance().getCardType(cardType.id).equals(CardType.MINION);
+    }
 }

@@ -68,9 +68,8 @@ public class CardView extends View {
 
         if (cardLoaded) {
             // card loaded, draw card
+            canvas.drawBitmap(cardArt, 53, 95, null);
             canvas.drawBitmap(cardBase, 0, 0, null);
-
-
         } else {
 
             // card not loaded, draw card back
@@ -92,8 +91,14 @@ public class CardView extends View {
             String cardType = cm.getCardType(card.cardType.id).toLowerCase();
             String cardBaseFilename = String.format("cards/base-%s-%s.png", cardType, cardClass);
 
+            String cardArtFilename = String.format("cards/%s.jpg", card.image);
+
             try {
-                InputStream is = getContext().getAssets().open(cardBaseFilename);
+                InputStream is = getContext().getAssets().open(cardArtFilename);
+                cardArt = BitmapFactory.decodeStream(is);
+                is.close();
+
+                is = getContext().getAssets().open(cardBaseFilename);
                 cardBase = BitmapFactory.decodeStream(is);
                 is.close();
             } catch (IOException e) {
