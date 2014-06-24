@@ -1,5 +1,5 @@
 #
-# generated on 2014/06/22 12:29:36
+# generated on 2014/06/24 12:17:45
 #
 # --table-start--
 dataClass=com.idv2.HearthMaster.model.Card
@@ -47,7 +47,7 @@ foreign=true
 # --field-end--
 # --field-start--
 fieldName=cardSet
-canBeNull=false
+foreign=true
 # --field-end--
 # --field-start--
 fieldName=race

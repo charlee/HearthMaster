@@ -4,10 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.DatabaseHelper;
+import com.idv2.HearthMaster.ui.widget.CardView;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
@@ -15,6 +21,9 @@ import java.util.List;
 
 
 public class MainActivity extends Activity {
+
+    private ArrayAdapter<String> cardsAdapter;
+    private ListView cardsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +33,12 @@ public class MainActivity extends Activity {
         DatabaseHelper dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
 
         RuntimeExceptionDao<Card, Integer> cardDao = dbHelper.getCardDao();
-        List<Card> cards = cardDao.queryForAll();
+
+        CardView mageSpell = new CardView(this, 555, "english");
+
+        FrameLayout cardContainer = (FrameLayout) findViewById(R.id.card_container);
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        cardContainer.addView(mageSpell, lp);
 
     }
 

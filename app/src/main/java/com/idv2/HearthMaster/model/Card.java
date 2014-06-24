@@ -1,5 +1,6 @@
 package com.idv2.HearthMaster.model;
 
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -9,6 +10,9 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
 public class Card {
+
+    public static final int CARD_HEIGHT = 465;
+    public static final int CARD_WIDTH = 307;
 
     @DatabaseField(id = true)
     public int id;
@@ -54,4 +58,5 @@ public class Card {
 
     @DatabaseField(canBeNull = false)
     public boolean collectible;
+
 }
