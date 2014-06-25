@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 
         RuntimeExceptionDao<Card, Integer> cardDao = dbHelper.getCardDao();
 
-        CardView mageSpell = new CardView(this, 555, "english");
+        CardView mageSpell = new CardView(this, 306, "english");
 
         FrameLayout cardContainer = (FrameLayout) findViewById(R.id.card_container);
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

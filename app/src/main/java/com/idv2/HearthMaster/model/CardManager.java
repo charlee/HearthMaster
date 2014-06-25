@@ -117,11 +117,15 @@ public class CardManager {
 
     /**
      * Get card class name
-     * @param id card class id
+     * @param card card
      * @return
      */
-    public String getCardClass(int id) {
-        return cardClassMap.get(id).name;
+    public String getCardClass(Card card) {
+        if (card.cardClass != null && cardClassMap.containsKey(card.cardClass.id)) {
+            return cardClassMap.get(card.cardClass.id).name;
+        } else {
+            return "Neutral";
+        }
     }
 
     /**

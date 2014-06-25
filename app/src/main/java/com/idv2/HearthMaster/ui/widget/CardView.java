@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.view.View;
@@ -31,11 +31,11 @@ public class CardView extends View {
      * shared card back bitmap
      */
     private static Bitmap cardBackBitmap = null;
+    private static Bitmap cardBaseBitmap = null;
     private static Typeface cardNameFont = null;
 
 
-    private Bitmap cardBase = null;
-    private Bitmap cardArt = null;
+    private Bitmap cardArtBitmap = null;
 
     private boolean cardLoaded;
 
@@ -70,7 +70,7 @@ public class CardView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(Card.CARD_WIDTH, Card.CARD_HEIGHT);
+        setMeasuredDimension(CardSpec.CARD_WIDTH, CardSpec.CARD_HEIGHT);
     }
 
     @Override
@@ -90,26 +90,36 @@ public class CardView extends View {
      */
     private void drawCard(Canvas canvas) {
         // card loaded, draw card
-        canvas.drawBitmap(cardArt, 53, 95, null);
-        canvas.drawBitmap(cardBase, 0, 0, null);
+        CardSpec spec = CardSpec.getCardSpec(card);
 
-        Path cardNamePath = new Path();
-        cardNamePath.moveTo(53, 290);
-        cardNamePath.lineTo(200, 290);
+        canvas.drawBitmap(cardArtBitmap, spec.artPosition.x, spec.artPosition.y, null);
+        canvas.drawBitmap(cardBaseBitmap, CardSpec.getCardBaseRect(card), new Rect(0, 0, CardSpec.CARD_WIDTH, CardSpec.CARD_HEIGHT), null);
 
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setTypeface(cardNameFont);
-        paint.setTextSize(36);
+
+        // find proper text size
+        int textSize = 24;          // initial text size
+        paint.setTextSize(textSize);
+
+        float textWidth = paint.measureText(card.name);
+        while (textWidth > spec.namePathLength) {
+            paint.setTextSize(--textSize);
+            textWidth = paint.measureText(card.name);
+        }
+
+        // find text position
+        float hOffset = (spec.namePathLength - textWidth) / 2;
 
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(5);
-        canvas.drawTextOnPath(card.name, cardNamePath, 0, 0, paint);
+        paint.setStrokeWidth(3);
+        canvas.drawTextOnPath(card.name, spec.namePath, hOffset, 0, paint);
 
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawTextOnPath(card.name, cardNamePath, 0, 0, paint);
+        canvas.drawTextOnPath(card.name, spec.namePath, hOffset, 0, paint);
 
     }
 
@@ -136,16 +146,16 @@ public class CardView extends View {
                 // load the card art
                 String cardArtFilename = String.format("cards/%s.jpg", card.image);
                 InputStream is = getContext().getAssets().open(cardArtFilename);
-                cardArt = BitmapFactory.decodeStream(is);
+                cardArtBitmap = BitmapFactory.decodeStream(is);
                 is.close();
 
-                // load the card frame
-                String cardClass = cm.getCardClass(card.cardClass.id).toLowerCase();
-                String cardType = cm.getCardType(card.cardType.id).toLowerCase();
+                // load the card base
+                if (cardBaseBitmap == null) {
+                    is = getContext().getAssets().open("cards/base-all.png");
+                    cardBaseBitmap = BitmapFactory.decodeStream(is);
+                    is.close();
+                }
 
-                String cardBaseFilename = String.format("cards/base-%s-%s.png", cardType, cardClass);
-                is = getContext().getAssets().open(cardBaseFilename);
-                cardBase = BitmapFactory.decodeStream(is);
                 is.close();
 
             } catch (IOException e) {
@@ -162,4 +172,8 @@ public class CardView extends View {
             invalidate();
         }
     }
+
+
 }
+
+

@@ -11,6 +11,16 @@ import java.util.Collection;
  */
 public class CardClass {
 
+    public static final int WARRIOR = 1;
+    public static final int PALADIN = 2;
+    public static final int HUNTER = 3;
+    public static final int ROGUE = 4;
+    public static final int PRIEST = 5;
+    public static final int SHAMAN = 7;
+    public static final int MAGE = 8;
+    public static final int WARLOCK = 9;
+    public static final int DRUID = 11;
+
     @DatabaseField(id = true)
     public int id;
 

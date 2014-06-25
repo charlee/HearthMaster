@@ -11,9 +11,9 @@ import java.util.Collection;
  */
 public class CardType {
 
-    public static final String SPELL = "Spell";
-    public static final String MINION = "Minion";
-    public static final String WEAPON = "Weapon";
+    public static final int MINION = 4;
+    public static final int SPELL = 5;
+    public static final int WEAPON = 7;
 
     @DatabaseField(id = true)
     public int id;
