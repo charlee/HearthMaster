@@ -6,9 +6,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.view.View;
 
 import com.idv2.HearthMaster.HearthMasterApp;
@@ -33,6 +36,7 @@ public class CardView extends View {
     private static Bitmap cardBackBitmap = null;
     private static Bitmap cardBaseBitmap = null;
     private static Typeface cardNameFont = null;
+    private static Typeface cardDescFont = null;
 
 
     private Bitmap cardArtBitmap = null;
@@ -112,6 +116,7 @@ public class CardView extends View {
         // find text position
         float hOffset = (spec.namePathLength - textWidth) / 2;
 
+        // draw name text
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(3);
@@ -121,6 +126,45 @@ public class CardView extends View {
         paint.setStyle(Paint.Style.FILL);
         canvas.drawTextOnPath(card.name, spec.namePath, hOffset, 0, paint);
 
+        // draw description text
+        TextPaint descPaint = new TextPaint();
+        descPaint.setColor(Color.BLACK);
+        descPaint.setAntiAlias(true);
+//        descPaint.setTypeface(cardDescFont);
+        descPaint.setTextSize(16);
+//        descPaint.setStrokeWidth(1f);
+//        descPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        StaticLayout layout = new StaticLayout(card.description, descPaint, spec.rectRect.width(), StaticLayout.Alignment.ALIGN_CENTER, 1.0f, 1.0f, false);
+        canvas.save();
+        canvas.translate(spec.rectRect.left, spec.rectRect.top);
+        layout.draw(canvas);
+        canvas.restore();
+
+        drawCardNumber(canvas, 49f, 112f, card.cost);
+        if (!card.isSpell()) {
+            drawCardNumber(canvas, 50f, 427f, card.attack);
+            drawCardNumber(canvas, 261f, 427f, card.health);
+        }
+    }
+
+
+    private void drawCardNumber(Canvas canvas, float x, float y, int number) {
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setTypeface(cardNameFont);
+        paint.setTextSize(64);
+
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(6);
+
+        String text = String.format("%d", number);
+        float textWidth = paint.measureText(text);
+        canvas.drawText(text, x - textWidth / 2, y, paint);
+
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawText(text, x - textWidth / 2, y, paint);
     }
 
     /**

@@ -20,17 +20,12 @@ public class CardSpec {
 
     public static final int CARD_BASE_LABEL_MARGIN = 20;
 
-    public static final int SPELL_ART_WIDTH = 196;
-    public static final int SPELL_ART_HEIGHT = 145;
-    public static final int MINION_ART_WIDTH = 154;
-    public static final int MINION_ART_HEIGHT = 186;
-    public static final int WEAPON_ART_WIDTH = 175;
-    public static final int WEAPON_ART_HEIGHT = 153;
-
-
+    public int artWidth;
+    public int artHeight;
     public Point artPosition;
     public Path namePath;
     public float namePathLength;
+    public Rect rectRect;
 
     private static CardSpec spellCardSpec = null;
     private static CardSpec weaponCardSpec = null;
@@ -92,13 +87,23 @@ public class CardSpec {
         if (spellCardSpec == null) {
             CardSpec spec = new CardSpec();
 
+            // start point for the art image
             spec.artPosition = new Point(53, 95);
 
+            // width and height for the art image
+            spec.artWidth = 196;
+            spec.artHeight = 145;
+
+
+            // path for the name txt
             RectF oval = new RectF(-241.115f, 258f, 541.115f, 1040.23f);
             spec.namePath = new Path();
             spec.namePath.addArc(oval, 255.186f, 29.628f);
 
             spec.namePathLength = 202.248f;
+
+            spec.rectRect = new Rect(64, 315, 236, 392);
+
 
             spellCardSpec = spec;
         }
@@ -116,8 +121,14 @@ public class CardSpec {
         if (minionCardSpec == null) {
             CardSpec spec = new CardSpec();
 
+            // start point for the art image
             spec.artPosition = new Point(76, 64);
 
+            // width and height for the art image
+            spec.artWidth = 154;
+            spec.artHeight = 186;
+
+            // path for the name txt
             spec.namePath = new Path();
             spec.namePath.moveTo(52.5f, 276.5f);
             spec.namePath.cubicTo(59.5f, 281.75f, 85.5f, 278.25f, 94.25f, 275.75f);
@@ -125,6 +136,8 @@ public class CardSpec {
             spec.namePath.cubicTo(190.5f, 259f, 236.75f, 257f, 252.75f, 272f);
 
             spec.namePathLength = 200f;
+
+            spec.rectRect = new Rect(64, 315, 236, 392);
 
             minionCardSpec = spec;
         }
@@ -143,13 +156,21 @@ public class CardSpec {
 
             CardSpec spec = new CardSpec();
 
+            // start point for the art image
             spec.artPosition = new Point(71, 82);
 
+            // width and height for the art image
+            spec.artWidth = 175;
+            spec.artHeight = 153;
+
+            // path for the name txt
             spec.namePath = new Path();
             spec.namePath.moveTo(59, 262);
             spec.namePath.lineTo(255, 262);
 
             spec.namePathLength = 196f;
+
+            spec.rectRect = new Rect(64, 315, 236, 392);
 
             minionCardSpec = spec;
 

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -34,11 +35,13 @@ public class MainActivity extends Activity {
 
         RuntimeExceptionDao<Card, Integer> cardDao = dbHelper.getCardDao();
 
-        CardView mageSpell = new CardView(this, 306, "english");
 
-        FrameLayout cardContainer = (FrameLayout) findViewById(R.id.card_container);
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        cardContainer.addView(mageSpell, lp);
+        LinearLayout cardContainer = (LinearLayout) findViewById(R.id.card_container);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        cardContainer.addView(new CardView(this, 306, "english"), lp);
+        cardContainer.addView(new CardView(this, 749, "english"), lp);
+        cardContainer.addView(new CardView(this, 841, "english"), lp);
+        cardContainer.addView(new CardView(this, 810, "english"), lp);
 
     }
 
