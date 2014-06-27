@@ -11,6 +11,12 @@ import java.util.Collection;
  */
 public class Quality {
 
+    public static final int FREE = 0;
+    public static final int COMMON = 1;
+    public static final int RARE = 3;
+    public static final int EPIC = 4;
+    public static final int LEGENDARY = 5;
+
     @DatabaseField(id = true)
     public int id;
 

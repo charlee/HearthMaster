@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardClass;
 import com.idv2.HearthMaster.model.CardType;
+import com.idv2.HearthMaster.model.Quality;
 
 /**
  * Created by charlee on 2014-06-25.
@@ -17,6 +18,8 @@ public class CardSpec {
 
     public static final int CARD_WIDTH = 307;
     public static final int CARD_HEIGHT = 465;
+    public static final int CARD_QUALITY_WIDTH = 48;
+    public static final int CARD_QUALITY_HEIGHT = 48;
 
     public static final int CARD_BASE_LABEL_MARGIN = 20;
 
@@ -26,6 +29,11 @@ public class CardSpec {
     public Path namePath;
     public float namePathLength;
     public Rect rectRect;
+    public Point costPosition;      // bottom-middle point
+    public Point attackPosition;      // bottom-middle point
+    public Point healthPosition;    // bottom-middle point
+    public Point qualityPosition;   // left-top corner
+    public Point elitePosition;     // elite dragon position
 
     private static CardSpec spellCardSpec = null;
     private static CardSpec weaponCardSpec = null;
@@ -40,6 +48,11 @@ public class CardSpec {
         return spec;
     }
 
+    /**
+     * Get card position
+     * @param card card object
+     * @return
+     */
     public static Rect getCardBaseRect(Card card) {
 
         int xPos, yPos;
@@ -80,6 +93,49 @@ public class CardSpec {
     }
 
     /**
+     * Get Card quality indicator position
+     * @param card
+     * @return return null for a free card
+     */
+    public static Rect getCardQualityRect(Card card) {
+
+        int xPos, yPos;
+
+        if (card.quality == null || card.quality.id == Quality.FREE) {
+            return null;
+        } else {
+
+            switch (card.quality.id) {
+                case Quality.COMMON: xPos = 0; break;
+                case Quality.RARE: xPos = 1; break;
+                case Quality.EPIC: xPos = 2; break;
+                case Quality.LEGENDARY: xPos = 3; break;
+                default: xPos = 0; break;
+            }
+        }
+
+        if (card.cardType == null) {
+            return null;
+        } else {
+            switch (card.cardType.id) {
+                case CardType.SPELL: yPos = 0; break;
+                case CardType.WEAPON: yPos = 1; break;
+                case CardType.MINION: yPos = 2; break;
+                default: yPos = 2; break;
+            }
+        }
+
+        int x = xPos * CARD_QUALITY_WIDTH + CARD_BASE_LABEL_MARGIN;
+        int y = yPos * CARD_QUALITY_HEIGHT + CARD_BASE_LABEL_MARGIN;
+
+        return new Rect(x, y, x + CARD_QUALITY_WIDTH, y + CARD_QUALITY_HEIGHT);
+    }
+
+    public static Rect getEliteRect() {
+        return new Rect(20, 184, 234, 342);
+    }
+
+    /**
      * Card spec for spell cards
      */
     private static CardSpec getSpellCardSpec() {
@@ -104,6 +160,12 @@ public class CardSpec {
 
             spec.rectRect = new Rect(64, 315, 236, 392);
 
+
+            spec.costPosition = new Point(49, 112);
+            spec.attackPosition = null;
+            spec.healthPosition = null;
+
+            spec.qualityPosition = new Point(128, 269);
 
             spellCardSpec = spec;
         }
@@ -139,6 +201,14 @@ public class CardSpec {
 
             spec.rectRect = new Rect(64, 315, 236, 392);
 
+            spec.costPosition = new Point(49, 112);
+            spec.attackPosition = new Point(50, 427);
+            spec.healthPosition = new Point(261, 427);
+
+            spec.qualityPosition = new Point(128, 265);
+
+            spec.elitePosition = new Point(79, 36);
+
             minionCardSpec = spec;
         }
 
@@ -172,10 +242,16 @@ public class CardSpec {
 
             spec.rectRect = new Rect(64, 315, 236, 392);
 
-            minionCardSpec = spec;
+            spec.costPosition = new Point(49, 112);
+            spec.attackPosition = new Point(50, 427);
+            spec.healthPosition = new Point(261, 427);
+
+            spec.qualityPosition = new Point(128, 269);
+
+            weaponCardSpec = spec;
 
         }
-        return minionCardSpec;
+        return weaponCardSpec;
     }
 
 }

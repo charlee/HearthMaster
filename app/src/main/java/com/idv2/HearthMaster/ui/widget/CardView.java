@@ -35,6 +35,7 @@ public class CardView extends View {
      */
     private static Bitmap cardBackBitmap = null;
     private static Bitmap cardBaseBitmap = null;
+    private static Bitmap cardQualityBitmap = null;
     private static Typeface cardNameFont = null;
     private static Typeface cardDescFont = null;
 
@@ -136,19 +137,41 @@ public class CardView extends View {
 //        descPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         StaticLayout layout = new StaticLayout(card.description, descPaint, spec.rectRect.width(), StaticLayout.Alignment.ALIGN_CENTER, 1.0f, 1.0f, false);
         canvas.save();
-        canvas.translate(spec.rectRect.left, spec.rectRect.top);
+        canvas.translate(spec.rectRect.left, spec.rectRect.top + (spec.rectRect.height() - layout.getHeight()) / 2);        // vertical align middle
         layout.draw(canvas);
         canvas.restore();
 
-        drawCardNumber(canvas, 49f, 112f, card.cost);
-        if (!card.isSpell()) {
-            drawCardNumber(canvas, 50f, 427f, card.attack);
-            drawCardNumber(canvas, 261f, 427f, card.health);
+
+        // draw cost, attack and health/durability numbers
+        drawCardNumber(canvas, spec.costPosition, card.cost);
+        drawCardNumber(canvas, spec.attackPosition, card.attack);
+        drawCardNumber(canvas, spec.healthPosition, card.health);
+
+        // draw quality
+        canvas.drawBitmap(cardQualityBitmap,
+                CardSpec.getCardQualityRect(card),
+                new Rect(spec.qualityPosition.x, spec.qualityPosition.y, spec.qualityPosition.x + CardSpec.CARD_QUALITY_WIDTH, spec.qualityPosition.y + CardSpec.CARD_QUALITY_HEIGHT),
+                null);
+
+        // draw elite dragon
+        if (card.isMinion() && card.elite) {
+            Rect eliteRect = CardSpec.getEliteRect();
+            Rect elitePos = new Rect(spec.elitePosition.x, spec.elitePosition.y, spec.elitePosition.x + eliteRect.width(), spec.elitePosition.y + eliteRect.height());
+            canvas.drawBitmap(cardQualityBitmap, eliteRect, elitePos, null);
         }
     }
 
 
-    private void drawCardNumber(Canvas canvas, float x, float y, int number) {
+    /**
+     * Draw cost, attack and health numbers
+     * @param canvas canvas object
+     * @param pos position to draw at; set to null will skip the drawing
+     * @param number number to draw
+     */
+    private void drawCardNumber(Canvas canvas, Point pos, int number) {
+
+        if (pos == null) return;
+
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setTypeface(cardNameFont);
@@ -160,11 +183,11 @@ public class CardView extends View {
 
         String text = String.format("%d", number);
         float textWidth = paint.measureText(text);
-        canvas.drawText(text, x - textWidth / 2, y, paint);
+        canvas.drawText(text, pos.x - textWidth / 2, pos.y, paint);
 
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawText(text, x - textWidth / 2, y, paint);
+        canvas.drawText(text, pos.x - textWidth / 2, pos.y, paint);
     }
 
     /**
@@ -200,7 +223,12 @@ public class CardView extends View {
                     is.close();
                 }
 
-                is.close();
+                // load card indicator
+                if (cardQualityBitmap == null) {
+                    is = getContext().getAssets().open("cards/quality-indicator.png");
+                    cardQualityBitmap = BitmapFactory.decodeStream(is);
+                    is.close();
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
