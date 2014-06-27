@@ -128,18 +128,20 @@ public class CardView extends View {
         canvas.drawTextOnPath(card.name, spec.namePath, hOffset, 0, paint);
 
         // draw description text
-        TextPaint descPaint = new TextPaint();
-        descPaint.setColor(Color.BLACK);
-        descPaint.setAntiAlias(true);
-//        descPaint.setTypeface(cardDescFont);
-        descPaint.setTextSize(16);
-//        descPaint.setStrokeWidth(1f);
-//        descPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        StaticLayout layout = new StaticLayout(card.description, descPaint, spec.rectRect.width(), StaticLayout.Alignment.ALIGN_CENTER, 1.0f, 1.0f, false);
-        canvas.save();
-        canvas.translate(spec.rectRect.left, spec.rectRect.top + (spec.rectRect.height() - layout.getHeight()) / 2);        // vertical align middle
-        layout.draw(canvas);
-        canvas.restore();
+        if (card.description != null) {
+            TextPaint descPaint = new TextPaint();
+            descPaint.setColor(Color.BLACK);
+            descPaint.setAntiAlias(true);
+            //        descPaint.setTypeface(cardDescFont);
+            descPaint.setTextSize(16);
+            //        descPaint.setStrokeWidth(1f);
+            //        descPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+            StaticLayout layout = new StaticLayout(card.description, descPaint, spec.descRect.width(), StaticLayout.Alignment.ALIGN_CENTER, 1.0f, 1.0f, false);
+            canvas.save();
+            canvas.translate(spec.descRect.left, spec.descRect.top + (spec.descRect.height() - layout.getHeight()) / 2);        // vertical align middle
+            layout.draw(canvas);
+            canvas.restore();
+        }
 
 
         // draw cost, attack and health/durability numbers
@@ -158,6 +160,36 @@ public class CardView extends View {
             Rect eliteRect = CardSpec.getEliteRect();
             Rect elitePos = new Rect(spec.elitePosition.x, spec.elitePosition.y, spec.elitePosition.x + eliteRect.width(), spec.elitePosition.y + eliteRect.height());
             canvas.drawBitmap(cardQualityBitmap, eliteRect, elitePos, null);
+        }
+
+        // draw race indicator
+        if (card.isMinion() && card.race != null) {
+            Rect raceRect = CardSpec.getRaceRect();
+            Rect racePos = new Rect(spec.racePosition.x, spec.racePosition.y, spec.racePosition.x + raceRect.width(), spec.racePosition.y + raceRect.height());
+            canvas.drawBitmap(cardQualityBitmap, raceRect, racePos, null);
+
+            String raceText = CardManager.getInstance().getRace(card.race.id);
+
+            // decide font size
+            int raceTextSize = 16;
+            paint.setTextSize(raceTextSize);
+            float raceTextWidth = paint.measureText(raceText);
+            while (raceTextWidth > spec.raceTextRect.width()) {
+                raceTextSize--;
+                raceTextWidth = paint.measureText(raceText);
+            }
+
+            int raceTextX = (int) (spec.raceTextRect.left + (spec.raceTextRect.width() - raceTextWidth) / 2);
+            int raceTextY = (int) (spec.raceTextRect.bottom);
+
+            paint.setColor(Color.BLACK);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(3);
+            canvas.drawText(raceText, raceTextX, raceTextY, paint);
+
+            paint.setColor(Color.WHITE);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawText(raceText, raceTextX, raceTextY, paint);
         }
     }
 

@@ -1,10 +1,13 @@
 package com.idv2.HearthMaster.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -13,6 +16,7 @@ import android.widget.RelativeLayout;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
+import com.idv2.HearthMaster.model.CardManager;
 import com.idv2.HearthMaster.model.DatabaseHelper;
 import com.idv2.HearthMaster.ui.widget.CardView;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -24,24 +28,37 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     private ArrayAdapter<String> cardsAdapter;
-    private ListView cardsList;
+    private ListView cardList;
+    private List<Card> cards;
+
+    private CardManager cm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DatabaseHelper dbHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
+        cm = CardManager.getInstance();
 
-        RuntimeExceptionDao<Card, Integer> cardDao = dbHelper.getCardDao();
+        cards = cm.getAllCards();
+        cardList = (ListView) findViewById(R.id.card_list);
+        cardsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        cardList.setAdapter(cardsAdapter);
+        cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Card card = cards.get(position);
 
+                Intent intent = new Intent(MainActivity.this, CardActivity.class);
+                intent.putExtra(CardActivity.CARD_ID, card.id);
+                startActivity(intent);
+            }
+        });
 
-        LinearLayout cardContainer = (LinearLayout) findViewById(R.id.card_container);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        cardContainer.addView(new CardView(this, 306, "english"), lp);
-        cardContainer.addView(new CardView(this, 749, "english"), lp);
-        cardContainer.addView(new CardView(this, 841, "english"), lp);
-        cardContainer.addView(new CardView(this, 810, "english"), lp);
+        for (Card card: cards) {
+            cardsAdapter.add(card.name);
+        }
+        cardsAdapter.notifyDataSetChanged();
 
     }
 

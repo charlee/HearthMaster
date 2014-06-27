@@ -97,6 +97,10 @@ public class CardManager {
         return cardDao.queryForId(cardId);
     }
 
+    public List<Card> getAllCards() {
+        return cardDao.queryForAll();
+    }
+
     /**
      * Get card race name
      * @param id card race id

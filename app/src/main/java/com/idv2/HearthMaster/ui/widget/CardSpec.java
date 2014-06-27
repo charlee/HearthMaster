@@ -28,12 +28,14 @@ public class CardSpec {
     public Point artPosition;
     public Path namePath;
     public float namePathLength;
-    public Rect rectRect;
+    public Rect descRect;
     public Point costPosition;      // bottom-middle point
     public Point attackPosition;      // bottom-middle point
     public Point healthPosition;    // bottom-middle point
     public Point qualityPosition;   // left-top corner
     public Point elitePosition;     // elite dragon position
+    public Point racePosition;      // race indicator position
+    public Rect raceTextRect;
 
     private static CardSpec spellCardSpec = null;
     private static CardSpec weaponCardSpec = null;
@@ -131,8 +133,20 @@ public class CardSpec {
         return new Rect(x, y, x + CARD_QUALITY_WIDTH, y + CARD_QUALITY_HEIGHT);
     }
 
+    /**
+     * Get the rect of the elite indicator
+     * @return
+     */
     public static Rect getEliteRect() {
         return new Rect(20, 184, 234, 342);
+    }
+
+    /**
+     * Get the rect of the race indicator
+     * @return
+     */
+    public static Rect getRaceRect() {
+        return new Rect(20, 362, 168, 395);
     }
 
     /**
@@ -158,7 +172,7 @@ public class CardSpec {
 
             spec.namePathLength = 202.248f;
 
-            spec.rectRect = new Rect(64, 315, 236, 392);
+            spec.descRect = new Rect(64, 315, 236, 392);
 
 
             spec.costPosition = new Point(49, 112);
@@ -199,7 +213,7 @@ public class CardSpec {
 
             spec.namePathLength = 200f;
 
-            spec.rectRect = new Rect(64, 315, 236, 392);
+            spec.descRect = new Rect(64, 315, 236, 392);
 
             spec.costPosition = new Point(49, 112);
             spec.attackPosition = new Point(50, 427);
@@ -208,6 +222,9 @@ public class CardSpec {
             spec.qualityPosition = new Point(128, 265);
 
             spec.elitePosition = new Point(79, 36);
+            spec.racePosition = new Point(85, 390);
+            spec.raceTextRect = new Rect(98, 402, 209, 414);
+
 
             minionCardSpec = spec;
         }
@@ -240,7 +257,7 @@ public class CardSpec {
 
             spec.namePathLength = 196f;
 
-            spec.rectRect = new Rect(64, 315, 236, 392);
+            spec.descRect = new Rect(64, 315, 236, 392);
 
             spec.costPosition = new Point(49, 112);
             spec.attackPosition = new Point(50, 427);
