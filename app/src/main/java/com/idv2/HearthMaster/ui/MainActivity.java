@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 
         cards = cm.getAllCards();
         cardList = (ListView) findViewById(R.id.card_list);
-        cardsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        cardsAdapter = new ArrayAdapter<String>(this, R.layout.card_list_item);
         cardList.setAdapter(cardsAdapter);
         cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

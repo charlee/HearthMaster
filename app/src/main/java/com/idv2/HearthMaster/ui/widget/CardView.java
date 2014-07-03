@@ -55,6 +55,7 @@ public class CardView extends View {
 
             // load customize font
             cardNameFont = Typeface.createFromAsset(context.getAssets(), "fonts/BelweBT-Bold.ttf");
+//            cardDescFont = Typeface.createFromAsset(context.getAssets(), "fonts/FRA-Gothic-Demi.ttf");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,8 +133,8 @@ public class CardView extends View {
             TextPaint descPaint = new TextPaint();
             descPaint.setColor(Color.BLACK);
             descPaint.setAntiAlias(true);
-            //        descPaint.setTypeface(cardDescFont);
-            descPaint.setTextSize(16);
+//            descPaint.setTypeface(cardDescFont);
+            descPaint.setTextSize(15);
             //        descPaint.setStrokeWidth(1f);
             //        descPaint.setStyle(Paint.Style.FILL_AND_STROKE);
             StaticLayout layout = new StaticLayout(card.description, descPaint, spec.descRect.width(), StaticLayout.Alignment.ALIGN_CENTER, 1.0f, 1.0f, false);
