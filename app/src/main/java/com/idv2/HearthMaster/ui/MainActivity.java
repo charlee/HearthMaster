@@ -1,18 +1,23 @@
 package com.idv2.HearthMaster.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
@@ -22,12 +27,13 @@ import com.idv2.HearthMaster.ui.widget.CardView;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
+import java.util.Collection;
 import java.util.List;
 
 
 public class MainActivity extends Activity {
 
-    private ArrayAdapter<String> cardsAdapter;
+    private CardAdapter cardsAdapter;
     private ListView cardList;
     private List<Card> cards;
 
@@ -42,7 +48,7 @@ public class MainActivity extends Activity {
 
         cards = cm.getAllCards();
         cardList = (ListView) findViewById(R.id.card_list);
-        cardsAdapter = new ArrayAdapter<String>(this, R.layout.card_list_item);
+        cardsAdapter = new CardAdapter(this);
         cardList.setAdapter(cardsAdapter);
         cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -55,9 +61,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        for (Card card: cards) {
-            cardsAdapter.add(card.name);
-        }
+        cardsAdapter.addAll(cards);
         cardsAdapter.notifyDataSetChanged();
 
     }
@@ -82,6 +86,55 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    class CardAdapter extends ArrayAdapter<Card> {
+
+        public CardAdapter(Context context) {
+            super(context, 0);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = convertView;
+
+            if (v == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                v = inflater.inflate(R.layout.card_list_item, null);
+            }
+
+            Card card = getItem(position);
+
+            if (card != null) {
+                TextView cardName = (TextView) v.findViewById(R.id.card_name);
+                TextView cardText = (TextView) v.findViewById(R.id.card_text);
+                TextView cardHealth = (TextView) v.findViewById(R.id.card_health);
+                TextView cardCost = (TextView) v.findViewById(R.id.card_cost);
+                TextView cardAttack = (TextView) v.findViewById(R.id.card_attack);
+
+                if (cardName != null) {
+                    cardName.setText(card.name);
+                }
+
+                if (cardText != null) {
+                    cardText.setText(card.description);
+                }
+
+                if (cardHealth != null) {
+                    cardHealth.setText(String.format("%d", card.health));
+                }
+
+                if (cardCost != null) {
+                    cardCost.setText(String.format("%d", card.cost));
+                }
+
+                if (cardAttack != null) {
+                    cardAttack.setText(String.format("%d", card.attack));
+                }
+            }
+
+            return v;
+        }
     }
 
 }
