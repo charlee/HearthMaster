@@ -1,8 +1,7 @@
 package com.idv2.HearthMaster.model;
 
-import android.app.Application;
 import android.content.Context;
-import android.os.AsyncTask;
+import android.graphics.Color;
 
 import com.idv2.HearthMaster.HearthMasterApp;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
@@ -11,7 +10,6 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 /**
  * Created by charlee on 2014-06-24.
@@ -117,6 +115,10 @@ public class CardManager {
      */
     public String getQuality(int id) {
         return qualityMap.get(id).name;
+    }
+
+    public int getQualityColor(int id) {
+        return Color.parseColor(qualityMap.get(id).textcolor);
     }
 
     /**

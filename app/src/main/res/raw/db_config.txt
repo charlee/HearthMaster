@@ -1,5 +1,5 @@
 #
-# generated on 2014/06/24 12:17:45
+# generated on 2014/07/04 03:30:47
 #
 # --table-start--
 dataClass=com.idv2.HearthMaster.model.Card
@@ -124,6 +124,9 @@ id=true
 # --field-start--
 fieldName=name
 canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=textcolor
 # --field-end--
 # --table-fields-end--
 # --table-end--

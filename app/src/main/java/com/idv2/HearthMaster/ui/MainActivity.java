@@ -3,6 +3,7 @@ package com.idv2.HearthMaster.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,23 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
-import com.idv2.HearthMaster.model.DatabaseHelper;
-import com.idv2.HearthMaster.ui.widget.CardView;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
 
-import java.util.Collection;
 import java.util.List;
 
 
@@ -39,12 +31,17 @@ public class MainActivity extends Activity {
 
     private CardManager cm;
 
+    private Typeface listFont;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         cm = CardManager.getInstance();
+
+        // load typeface
+        listFont = Typeface.createFromAsset(getAssets(), "fonts/BelweBT-Bold.ttf");
 
         cards = cm.getAllCards();
         cardList = (ListView) findViewById(R.id.card_list);
@@ -69,7 +66,7 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
@@ -111,25 +108,36 @@ public class MainActivity extends Activity {
                 TextView cardHealth = (TextView) v.findViewById(R.id.card_health);
                 TextView cardCost = (TextView) v.findViewById(R.id.card_cost);
                 TextView cardAttack = (TextView) v.findViewById(R.id.card_attack);
+                ImageView iconAttack = (ImageView) v.findViewById(R.id.icon_attack);
+                ImageView iconHealth = (ImageView) v.findViewById(R.id.icon_health);
 
-                if (cardName != null) {
-                    cardName.setText(card.name);
+                cardName.setTypeface(listFont);
+                cardName.setTextColor(cm.getQualityColor(card.quality.id));
+
+                cardName.setText(card.name);
+                cardText.setText(card.description);
+                cardCost.setText(String.format("%d", card.cost));
+                cardHealth.setText(String.format("%d", card.health));
+                cardAttack.setText(String.format("%d", card.attack));
+
+                if (card.isSpell()) {
+                    cardHealth.setVisibility(View.GONE);
+                    cardAttack.setVisibility(View.GONE);
+                    iconHealth.setVisibility(View.GONE);
+                    iconAttack.setVisibility(View.GONE);
+                } else {
+                    cardHealth.setVisibility(View.VISIBLE);
+                    cardAttack.setVisibility(View.VISIBLE);
+                    iconHealth.setVisibility(View.VISIBLE);
+                    iconAttack.setVisibility(View.VISIBLE);
                 }
 
-                if (cardText != null) {
-                    cardText.setText(card.description);
-                }
-
-                if (cardHealth != null) {
-                    cardHealth.setText(String.format("%d", card.health));
-                }
-
-                if (cardCost != null) {
-                    cardCost.setText(String.format("%d", card.cost));
-                }
-
-                if (cardAttack != null) {
-                    cardAttack.setText(String.format("%d", card.attack));
+                if (card.isWeapon()) {
+                    iconHealth.setImageDrawable(getResources().getDrawable(R.drawable.durability));
+                    iconAttack.setImageDrawable(getResources().getDrawable(R.drawable.weapon));
+                } else {
+                    iconHealth.setImageDrawable(getResources().getDrawable(R.drawable.health));
+                    iconAttack.setImageDrawable(getResources().getDrawable(R.drawable.attack));
                 }
             }
 

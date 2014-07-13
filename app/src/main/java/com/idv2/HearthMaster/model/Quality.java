@@ -22,4 +22,7 @@ public class Quality {
 
     @DatabaseField(canBeNull = false)
     public String name;
+
+    @DatabaseField(canBeNull = true)
+    public String textcolor;
 }
