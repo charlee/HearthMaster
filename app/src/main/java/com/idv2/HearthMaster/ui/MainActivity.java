@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
+import com.idv2.HearthMaster.ui.widget.CardView;
 
 import java.util.List;
 
@@ -47,14 +49,27 @@ public class MainActivity extends Activity {
         cardList = (ListView) findViewById(R.id.card_list);
         cardsAdapter = new CardAdapter(this);
         cardList.setAdapter(cardsAdapter);
+        final View cardPopup = findViewById(R.id.card_popup);
+        final CardView cardView = new CardView(this, 0, "english");
+
+        FrameLayout layout = (FrameLayout) findViewById(R.id.card_container);
+        FrameLayout.LayoutParams lp =new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+
+        layout.addView(cardView, lp);
+
         cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Card card = cards.get(position);
+                cardView.setCardId(card.id);
+                cardPopup.setVisibility(View.VISIBLE);
+            }
+        });
 
-                Intent intent = new Intent(MainActivity.this, CardActivity.class);
-                intent.putExtra(CardActivity.CARD_ID, card.id);
-                startActivity(intent);
+        cardPopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardPopup.setVisibility(View.INVISIBLE);
             }
         });
 

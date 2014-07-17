@@ -70,15 +70,21 @@ public class CardView extends View {
     public CardView(Context context, int cardId, String language) {
         super(context);
 
-        this.cardId = cardId;
         this.language = language;
 
-        cardLoaded = false;
-
-        (new CardLoadTask()).execute();
+        setCardId(cardId);
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         screenDensity = metrics.density;
+    }
+
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
+
+        if (cardId != 0) {
+            cardLoaded = false;
+            (new CardLoadTask()).execute();
+        }
     }
 
     @Override
@@ -91,11 +97,16 @@ public class CardView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        canvas.save();
+        canvas.scale(screenDensity, screenDensity);
+
         if (cardLoaded) {
             drawCard(canvas);
         } else {
             drawCardBack(canvas);
         }
+
+        canvas.restore();
     }
 
     /**
@@ -105,9 +116,6 @@ public class CardView extends View {
     private void drawCard(Canvas canvas) {
         // card loaded, draw card
         CardSpec spec = CardSpec.getCardSpec(card);
-
-        canvas.save();
-        canvas.scale(screenDensity, screenDensity);
 
         canvas.drawBitmap(cardArtBitmap, spec.artPosition.x, spec.artPosition.y, null);
         canvas.drawBitmap(cardBaseBitmap, CardSpec.getCardBaseRect(card), new Rect(0, 0, CardSpec.CARD_WIDTH, CardSpec.CARD_HEIGHT), null);
@@ -162,10 +170,12 @@ public class CardView extends View {
         drawCardNumber(canvas, spec.healthPosition, card.health);
 
         // draw quality
-        canvas.drawBitmap(cardQualityBitmap,
-                CardSpec.getCardQualityRect(card),
-                new Rect(spec.qualityPosition.x, spec.qualityPosition.y, spec.qualityPosition.x + CardSpec.CARD_QUALITY_WIDTH, spec.qualityPosition.y + CardSpec.CARD_QUALITY_HEIGHT),
-                null);
+        Rect qualityRect = CardSpec.getCardQualityRect(card);
+        if (qualityRect != null) {
+            canvas.drawBitmap(cardQualityBitmap, qualityRect,
+                    new Rect(spec.qualityPosition.x, spec.qualityPosition.y, spec.qualityPosition.x + CardSpec.CARD_QUALITY_WIDTH, spec.qualityPosition.y + CardSpec.CARD_QUALITY_HEIGHT),
+                    null);
+        }
 
         // draw elite dragon
         if (card.isMinion() && card.elite) {
@@ -203,8 +213,6 @@ public class CardView extends View {
             paint.setStyle(Paint.Style.FILL);
             canvas.drawText(raceText, raceTextX, raceTextY, paint);
         }
-
-        canvas.restore();
     }
 
 
