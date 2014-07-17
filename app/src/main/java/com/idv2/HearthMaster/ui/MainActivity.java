@@ -15,13 +15,16 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
+import com.idv2.HearthMaster.model.CardClass;
 import com.idv2.HearthMaster.model.CardManager;
 import com.idv2.HearthMaster.ui.widget.CardView;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 
@@ -34,6 +37,16 @@ public class MainActivity extends Activity {
     private CardManager cm;
 
     private Typeface listFont;
+
+    // filter spinners
+    private Spinner filterClassSpinner;
+    private Spinner filterCostSpinner;
+    private Spinner filterTypeSpinner;
+
+    // filter spinner adapters
+    private ArrayAdapter<CharSequence> filterClassAdapter;
+    private ArrayAdapter<CharSequence> filterCostAdapter;
+    private ArrayAdapter<CharSequence> filterTypeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +88,19 @@ public class MainActivity extends Activity {
 
         cardsAdapter.addAll(cards);
         cardsAdapter.notifyDataSetChanged();
+
+        // init filters
+        filterClassSpinner = (Spinner) findViewById(R.id.filter_class);
+        filterCostSpinner = (Spinner) findViewById(R.id.filter_cost);
+        filterTypeSpinner = (Spinner) findViewById(R.id.filter_type);
+
+        filterClassAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+        filterClassAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        List<CardClass> cardClasses = cm.getAllClasses();
+        for (CardClass clz: cardClasses) {
+            filterClassAdapter.add(clz.name);
+        }
+        filterClassSpinner.setAdapter(filterClassAdapter);
 
     }
 
@@ -157,6 +183,17 @@ public class MainActivity extends Activity {
             }
 
             return v;
+        }
+    }
+
+
+    class FilterItem {
+        int value;
+        CharSequence label;
+
+        public FilterItem(int value, CharSequence label) {
+            this.value = value;
+            this.label = label;
         }
     }
 

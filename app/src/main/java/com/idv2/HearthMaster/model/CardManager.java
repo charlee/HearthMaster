@@ -29,6 +29,12 @@ public class CardManager {
     private Map<Integer, Quality> qualityMap;
     private Map<Integer, Race> raceMap;
 
+    private List<CardClass> cardClasses;
+    private List<CardSet> cardSets;
+    private List<CardType> cardTypes;
+    private List<Quality> qualities;
+    private List<Race> races;
+
     private CardManager() {
         Context context = HearthMasterApp.getInstance().getApplicationContext();
         dbHelper = new OpenHelperManager().getHelper(context, DatabaseHelper.class);
@@ -43,35 +49,35 @@ public class CardManager {
     private void init() {
 
         // preload CardClass
-        List<CardClass> cardClasses = dbHelper.getCardClassDao().queryForAll();
+        cardClasses = dbHelper.getCardClassDao().queryForAll();
         cardClassMap = new HashMap<Integer, CardClass>();
         for (CardClass cardClass: cardClasses) {
             cardClassMap.put(cardClass.id, cardClass);
         }
 
         // preload CardSet
-        List<CardSet> cardSets = dbHelper.getCardSetDao().queryForAll();
+        cardSets = dbHelper.getCardSetDao().queryForAll();
         cardSetMap = new HashMap<Integer, CardSet>();
         for (CardSet cardSet: cardSets) {
             cardSetMap.put(cardSet.id, cardSet);
         }
 
         // preload CardType
-        List<CardType> cardTypes = dbHelper.getCardTypeDao().queryForAll();
+        cardTypes = dbHelper.getCardTypeDao().queryForAll();
         cardTypeMap = new HashMap<Integer, CardType>();
         for (CardType cardType: cardTypes) {
             cardTypeMap.put(cardType.id, cardType);
         }
 
         // preload Quality
-        List<Quality> qualities = dbHelper.getQualityDao().queryForAll();
+        qualities = dbHelper.getQualityDao().queryForAll();
         qualityMap = new HashMap<Integer, Quality>();
         for (Quality quality: qualities) {
             qualityMap.put(quality.id, quality);
         }
 
         // preload Race
-        List<Race> races = dbHelper.getRaceDao().queryForAll();
+        races = dbHelper.getRaceDao().queryForAll();
         raceMap = new HashMap<Integer, Race>();
         for (Race race: races) {
             raceMap.put(race.id, race);
@@ -108,6 +114,18 @@ public class CardManager {
         return raceMap.get(id).name;
     }
 
+    public List<Race> getAllRaces() {
+        return races;
+    }
+
+    /**
+     * Get all card races
+     * @return
+     */
+    public List<CardClass> getAllClasses() {
+        return cardClasses;
+    }
+
     /**
      * Get card quality name
      * @param id card quality id
@@ -115,6 +133,10 @@ public class CardManager {
      */
     public String getQuality(int id) {
         return qualityMap.get(id).name;
+    }
+
+    public List<Quality> getQualities() {
+        return qualities;
     }
 
     public int getQualityColor(int id) {
