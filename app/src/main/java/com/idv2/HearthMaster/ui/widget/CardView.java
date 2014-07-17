@@ -9,9 +9,11 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.hardware.display.DisplayManager;
 import android.os.AsyncTask;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.idv2.HearthMaster.HearthMasterApp;
@@ -42,9 +44,12 @@ public class CardView extends View {
 
     private Bitmap cardArtBitmap = null;
 
+    private float screenDensity;
+
     private boolean cardLoaded;
 
     static {
+
         Context context = HearthMasterApp.getInstance().getApplicationContext();
         try {
 
@@ -71,12 +76,15 @@ public class CardView extends View {
         cardLoaded = false;
 
         (new CardLoadTask()).execute();
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        screenDensity = metrics.density;
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(CardSpec.CARD_WIDTH, CardSpec.CARD_HEIGHT);
+        setMeasuredDimension((int)(CardSpec.CARD_WIDTH * screenDensity), (int)(CardSpec.CARD_HEIGHT * screenDensity));
     }
 
     @Override
@@ -97,6 +105,9 @@ public class CardView extends View {
     private void drawCard(Canvas canvas) {
         // card loaded, draw card
         CardSpec spec = CardSpec.getCardSpec(card);
+
+        canvas.save();
+        canvas.scale(screenDensity, screenDensity);
 
         canvas.drawBitmap(cardArtBitmap, spec.artPosition.x, spec.artPosition.y, null);
         canvas.drawBitmap(cardBaseBitmap, CardSpec.getCardBaseRect(card), new Rect(0, 0, CardSpec.CARD_WIDTH, CardSpec.CARD_HEIGHT), null);
@@ -192,6 +203,8 @@ public class CardView extends View {
             paint.setStyle(Paint.Style.FILL);
             canvas.drawText(raceText, raceTextX, raceTextY, paint);
         }
+
+        canvas.restore();
     }
 
 
@@ -277,8 +290,6 @@ public class CardView extends View {
             invalidate();
         }
     }
-
-
 }
 
 
