@@ -10,10 +10,12 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.sql.SQLException;
 
@@ -24,28 +26,15 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "cards.db";
     private static final String STOCK_DB_NAME = "cards.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private Context context;
 
     private RuntimeExceptionDao<Card, Integer> cardDao = null;
-    private RuntimeExceptionDao<CardClass, Integer> cardClassDao = null;
-    private RuntimeExceptionDao<CardSet, Integer> cardSetDao = null;
-    private RuntimeExceptionDao<CardType, Integer> cardTypeDao = null;
-    private RuntimeExceptionDao<Quality, Integer> qualityDao = null;
-    private RuntimeExceptionDao<Race, Integer> raceDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.db_config);
         this.context = context;
-
-        try {
-            if (!databaseExists()) {
-                copyDatabase();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -88,17 +77,29 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
 
-//        try {
-//            TableUtils.createTable(connectionSource, Card.class);
-//            TableUtils.createTable(connectionSource, CardClass.class);
-//            TableUtils.createTable(connectionSource, CardSet.class);
-//            TableUtils.createTable(connectionSource, CardType.class);
-//            TableUtils.createTable(connectionSource, Quality.class);
-//            TableUtils.createTable(connectionSource, Race.class);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            TableUtils.createTable(connectionSource, Card.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        importData();
+    }
+
+    private void importData() {
+        RuntimeExceptionDao<Card, Integer> cardDao = getCardDao();
+        try {
+            InputStream is = context.getAssets().open("cards.sql");
+            BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuilder buf = new StringBuilder();
+            String sql;
+            while ((sql = in.readLine()) != null) {
+                cardDao.executeRaw(sql);
+            }
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -115,38 +116,4 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return cardDao;
     }
 
-    public RuntimeExceptionDao<CardClass, Integer> getCardClassDao() {
-        if (cardClassDao == null) {
-            cardClassDao = getRuntimeExceptionDao(CardClass.class);
-        }
-        return cardClassDao;
-    }
-
-    public RuntimeExceptionDao<CardSet, Integer> getCardSetDao() {
-        if (cardSetDao == null) {
-            cardSetDao = getRuntimeExceptionDao(CardSet.class);
-        }
-        return cardSetDao;
-    }
-
-    public RuntimeExceptionDao<CardType, Integer> getCardTypeDao() {
-        if (cardTypeDao == null) {
-            cardTypeDao = getRuntimeExceptionDao(CardType.class);
-        }
-        return cardTypeDao;
-    }
-
-    public RuntimeExceptionDao<Quality, Integer> getQualityDao() {
-        if (qualityDao == null) {
-            qualityDao = getRuntimeExceptionDao(Quality.class);
-        }
-        return qualityDao;
-    }
-
-    public RuntimeExceptionDao<Race, Integer> getRaceDao() {
-        if (raceDao == null) {
-            raceDao = getRuntimeExceptionDao(Race.class);
-        }
-        return raceDao;
-    }
 }

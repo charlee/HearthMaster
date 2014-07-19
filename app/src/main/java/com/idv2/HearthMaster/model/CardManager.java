@@ -23,66 +23,10 @@ public class CardManager {
 
     private boolean initDone;
 
-    private Map<Integer, CardClass> cardClassMap;
-    private Map<Integer, CardSet> cardSetMap;
-    private Map<Integer, CardType> cardTypeMap;
-    private Map<Integer, Quality> qualityMap;
-    private Map<Integer, Race> raceMap;
-
-    private List<CardClass> cardClasses;
-    private List<CardSet> cardSets;
-    private List<CardType> cardTypes;
-    private List<Quality> qualities;
-    private List<Race> races;
-
     private CardManager() {
         Context context = HearthMasterApp.getInstance().getApplicationContext();
         dbHelper = new OpenHelperManager().getHelper(context, DatabaseHelper.class);
         cardDao = dbHelper.getCardDao();
-
-        init();
-    }
-
-    /**
-     * Init, preload all auxiliary classes
-     */
-    private void init() {
-
-        // preload CardClass
-        cardClasses = dbHelper.getCardClassDao().queryForAll();
-        cardClassMap = new HashMap<Integer, CardClass>();
-        for (CardClass cardClass: cardClasses) {
-            cardClassMap.put(cardClass.id, cardClass);
-        }
-
-        // preload CardSet
-        cardSets = dbHelper.getCardSetDao().queryForAll();
-        cardSetMap = new HashMap<Integer, CardSet>();
-        for (CardSet cardSet: cardSets) {
-            cardSetMap.put(cardSet.id, cardSet);
-        }
-
-        // preload CardType
-        cardTypes = dbHelper.getCardTypeDao().queryForAll();
-        cardTypeMap = new HashMap<Integer, CardType>();
-        for (CardType cardType: cardTypes) {
-            cardTypeMap.put(cardType.id, cardType);
-        }
-
-        // preload Quality
-        qualities = dbHelper.getQualityDao().queryForAll();
-        qualityMap = new HashMap<Integer, Quality>();
-        for (Quality quality: qualities) {
-            qualityMap.put(quality.id, quality);
-        }
-
-        // preload Race
-        races = dbHelper.getRaceDao().queryForAll();
-        raceMap = new HashMap<Integer, Race>();
-        for (Race race: races) {
-            raceMap.put(race.id, race);
-        }
-
     }
 
     public static CardManager getInstance() {
@@ -103,75 +47,6 @@ public class CardManager {
 
     public List<Card> getAllCards() {
         return cardDao.queryForAll();
-    }
-
-    /**
-     * Get card race name
-     * @param id card race id
-     * @return
-     */
-    public String getRace(int id) {
-        return raceMap.get(id).name;
-    }
-
-    public List<Race> getAllRaces() {
-        return races;
-    }
-
-    /**
-     * Get all card races
-     * @return
-     */
-    public List<CardClass> getAllClasses() {
-        return cardClasses;
-    }
-
-    /**
-     * Get card quality name
-     * @param id card quality id
-     * @return
-     */
-    public String getQuality(int id) {
-        return qualityMap.get(id).name;
-    }
-
-    public List<Quality> getQualities() {
-        return qualities;
-    }
-
-    public int getQualityColor(int id) {
-        return Color.parseColor(qualityMap.get(id).textcolor);
-    }
-
-    /**
-     * Get card class name
-     * @param card card
-     * @return
-     */
-    public String getCardClass(Card card) {
-        if (card.cardClass != null && cardClassMap.containsKey(card.cardClass.id)) {
-            return cardClassMap.get(card.cardClass.id).name;
-        } else {
-            return "Neutral";
-        }
-    }
-
-    /**
-     * Get card set name
-     * @param id card set id
-     * @return
-     */
-    public String getCardSet(int id) {
-        return cardSetMap.get(id).name;
-    }
-
-    /**
-     * Get card type name
-     * @param id card type id
-     * @return
-     */
-    public String getCardType(int id) {
-        return cardTypeMap.get(id).name;
     }
 
 }

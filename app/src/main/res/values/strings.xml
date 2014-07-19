@@ -4,5 +4,36 @@
     <string name="app_name">HearthMaster</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="class_warrior">Warrior</string>
+    <string name="class_paladin">Paladin</string>
+    <string name="class_hunter">Hunter</string>
+    <string name="class_rogue">Rogue</string>
+    <string name="class_priest">Priest</string>
+    <string name="class_shaman">Shaman</string>
+    <string name="class_mage">Mage</string>
+    <string name="class_warlock">Warlock</string>
+    <string name="class_druid">Druid</string>
+    <string name="class_neutral">Neutral</string>
+    <string name="set_basic">Basic</string>
+    <string name="set_expert">Expert</string>
+    <string name="set_reward">Reward</string>
+    <string name="set_missions">Missions</string>
+    <string name="set_promition">Promotion</string>
+    <string name="set_credits">Credits</string>
+    <string name="type_minion">Minion</string>
+    <string name="type_spell">Spell</string>
+    <string name="type_weapon">Weapon</string>
+    <string name="quality_free">Free</string>
+    <string name="quality_common">Common</string>
+    <string name="quality_rare">Rare</string>
+    <string name="quality_epic">Epic</string>
+    <string name="quality_legendary">Legendary</string>
+    <string name="race_none">None</string>
+    <string name="race_murloc">Murloc</string>
+    <string name="race_demon">Demon</string>
+    <string name="race_beast">Beast</string>
+    <string name="race_totem">Totem</string>
+    <string name="race_pirate">Pirate</string>
+    <string name="race_dragon">Dragon</string>
 
 </resources>

@@ -2,7 +2,6 @@ package com.idv2.HearthMaster.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,11 +19,9 @@ import android.widget.TextView;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
-import com.idv2.HearthMaster.model.CardClass;
 import com.idv2.HearthMaster.model.CardManager;
 import com.idv2.HearthMaster.ui.widget.CardView;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 
@@ -96,11 +93,12 @@ public class MainActivity extends Activity {
 
         filterClassAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
         filterClassAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        List<CardClass> cardClasses = cm.getAllClasses();
-        for (CardClass clz: cardClasses) {
-            filterClassAdapter.add(clz.name);
-        }
-        filterClassSpinner.setAdapter(filterClassAdapter);
+
+//        List<CardClass> cardClasses = cm.getAllClasses();
+//        for (CardClass clz: cardClasses) {
+//            filterClassAdapter.add(clz.name);
+//        }
+//        filterClassSpinner.setAdapter(filterClassAdapter);
 
     }
 
@@ -153,7 +151,7 @@ public class MainActivity extends Activity {
                 ImageView iconHealth = (ImageView) v.findViewById(R.id.icon_health);
 
                 cardName.setTypeface(listFont);
-                cardName.setTextColor(cm.getQualityColor(card.quality.id));
+                cardName.setTextColor(Card.qualityColor.get(card.quality));
 
                 cardName.setText(card.name);
                 cardText.setText(card.description);
@@ -161,7 +159,7 @@ public class MainActivity extends Activity {
                 cardHealth.setText(String.format("%d", card.health));
                 cardAttack.setText(String.format("%d", card.attack));
 
-                if (card.isSpell()) {
+                if (card.cardType == Card.SPELL) {
                     cardHealth.setVisibility(View.GONE);
                     cardAttack.setVisibility(View.GONE);
                     iconHealth.setVisibility(View.GONE);
@@ -173,7 +171,7 @@ public class MainActivity extends Activity {
                     iconAttack.setVisibility(View.VISIBLE);
                 }
 
-                if (card.isWeapon()) {
+                if (card.cardType == Card.WEAPON) {
                     iconHealth.setImageDrawable(getResources().getDrawable(R.drawable.durability));
                     iconAttack.setImageDrawable(getResources().getDrawable(R.drawable.weapon));
                 } else {

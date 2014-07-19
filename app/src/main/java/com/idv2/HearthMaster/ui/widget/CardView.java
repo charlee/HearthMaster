@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.hardware.display.DisplayManager;
 import android.os.AsyncTask;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -178,19 +177,20 @@ public class CardView extends View {
         }
 
         // draw elite dragon
-        if (card.isMinion() && card.elite) {
+        if (card.cardType == Card.MINION && card.elite) {
             Rect eliteRect = CardSpec.getEliteRect();
             Rect elitePos = new Rect(spec.elitePosition.x, spec.elitePosition.y, spec.elitePosition.x + eliteRect.width(), spec.elitePosition.y + eliteRect.height());
             canvas.drawBitmap(cardQualityBitmap, eliteRect, elitePos, null);
         }
 
         // draw race indicator
-        if (card.isMinion() && card.race != null) {
+        if (card.cardType == Card.MINION && card.race != 0) {
             Rect raceRect = CardSpec.getRaceRect();
             Rect racePos = new Rect(spec.racePosition.x, spec.racePosition.y, spec.racePosition.x + raceRect.width(), spec.racePosition.y + raceRect.height());
             canvas.drawBitmap(cardQualityBitmap, raceRect, racePos, null);
 
-            String raceText = CardManager.getInstance().getRace(card.race.id);
+            Context context = HearthMasterApp.getInstance().getApplicationContext();
+            String raceText = context.getString(Card.raceName.get(card.race));
 
             // decide font size
             int raceTextSize = 16;

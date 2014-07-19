@@ -1,6 +1,8 @@
 package com.idv2.HearthMaster.model;
 
-import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.google.common.collect.ImmutableMap;
+import com.idv2.HearthMaster.HearthMasterApp;
+import com.idv2.HearthMaster.R;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -10,6 +12,114 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
 public class Card {
+
+    /**
+     * Card Class
+     */
+    public static final int NEUTRAL = 0;
+    public static final int WARRIOR = 1;
+    public static final int PALADIN = 2;
+    public static final int HUNTER = 3;
+    public static final int ROGUE = 4;
+    public static final int PRIEST = 5;
+    public static final int SHAMAN = 7;
+    public static final int MAGE = 8;
+    public static final int WARLOCK = 9;
+    public static final int DRUID = 11;
+
+    public static final ImmutableMap<Integer, Integer> className = ImmutableMap.<Integer, Integer>builder()
+            .put(NEUTRAL, R.string.class_neutral)
+            .put(WARRIOR, R.string.class_warrior)
+            .put(PALADIN, R.string.class_paladin)
+            .put(HUNTER, R.string.class_hunter)
+            .put(ROGUE, R.string.class_rogue)
+            .put(PRIEST, R.string.class_priest)
+            .put(SHAMAN, R.string.class_shaman)
+            .put(MAGE, R.string.class_mage)
+            .put(WARLOCK, R.string.class_warlock)
+            .put(DRUID, R.string.class_druid)
+            .build();
+
+
+    /**
+     * Card Set
+     */
+    public static final int BASIC = 2;
+    public static final int EXPERT = 3;
+    public static final int REWARD = 4;
+    public static final int MISSIONS = 5;
+    public static final int PROMOTION = 11;
+    public static final int CREDITS = 16;
+
+    public static final ImmutableMap<Integer, Integer> setName = ImmutableMap.<Integer, Integer>builder()
+            .put(BASIC, R.string.set_basic)
+            .put(EXPERT, R.string.set_expert)
+            .put(REWARD, R.string.set_reward)
+            .put(MISSIONS, R.string.set_missions)
+            .put(PROMOTION, R.string.set_credits)
+            .build();
+
+
+    /**
+     * Card Type
+     */
+    public static final int MINION = 4;
+    public static final int SPELL = 5;
+    public static final int WEAPON = 7;
+
+    public static final ImmutableMap<Integer, Integer> typeName = ImmutableMap.of(
+            MINION, R.string.type_minion,
+            SPELL, R.string.type_spell,
+            WEAPON, R.string.type_weapon
+    );
+
+    /**
+     * Card Quality
+     */
+    public static final int FREE = 0;
+    public static final int COMMON = 1;
+    public static final int RARE = 3;
+    public static final int EPIC = 4;
+    public static final int LEGENDARY = 5;
+
+    public static final ImmutableMap<Integer, Integer> qualityName = ImmutableMap.of(
+            FREE, R.string.quality_free,
+            COMMON, R.string.quality_common,
+            RARE, R.string.quality_rare,
+            EPIC, R.string.quality_epic,
+            LEGENDARY, R.string.quality_legendary
+    );
+
+
+    public static final ImmutableMap<Integer, Integer> qualityColor = ImmutableMap.of(
+            FREE, 0xff9d9d9d,
+            COMMON, 0xff000000,
+            RARE, 0xff0070dd,
+            EPIC, 0xffa335ee,
+            LEGENDARY, 0xffff8000
+    );
+
+
+    /**
+     * Card Race
+     */
+    public static final int NONE = 0;
+    public static final int MURLOC = 14;
+    public static final int DEMON = 15;
+    public static final int BEAST = 20;
+    public static final int TOTEM = 21;
+    public static final int PIRATE = 23;
+    public static final int DRAGON = 24;
+
+    public static final ImmutableMap<Integer, Integer> raceName = ImmutableMap.<Integer, Integer>builder()
+            .put(NONE, R.string.race_none)
+            .put(MURLOC, R.string.race_murloc)
+            .put(DEMON, R.string.race_demon)
+            .put(BEAST, R.string.race_beast)
+            .put(TOTEM, R.string.race_totem)
+            .put(PIRATE, R.string.race_pirate)
+            .put(DRAGON, R.string.race_dragon)
+            .build();
 
     @DatabaseField(id = true)
     public int id;
@@ -32,20 +142,20 @@ public class Card {
     @DatabaseField(canBeNull = false)
     public String image;
 
-    @DatabaseField(foreign = true)
-    public Quality quality;
+    @DatabaseField(canBeNull = false)
+    public int quality;
 
-    @DatabaseField(foreign = true)
-    public CardType cardType;
+    @DatabaseField(canBeNull = false)
+    public int cardType;
 
-    @DatabaseField(foreign = true)
-    public CardClass cardClass;
+    @DatabaseField(canBeNull = false)
+    public int cardClass;
 
-    @DatabaseField(foreign = true)
-    public CardSet cardSet;
+    @DatabaseField(canBeNull = false)
+    public int cardSet;
 
-    @DatabaseField(foreign = true)
-    public Race race;
+    @DatabaseField(canBeNull = false)
+    public int race;
 
     @DatabaseField(canBeNull = false)
     public boolean elite;
@@ -56,16 +166,4 @@ public class Card {
     @DatabaseField(canBeNull = false)
     public boolean collectible;
 
-
-    public boolean isSpell() {
-        return (cardType != null) && (cardType.id == CardType.SPELL);
-    }
-
-    public boolean isWeapon() {
-        return (cardType != null) && (cardType.id == CardType.WEAPON);
-    }
-
-    public boolean isMinion() {
-        return (cardType != null) && (cardType.id == CardType.MINION);
-    }
 }

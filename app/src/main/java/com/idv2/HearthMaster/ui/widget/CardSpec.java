@@ -6,9 +6,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 
 import com.idv2.HearthMaster.model.Card;
-import com.idv2.HearthMaster.model.CardClass;
-import com.idv2.HearthMaster.model.CardType;
-import com.idv2.HearthMaster.model.Quality;
 
 /**
  * Created by charlee on 2014-06-25.
@@ -43,8 +40,8 @@ public class CardSpec {
 
     public static CardSpec getCardSpec(Card card) {
         CardSpec spec;
-        if (card.isMinion()) spec = getMinionCardSpec();
-        else if (card.isSpell()) spec = getSpellCardSpec();
+        if (card.cardType == Card.MINION) spec = getMinionCardSpec();
+        else if (card.cardType == Card.SPELL) spec = getSpellCardSpec();
         else spec = getWeaponCardSpec();
 
         return spec;
@@ -59,33 +56,23 @@ public class CardSpec {
 
         int xPos, yPos;
 
-        if (card.cardClass == null) {           // neutral
-            xPos = 0;
-        } else {
-            switch (card.cardClass.id) {
-                case CardClass.WARRIOR: xPos = 1; break;
-                case CardClass.PALADIN: xPos = 2; break;
-                case CardClass.HUNTER: xPos = 3; break;
-                case CardClass.ROGUE: xPos = 4; break;
-                case CardClass.PRIEST: xPos = 5; break;
-                case CardClass.SHAMAN: xPos = 6; break;
-                case CardClass.MAGE: xPos = 7; break;
-                case CardClass.WARLOCK: xPos = 8; break;
-                case CardClass.DRUID: xPos = 9; break;
-                default: xPos = 0;
-            }
+        switch (card.cardClass) {
+            case Card.WARRIOR: xPos = 1; break;
+            case Card.PALADIN: xPos = 2; break;
+            case Card.HUNTER: xPos = 3; break;
+            case Card.ROGUE: xPos = 4; break;
+            case Card.PRIEST: xPos = 5; break;
+            case Card.SHAMAN: xPos = 6; break;
+            case Card.MAGE: xPos = 7; break;
+            case Card.WARLOCK: xPos = 8; break;
+            case Card.DRUID: xPos = 9; break;
+            default: xPos = 0;
+
         }
 
-        if (card.cardType == null) {
-            yPos = 0;
-        } else {
-            switch (card.cardType.id) {
-                case CardType.MINION: yPos = 0; break;
-                case CardType.SPELL: yPos = 1; break;
-                case CardType.WEAPON: yPos = 2; break;
-                default: yPos = 0; break;
-            }
-        }
+        if (card.cardType == Card.SPELL) yPos = 1;
+        else if (card.cardType == Card.WEAPON) yPos = 2;
+        else yPos = 0;
 
         int x = xPos * CARD_WIDTH + CARD_BASE_LABEL_MARGIN;
         int y = yPos * CARD_HEIGHT + CARD_BASE_LABEL_MARGIN;
@@ -103,29 +90,16 @@ public class CardSpec {
 
         int xPos, yPos;
 
-        if (card.quality == null || card.quality.id == Quality.FREE) {
-            return null;
-        } else {
+        if (card.quality == Card.FREE) return null;
 
-            switch (card.quality.id) {
-                case Quality.COMMON: xPos = 0; break;
-                case Quality.RARE: xPos = 1; break;
-                case Quality.EPIC: xPos = 2; break;
-                case Quality.LEGENDARY: xPos = 3; break;
-                default: xPos = 0; break;
-            }
-        }
+        if (card.quality == Card.RARE) xPos = 1;
+        else if (card.quality == Card.EPIC) xPos = 2;
+        else if (card.quality == Card.LEGENDARY) xPos = 3;
+        else xPos = 0;
 
-        if (card.cardType == null) {
-            return null;
-        } else {
-            switch (card.cardType.id) {
-                case CardType.SPELL: yPos = 0; break;
-                case CardType.WEAPON: yPos = 1; break;
-                case CardType.MINION: yPos = 2; break;
-                default: yPos = 2; break;
-            }
-        }
+        if (card.cardType == Card.SPELL) yPos = 0;
+        else if (card.cardType == Card.WEAPON) yPos = 1;
+        else yPos = 2;
 
         int x = xPos * CARD_QUALITY_WIDTH + CARD_BASE_LABEL_MARGIN;
         int y = yPos * CARD_QUALITY_HEIGHT + CARD_BASE_LABEL_MARGIN;
