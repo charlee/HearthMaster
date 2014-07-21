@@ -1,5 +1,6 @@
 package com.idv2.HearthMaster.model;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.idv2.HearthMaster.HearthMasterApp;
 import com.idv2.HearthMaster.R;
@@ -40,6 +41,19 @@ public class Card {
             .put(DRUID, R.string.class_druid)
             .build();
 
+    public static final ImmutableList<Integer> allClasses = ImmutableList.of(
+            NEUTRAL,
+            WARRIOR,
+            PALADIN,
+            HUNTER,
+            ROGUE,
+            PRIEST,
+            SHAMAN,
+            MAGE,
+            WARLOCK,
+            DRUID
+    );
+
 
     /**
      * Card Set
@@ -59,6 +73,14 @@ public class Card {
             .put(PROMOTION, R.string.set_credits)
             .build();
 
+    public static final ImmutableList<Integer> allSets = ImmutableList.of(
+            BASIC,
+            EXPERT,
+            REWARD,
+            MISSIONS,
+            PROMOTION
+    );
+
 
     /**
      * Card Type
@@ -72,6 +94,8 @@ public class Card {
             SPELL, R.string.type_spell,
             WEAPON, R.string.type_weapon
     );
+
+    public static final ImmutableList<Integer> allTypes = ImmutableList.of(MINION, SPELL, WEAPON);
 
     /**
      * Card Quality
@@ -90,7 +114,6 @@ public class Card {
             LEGENDARY, R.string.quality_legendary
     );
 
-
     public static final ImmutableMap<Integer, Integer> qualityColor = ImmutableMap.of(
             FREE, 0xff9d9d9d,
             COMMON, 0xff000000,
@@ -98,6 +121,8 @@ public class Card {
             EPIC, 0xffa335ee,
             LEGENDARY, 0xffff8000
     );
+
+    public static final ImmutableList<Integer> allQualities = ImmutableList.of(FREE, COMMON, RARE, EPIC, LEGENDARY);
 
 
     /**
@@ -120,6 +145,16 @@ public class Card {
             .put(PIRATE, R.string.race_pirate)
             .put(DRAGON, R.string.race_dragon)
             .build();
+
+    public static final ImmutableList<Integer> allRaces = ImmutableList.of(
+            NONE,
+            MURLOC,
+            DEMON,
+            BEAST,
+            TOTEM,
+            PIRATE,
+            DRAGON
+    );
 
     @DatabaseField(id = true)
     public int id;

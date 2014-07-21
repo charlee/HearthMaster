@@ -93,13 +93,37 @@ public class MainActivity extends Activity {
 
         filterClassAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
         filterClassAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterClassSpinner.setAdapter(filterClassAdapter);
 
-//        List<CardClass> cardClasses = cm.getAllClasses();
-//        for (CardClass clz: cardClasses) {
-//            filterClassAdapter.add(clz.name);
-//        }
-//        filterClassSpinner.setAdapter(filterClassAdapter);
+        filterClassAdapter.add(getString(R.string.all));
+        for (int classId: Card.allClasses) {
+            int resId = Card.className.get(classId);
+            filterClassAdapter.add(getString(resId));
+        }
 
+        filterClassAdapter.notifyDataSetChanged();
+
+        filterCostAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+        filterCostAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterCostSpinner.setAdapter(filterCostAdapter);
+
+        filterCostAdapter.add(getString(R.string.all));
+        for (int cost = 0; cost < 7; cost++) {
+            filterCostAdapter.add(String.valueOf(cost));
+        }
+        filterCostAdapter.add("7+");
+        filterCostAdapter.notifyDataSetChanged();
+
+        filterTypeAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+        filterTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterTypeSpinner.setAdapter(filterTypeAdapter);
+
+        filterTypeAdapter.add(getString(R.string.all));
+        for (int typeId: Card.allTypes) {
+            int resId = Card.typeName.get(typeId);
+            filterTypeAdapter.add(getString(resId));
+        }
+        filterTypeAdapter.notifyDataSetChanged();
     }
 
 
