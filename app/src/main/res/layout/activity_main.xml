@@ -17,6 +17,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <Spinner
+            android:id="@+id/filter_quality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Spinner
             android:id="@+id/filter_cost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

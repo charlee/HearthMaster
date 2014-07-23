@@ -37,11 +37,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     // filter spinners
     private Spinner filterClassSpinner;
+    private Spinner filterQualitySpinner;
     private Spinner filterCostSpinner;
     private Spinner filterTypeSpinner;
 
     // filter spinner adapters
     private ArrayAdapter<CharSequence> filterClassAdapter;
+    private ArrayAdapter<CharSequence> filterQualityAdapter;
     private ArrayAdapter<CharSequence> filterCostAdapter;
     private ArrayAdapter<CharSequence> filterTypeAdapter;
 
@@ -88,6 +90,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         // init filters
         filterClassSpinner = (Spinner) findViewById(R.id.filter_class);
+        filterQualitySpinner = (Spinner) findViewById(R.id.filter_quality);
         filterCostSpinner = (Spinner) findViewById(R.id.filter_cost);
         filterTypeSpinner = (Spinner) findViewById(R.id.filter_type);
 
@@ -102,6 +105,16 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         }
 
         filterClassAdapter.notifyDataSetChanged();
+
+        filterQualityAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
+        filterQualityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        filterQualitySpinner.setAdapter(filterQualityAdapter);
+
+        filterQualityAdapter.add(getString(R.string.all));
+        for (int qualityId: Card.allQualities) {
+            int resId = Card.qualityName.get(qualityId);
+            filterQualityAdapter.add(getString(resId));
+        }
 
         filterCostAdapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item);
         filterCostAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -126,6 +139,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         filterTypeAdapter.notifyDataSetChanged();
 
         filterTypeSpinner.setOnItemSelectedListener(this);
+        filterQualitySpinner.setOnItemSelectedListener(this);
         filterCostSpinner.setOnItemSelectedListener(this);
         filterClassSpinner.setOnItemSelectedListener(this);
     }
@@ -156,10 +170,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
         int costPos = filterCostSpinner.getSelectedItemPosition();
+        int qualityPos = filterQualitySpinner.getSelectedItemPosition();
         int classPos = filterClassSpinner.getSelectedItemPosition();
         int typePos = filterTypeSpinner.getSelectedItemPosition();
 
         int classCriteria = (classPos > 0) ? Card.allClasses.get(classPos - 1) : -1;
+        int qualityCriteria = (qualityPos > 0) ? Card.allQualities.get(qualityPos - 1) : -1;
         int typeCriteria = (typePos > 0) ? Card.allTypes.get(typePos - 1) : -1;
         int costCriteria = costPos - 1;
 
@@ -170,6 +186,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         for (Card card: cards) {
 
             if (classPos > 0 && classCriteria != card.cardClass) continue;
+            if (qualityPos > 0 && qualityCriteria != card.quality) continue;
             if (typePos > 0 && typeCriteria != card.cardType) continue;
             if (costPos > 0 && (costCriteria < 7 && card.cost != costCriteria || costCriteria == 7 && card.cost < costCriteria)) continue;
 
