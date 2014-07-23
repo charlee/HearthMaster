@@ -25,7 +25,7 @@ import com.idv2.HearthMaster.ui.widget.CardView;
 import java.util.List;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     private CardAdapter cardsAdapter;
     private ListView cardList;
@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
         cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Card card = cards.get(position);
+                Card card = (Card) parent.getItemAtPosition(position);
                 cardView.setCardId(card.id);
                 cardPopup.setVisibility(View.VISIBLE);
             }
@@ -124,6 +124,10 @@ public class MainActivity extends Activity {
             filterTypeAdapter.add(getString(resId));
         }
         filterTypeAdapter.notifyDataSetChanged();
+
+        filterTypeSpinner.setOnItemSelectedListener(this);
+        filterCostSpinner.setOnItemSelectedListener(this);
+        filterClassSpinner.setOnItemSelectedListener(this);
     }
 
 
@@ -146,6 +150,38 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        int costPos = filterCostSpinner.getSelectedItemPosition();
+        int classPos = filterClassSpinner.getSelectedItemPosition();
+        int typePos = filterTypeSpinner.getSelectedItemPosition();
+
+        int classCriteria = (classPos > 0) ? Card.allClasses.get(classPos - 1) : -1;
+        int typeCriteria = (typePos > 0) ? Card.allTypes.get(typePos - 1) : -1;
+        int costCriteria = costPos - 1;
+
+        // remove all cards
+        cardsAdapter.clear();
+
+        // add cards
+        for (Card card: cards) {
+
+            if (classPos > 0 && classCriteria != card.cardClass) continue;
+            if (typePos > 0 && typeCriteria != card.cardType) continue;
+            if (costPos > 0 && (costCriteria < 7 && card.cost != costCriteria || costCriteria == 7 && card.cost < costCriteria)) continue;
+
+            cardsAdapter.add(card);
+        }
+
+        cardsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     class CardAdapter extends ArrayAdapter<Card> {
