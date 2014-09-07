@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -37,6 +39,7 @@ public class CardView extends View {
     private static Bitmap cardBackBitmap = null;
     private static Bitmap cardBaseBitmap = null;
     private static Bitmap cardQualityBitmap = null;
+    private static Bitmap minionMaskBitmap = null;
     private static Typeface cardNameFont = null;
     private static Typeface cardDescFont = null;
 
@@ -65,6 +68,7 @@ public class CardView extends View {
             e.printStackTrace();
         }
     }
+
 
     public CardView(Context context, int cardId, String language) {
         super(context);
@@ -116,8 +120,18 @@ public class CardView extends View {
         // card loaded, draw card
         CardSpec spec = CardSpec.getCardSpec(card);
 
-        canvas.drawBitmap(cardArtBitmap, spec.artPosition.x, spec.artPosition.y, null);
+        // draw card image
+        Paint imagePaint = new Paint();
+        if (card.cardType == Card.MINION) {
+            imagePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+            canvas.drawBitmap(minionMaskBitmap, 0, 0, imagePaint);
+            imagePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+            canvas.drawBitmap(cardArtBitmap, spec.artPosition.x, spec.artPosition.y, imagePaint);
+        } else {
+            canvas.drawBitmap(cardArtBitmap, spec.artPosition.x, spec.artPosition.y, null);
+        }
 
+        // draw card frame
         Rect cardBaseRect = CardSpec.getCardBaseRect(card);
         Bitmap baseBitmap = Bitmap.createBitmap(cardBaseBitmap, cardBaseRect.left, cardBaseRect.top, cardBaseRect.width(), cardBaseRect.height());
         canvas.drawBitmap(baseBitmap, 0, 0, null);
@@ -285,6 +299,14 @@ public class CardView extends View {
                     is = getContext().getAssets().open("cards/quality-indicator.png");
                     cardQualityBitmap = BitmapFactory.decodeStream(is);
                     is.close();
+                }
+
+                // load masks
+                if (minionMaskBitmap == null) {
+                    is = getContext().getAssets().open("cards/minion-mask.png");
+                    minionMaskBitmap = BitmapFactory.decodeStream(is);
+                    is.close();
+
                 }
 
             } catch (IOException e) {
