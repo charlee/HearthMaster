@@ -117,7 +117,10 @@ public class CardView extends View {
         CardSpec spec = CardSpec.getCardSpec(card);
 
         canvas.drawBitmap(cardArtBitmap, spec.artPosition.x, spec.artPosition.y, null);
-        canvas.drawBitmap(cardBaseBitmap, CardSpec.getCardBaseRect(card), new Rect(0, 0, CardSpec.CARD_WIDTH, CardSpec.CARD_HEIGHT), null);
+
+        Rect cardBaseRect = CardSpec.getCardBaseRect(card);
+        Bitmap baseBitmap = Bitmap.createBitmap(cardBaseBitmap, cardBaseRect.left, cardBaseRect.top, cardBaseRect.width(), cardBaseRect.height());
+        canvas.drawBitmap(baseBitmap, 0, 0, null);
 
         Paint paint = new Paint();
         paint.setAntiAlias(true);
