@@ -6,7 +6,10 @@ import android.graphics.Color;
 import com.idv2.HearthMaster.HearthMasterApp;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.QueryBuilder;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +49,14 @@ public class CardManager {
     }
 
     public List<Card> getAllCards() {
-        return cardDao.queryForAll();
+        try {
+            QueryBuilder<Card, Integer> qb = cardDao.queryBuilder();
+            qb.orderBy("name", true);
+            return qb.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<Card>();
+        }
     }
 
 }
