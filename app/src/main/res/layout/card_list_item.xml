@@ -40,7 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/mana"
-            android:paddingLeft="@dimen/card_meta_icon_padding"
+            android:paddingLeft="@dimen/card_meta_icon_paddingLeft"
+            android:paddingTop="@dimen/card_meta_icon_paddingTop"
             />
 
         <TextView
@@ -57,7 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/attack"
-            android:paddingLeft="@dimen/card_meta_icon_padding"
+            android:paddingLeft="@dimen/card_meta_icon_paddingLeft"
+            android:paddingTop="@dimen/card_meta_icon_paddingTop"
             />
 
         <TextView
@@ -74,7 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/health"
-            android:paddingLeft="@dimen/card_meta_icon_padding"
+            android:paddingLeft="@dimen/card_meta_icon_paddingLeft"
+            android:paddingTop="@dimen/card_meta_icon_paddingTop"
             />
 
         <TextView
