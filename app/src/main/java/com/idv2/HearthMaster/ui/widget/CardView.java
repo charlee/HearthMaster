@@ -166,7 +166,7 @@ public class CardView extends View {
         // draw description text
         if (card.description != null) {
             TextPaint descPaint = new TextPaint();
-            descPaint.setColor(Color.BLACK);
+            descPaint.setColor(card.cardType == Card.WEAPON ? Color.WHITE : Color.BLACK);
             descPaint.setAntiAlias(true);
 //            descPaint.setTypeface(cardDescFont);
             descPaint.setTextSize(15);
