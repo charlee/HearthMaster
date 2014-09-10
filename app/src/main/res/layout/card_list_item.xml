@@ -8,9 +8,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_weight="1"
+        android:paddingLeft="@dimen/card_list_horizontal_margin"
         >
+
+        <ImageView
+            android:layout_width="@dimen/class_icon_size"
+            android:layout_height="@dimen/class_icon_size"
+            android:id="@+id/class_icon"/>
 
         <TextView
             android:id="@+id/card_name"
@@ -21,20 +27,12 @@
             android:paddingLeft="@dimen/card_name_paddingLeft"
             />
 
-        <TextView
-            android:id="@+id/card_text"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="card text"
-            />
-
-
         </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingRight="@dimen/card_list_horizontal_margin"
         android:orientation="horizontal">
 
 

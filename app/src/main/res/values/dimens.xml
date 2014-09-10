@@ -9,5 +9,7 @@
     <dimen name="card_meta_icon_paddingTop">2dp</dimen>
     <dimen name="card_name_paddingTop">4dp</dimen>
     <dimen name="card_name_paddingLeft">4dp</dimen>
+    <dimen name="class_icon_size">24dp</dimen>
+    <dimen name="card_list_horizontal_margin">8dp</dimen>
 
 </resources>

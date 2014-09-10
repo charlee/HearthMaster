@@ -260,18 +260,17 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
             if (card != null) {
                 TextView cardName = (TextView) v.findViewById(R.id.card_name);
-                TextView cardText = (TextView) v.findViewById(R.id.card_text);
                 TextView cardHealth = (TextView) v.findViewById(R.id.card_health);
                 TextView cardCost = (TextView) v.findViewById(R.id.card_cost);
                 TextView cardAttack = (TextView) v.findViewById(R.id.card_attack);
                 ImageView iconAttack = (ImageView) v.findViewById(R.id.icon_attack);
                 ImageView iconHealth = (ImageView) v.findViewById(R.id.icon_health);
+                ImageView classIcon = (ImageView) v.findViewById(R.id.class_icon);
 
                 cardName.setTypeface(listFont);
                 cardName.setTextColor(Card.qualityColor.get(card.quality));
 
                 cardName.setText(card.name);
-                cardText.setText(card.description);
                 cardCost.setText(String.format("%d", card.cost));
                 cardHealth.setText(String.format("%d", card.health));
                 cardAttack.setText(String.format("%d", card.attack));
@@ -294,6 +293,19 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
                 } else {
                     iconHealth.setImageDrawable(getResources().getDrawable(R.drawable.health));
                     iconAttack.setImageDrawable(getResources().getDrawable(R.drawable.attack));
+                }
+
+                switch (card.cardClass) {
+                    case Card.WARRIOR: classIcon.setImageResource(R.drawable.class_warrior); break;
+                    case Card.MAGE: classIcon.setImageResource(R.drawable.class_mage); break;
+                    case Card.DRUID: classIcon.setImageResource(R.drawable.class_druid); break;
+                    case Card.WARLOCK: classIcon.setImageResource(R.drawable.class_warlock); break;
+                    case Card.ROGUE: classIcon.setImageResource(R.drawable.class_rogue); break;
+                    case Card.PRIEST: classIcon.setImageResource(R.drawable.class_priest); break;
+                    case Card.PALADIN: classIcon.setImageResource(R.drawable.class_paladin); break;
+                    case Card.HUNTER: classIcon.setImageResource(R.drawable.class_hunter); break;
+                    case Card.SHAMAN: classIcon.setImageResource(R.drawable.class_shaman); break;
+                    default: classIcon.setImageResource(0);break;
                 }
             }
 
