@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
@@ -74,14 +76,34 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Card card = (Card) parent.getItemAtPosition(position);
                 cardView.setCardId(card.id);
+                Animation cardInAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.card_in);
                 cardPopup.setVisibility(View.VISIBLE);
+                cardView.startAnimation(cardInAnimation);
             }
         });
 
         cardPopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardPopup.setVisibility(View.INVISIBLE);
+                Animation cardOutAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.card_out);
+                cardOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        cardPopup.setVisibility(View.INVISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+                cardView.startAnimation(cardOutAnimation);
             }
         });
 

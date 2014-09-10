@@ -93,7 +93,7 @@ public class CardView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension((int)(CardSpec.CARD_WIDTH * screenDensity), (int)(CardSpec.CARD_HEIGHT * screenDensity));
+        setMeasuredDimension((int)(CardSpec.CARD_WIDTH * screenDensity), (int)((CardSpec.CARD_HEIGHT + 100) * screenDensity));
     }
 
     @Override
