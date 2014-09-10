@@ -63,6 +63,7 @@ public class Card {
     public static final int REWARD = 4;
     public static final int MISSIONS = 5;
     public static final int PROMOTION = 11;
+    public static final int NAXXRAMAS = 12;
     public static final int CREDITS = 16;
 
     public static final ImmutableMap<Integer, Integer> setName = ImmutableMap.<Integer, Integer>builder()
@@ -70,7 +71,9 @@ public class Card {
             .put(EXPERT, R.string.set_expert)
             .put(REWARD, R.string.set_reward)
             .put(MISSIONS, R.string.set_missions)
-            .put(PROMOTION, R.string.set_credits)
+            .put(NAXXRAMAS, R.string.set_naxxramas)
+            .put(PROMOTION, R.string.set_promotion)
+            .put(CREDITS, R.string.set_credits)
             .build();
 
     public static final ImmutableList<Integer> allSets = ImmutableList.of(
@@ -78,7 +81,9 @@ public class Card {
             EXPERT,
             REWARD,
             MISSIONS,
-            PROMOTION
+            PROMOTION,
+            NAXXRAMAS,
+            CREDITS
     );
 
 

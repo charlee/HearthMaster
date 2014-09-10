@@ -4,8 +4,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="card_meta_text_size">20sp</dimen>
-    <dimen name="card_meta_text_padding">2dp</dimen>
-    <dimen name="card_meta_icon_paddingLeft">8dp</dimen>
+    <dimen name="card_meta_text_padding">4dp</dimen>
+    <dimen name="card_meta_icon_paddingLeft">4dp</dimen>
     <dimen name="card_meta_icon_paddingTop">2dp</dimen>
+    <dimen name="card_name_paddingTop">4dp</dimen>
+    <dimen name="card_name_paddingLeft">4dp</dimen>
 
 </resources>

@@ -36,5 +36,7 @@
     <string name="race_pirate">Pirate</string>
     <string name="race_dragon">Dragon</string>
     <string name="all">All</string>
+    <string name="set_naxxramas">Naxxramas</string>
+    <string name="set_promotion">Promotion</string>
 
 </resources>

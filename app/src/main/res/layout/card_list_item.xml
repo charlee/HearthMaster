@@ -17,6 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="card name"
+            android:paddingTop="@dimen/card_name_paddingTop"
+            android:paddingLeft="@dimen/card_name_paddingLeft"
             />
 
         <TextView

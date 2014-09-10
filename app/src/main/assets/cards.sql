@@ -380,3 +380,37 @@ INSERT INTO card VALUES(413,'Stormpike Commando','Battlecry: Deal 2 damage.',5,4
 INSERT INTO card VALUES(67,'Silverback Patriarch','Taunt',3,1,4,'CS2_127',1,4,0,2,20,0,1,1);
 INSERT INTO card VALUES(311,'Gladiator''s Longbow','Your hero is Immune while attacking.',7,5,2,'DS1_188',4,7,3,3,0,0,3,1);
 INSERT INTO card VALUES(1754,'Elite Tauren Chieftain','Battlecry: Give both players the power to ROCK! (with a Power Chord card)',5,5,5,'PRO_001',5,4,0,11,0,1,0,1);
+
+---------------------------
+-- Naxxramas Set
+---------------------------
+INSERT INTO card VALUES(1753,'Zombie Chow','Deathrattle: Restore 5 Health to the enemy hero.',1,2,3,'FP1_001',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1781,'Haunted Creeper','Deathrattle: Summon two 1/1 Spectral Spiders.',2,1,2,'FP1_002',1,4,0,12,20,0,0,1)
+INSERT INTO card VALUES(1783,'Mad Scientist','Deathrattle: Put a Secret from your deck into the battlefield.',2,2,2,'FP1_004',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1784,'Shade of Naxxramas','Stealth. At the start of your turn, gain +1/+1.',3,2,2,'FP1_005',4,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1786,'Nerubian Egg','Deathrattle: Summon a 4/4 Nerubian.',2,0,2,'FP1_007',3,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1789,'Spectral Knight','Can''t be targeted by spells or Hero Powers.',5,4,6,'FP1_008',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1790,'Deathlord','Taunt. Deathrattle: Your opponent puts a minion from their deck into the battlefield.',3,2,8,'FP1_009',3,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1791,'Maexxna','Destroy any minion damaged by this minion.',6,2,8,'FP1_010',5,4,0,12,20,1,0,1)
+INSERT INTO card VALUES(1793,'Sludge Belcher','Taunt. Deathrattle: Summon a 1/2 Slime with Taunt.',5,3,5,'FP1_012',3,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1794,'Kel''Thuzad','At the end of each turn, summon all friendly minions that died this turn.',8,6,8,'FP1_013',5,4,0,12,0,1,0,1)
+INSERT INTO card VALUES(1796,'Stalagg','Deathrattle: If Feugen also died this game, summon Thaddius.',5,7,4,'FP1_014',5,4,0,12,0,1,0,1)
+INSERT INTO card VALUES(1797,'Feugen','Deathrattle: If Stalagg also died this game, summon Thaddius.',5,4,7,'FP1_015',5,4,0,12,0,1,0,1)
+INSERT INTO card VALUES(1799,'Wailing Soul','Battlecry: Silence your other minions.',4,3,5,'FP1_016',3,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1800,'Nerub''ar Weblord','Minions with Battlecry cost (2) more.',2,1,4,'FP1_017',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1801,'Duplicate','Secret: When a friendly minion dies, put 2 copies of it into your hand.',3,0,0,'FP1_018',1,5,8,12,0,0,0,1)
+INSERT INTO card VALUES(1802,'Poison Seeds','Destroy all minions and summon 2/2 Treants to replace them.',4,0,0,'FP1_019',1,5,11,12,0,0,0,1)
+INSERT INTO card VALUES(1804,'Avenge','Secret: When one of your minions dies, give a random friendly minion +3/+2.',1,0,0,'FP1_020',1,5,2,12,0,0,0,1)
+INSERT INTO card VALUES(1805,'Death''s Bite','Deathrattle: Deal 1 damage to all minions.',4,4,2,'FP1_021',1,7,1,12,0,0,0,1)
+INSERT INTO card VALUES(1806,'Voidcaller','Deathrattle: Put a random Demon from your hand into the battlefield.',4,3,4,'FP1_022',1,4,9,12,15,0,0,1)
+INSERT INTO card VALUES(1807,'Dark Cultist','Deathrattle: Give a random friendly minion +3 Health.',3,3,4,'FP1_023',1,4,5,12,0,0,0,1)
+INSERT INTO card VALUES(1808,'Unstable Ghoul','Taunt. Deathrattle: Deal 1 damage to all minions.',2,1,3,'FP1_024',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1809,'Reincarnate','Destroy a minion, then return it to life with full Health.',2,0,0,'FP1_025',1,5,7,12,0,0,0,1)
+INSERT INTO card VALUES(1810,'Anub''ar Ambusher','Deathrattle: Return a random friendly minion to your hand.',4,5,5,'FP1_026',1,4,4,12,0,0,0,1)
+INSERT INTO card VALUES(1858,'Echoing Ooze','Battlecry: Summon an exact copy of this minion at the end of the turn.',2,1,2,'FP1_003',4,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1860,'Webspinner','Deathrattle: Add a random Beast card to your hand.',1,1,1,'FP1_011',1,4,3,12,20,0,0,1)
+INSERT INTO card VALUES(1861,'Stoneskin Gargoyle','At the start of your turn, restore this minion to full Health.',3,1,4,'FP1_027',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1910,'Undertaker','Whenever you summon a minion with Deathrattle, gain +1/+1.',1,1,2,'FP1_028',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1913,'Dancing Swords','Deathrattle: Your opponent draws a card.',3,4,4,'FP1_029',1,4,0,12,0,0,0,1)
+INSERT INTO card VALUES(1914,'Loatheb','Battlecry: Enemy spells cost (5) more next turn.',5,5,5,'FP1_030',5,4,0,12,0,1,0,1)
+INSERT INTO card VALUES(1915,'Baron Rivendare','Your minions trigger their Deathrattles twice.',4,1,7,'FP1_031',5,4,0,12,0,1,0,1)
