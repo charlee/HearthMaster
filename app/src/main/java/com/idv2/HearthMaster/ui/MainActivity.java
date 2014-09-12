@@ -22,6 +22,8 @@ import android.widget.TextView;
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
+import com.idv2.HearthMaster.ui.widget.CardListView;
+import com.idv2.HearthMaster.ui.widget.CardPopupView;
 import com.idv2.HearthMaster.ui.widget.CardView;
 
 import java.util.List;
@@ -29,13 +31,15 @@ import java.util.List;
 
 public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
-    private CardAdapter cardsAdapter;
+    private CardListView.CardAdapter cardsAdapter;
     private ListView cardList;
     private List<Card> cards;
 
     private CardManager cm;
 
     private Typeface listFont;
+
+    private CardPopupView cardPopup;
 
     // filter spinners
     private Spinner filterClassSpinner;
@@ -63,49 +67,16 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
         cards = cm.getAllCards();
         cardList = (ListView) findViewById(R.id.card_list);
-        cardsAdapter = new CardAdapter(this);
+        cardsAdapter = (CardListView.CardAdapter) cardList.getAdapter();
+
         cardList.setAdapter(cardsAdapter);
-        final View cardPopup = findViewById(R.id.card_popup);
-        final CardView cardView = new CardView(this, 0, "english");
-
-        FrameLayout layout = (FrameLayout) findViewById(R.id.card_container);
-        FrameLayout.LayoutParams lp =new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-
-        layout.addView(cardView, lp);
+        cardPopup = (CardPopupView) findViewById(R.id.card_popup);
 
         cardList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Card card = (Card) parent.getItemAtPosition(position);
-                cardView.setCardId(card.id);
-                Animation cardInAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.card_in);
-                cardPopup.setVisibility(View.VISIBLE);
-                cardView.startAnimation(cardInAnimation);
-            }
-        });
-
-        cardPopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Animation cardOutAnimation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.card_out);
-                cardOutAnimation.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        cardPopup.setVisibility(View.INVISIBLE);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-
-                cardView.startAnimation(cardOutAnimation);
+                cardPopup.show(card.id);
             }
         });
 
@@ -241,87 +212,5 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     }
 
-    class CardAdapter extends ArrayAdapter<Card> {
-
-        public CardAdapter(Context context) {
-            super(context, 0);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View v = convertView;
-
-            if (v == null) {
-                LayoutInflater inflater = LayoutInflater.from(getContext());
-                v = inflater.inflate(R.layout.card_list_item, null);
-            }
-
-            Card card = getItem(position);
-
-            if (card != null) {
-                TextView cardName = (TextView) v.findViewById(R.id.card_name);
-                TextView cardHealth = (TextView) v.findViewById(R.id.card_health);
-                TextView cardCost = (TextView) v.findViewById(R.id.card_cost);
-                TextView cardAttack = (TextView) v.findViewById(R.id.card_attack);
-                ImageView iconAttack = (ImageView) v.findViewById(R.id.icon_attack);
-                ImageView iconHealth = (ImageView) v.findViewById(R.id.icon_health);
-                ImageView classIcon = (ImageView) v.findViewById(R.id.class_icon);
-
-                cardName.setTypeface(listFont);
-                cardName.setTextColor(Card.qualityColor.get(card.quality));
-
-                cardName.setText(card.name);
-                cardCost.setText(String.format("%d", card.cost));
-                cardHealth.setText(String.format("%d", card.health));
-                cardAttack.setText(String.format("%d", card.attack));
-
-                if (card.cardType == Card.SPELL) {
-                    cardHealth.setVisibility(View.GONE);
-                    cardAttack.setVisibility(View.GONE);
-                    iconHealth.setVisibility(View.GONE);
-                    iconAttack.setVisibility(View.GONE);
-                } else {
-                    cardHealth.setVisibility(View.VISIBLE);
-                    cardAttack.setVisibility(View.VISIBLE);
-                    iconHealth.setVisibility(View.VISIBLE);
-                    iconAttack.setVisibility(View.VISIBLE);
-                }
-
-                if (card.cardType == Card.WEAPON) {
-                    iconHealth.setImageDrawable(getResources().getDrawable(R.drawable.durability));
-                    iconAttack.setImageDrawable(getResources().getDrawable(R.drawable.weapon));
-                } else {
-                    iconHealth.setImageDrawable(getResources().getDrawable(R.drawable.health));
-                    iconAttack.setImageDrawable(getResources().getDrawable(R.drawable.attack));
-                }
-
-                switch (card.cardClass) {
-                    case Card.WARRIOR: classIcon.setImageResource(R.drawable.class_warrior); break;
-                    case Card.MAGE: classIcon.setImageResource(R.drawable.class_mage); break;
-                    case Card.DRUID: classIcon.setImageResource(R.drawable.class_druid); break;
-                    case Card.WARLOCK: classIcon.setImageResource(R.drawable.class_warlock); break;
-                    case Card.ROGUE: classIcon.setImageResource(R.drawable.class_rogue); break;
-                    case Card.PRIEST: classIcon.setImageResource(R.drawable.class_priest); break;
-                    case Card.PALADIN: classIcon.setImageResource(R.drawable.class_paladin); break;
-                    case Card.HUNTER: classIcon.setImageResource(R.drawable.class_hunter); break;
-                    case Card.SHAMAN: classIcon.setImageResource(R.drawable.class_shaman); break;
-                    default: classIcon.setImageResource(0);break;
-                }
-            }
-
-            return v;
-        }
-    }
-
-
-    class FilterItem {
-        int value;
-        CharSequence label;
-
-        public FilterItem(int value, CharSequence label) {
-            this.value = value;
-            this.label = label;
-        }
-    }
 
 }

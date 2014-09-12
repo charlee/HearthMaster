@@ -14,6 +14,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 
@@ -30,7 +31,6 @@ import java.io.InputStream;
 public class CardView extends View {
 
     private int cardId;
-    private String language;
     private Card card = null;
 
     /**
@@ -46,7 +46,7 @@ public class CardView extends View {
 
     private Bitmap cardArtBitmap = null;
 
-    private float screenDensity;
+    private static float screenDensity;
 
     private boolean cardLoaded;
 
@@ -67,19 +67,24 @@ public class CardView extends View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-
-    public CardView(Context context, int cardId, String language) {
-        super(context);
-
-        this.language = language;
-
-        setCardId(cardId);
-
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        DisplayMetrics metrics = HearthMasterApp.getInstance().getApplicationContext().getResources().getDisplayMetrics();
         screenDensity = metrics.density;
     }
+
+
+    public CardView(Context context) {
+        super(context);
+    }
+
+    public CardView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public CardView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
 
     public void setCardId(int cardId) {
         this.cardId = cardId;
