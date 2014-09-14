@@ -19,31 +19,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Spinner
+                <com.idv2.HearthMaster.ui.widget.filter.CardClassFilter
                     android:id="@+id/filter_class"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
-                <Spinner
+                <com.idv2.HearthMaster.ui.widget.filter.CardQualityFilter
                     android:id="@+id/filter_quality"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
+                <com.idv2.HearthMaster.ui.widget.filter.CardCostFilter
                     android:id="@+id/filter_cost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
+                <com.idv2.HearthMaster.ui.widget.filter.CardTypeFilter
                     android:id="@+id/filter_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Spinner
+                <com.idv2.HearthMaster.ui.widget.filter.CardSetFilter
                     android:id="@+id/filter_set"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
