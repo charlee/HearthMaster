@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
@@ -19,7 +17,6 @@ import com.idv2.HearthMaster.ui.widget.CardPopupView;
 import com.idv2.HearthMaster.ui.widget.filter.BaseCardFilter;
 import com.idv2.HearthMaster.ui.widget.filter.CardClassFilter;
 import com.idv2.HearthMaster.ui.widget.filter.CardCostFilter;
-import com.idv2.HearthMaster.ui.widget.filter.CardFilter;
 import com.idv2.HearthMaster.ui.widget.filter.CardQualityFilter;
 import com.idv2.HearthMaster.ui.widget.filter.CardSetFilter;
 import com.idv2.HearthMaster.ui.widget.filter.CardTypeFilter;
@@ -54,7 +51,7 @@ public class CardBrowserFragment extends Fragment implements AdapterView.OnItemS
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_card_browser, container, false);
         Context context = getActivity();
 
         cm = CardManager.getInstance();

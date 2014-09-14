@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.idv2.HearthMaster.ui.MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.idv2.HearthMaster.ui.widget.filter.CardClassFilter
+                    android:id="@+id/filter_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <com.idv2.HearthMaster.ui.widget.filter.CardQualityFilter
+                    android:id="@+id/filter_quality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.idv2.HearthMaster.ui.widget.filter.CardCostFilter
+                    android:id="@+id/filter_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.idv2.HearthMaster.ui.widget.filter.CardTypeFilter
+                    android:id="@+id/filter_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.idv2.HearthMaster.ui.widget.filter.CardSetFilter
+                    android:id="@+id/filter_set"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <com.idv2.HearthMaster.ui.widget.CardListView
+                android:id="@+id/card_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
+        <com.idv2.HearthMaster.ui.widget.CardPopupView
+            android:id="@+id/card_popup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:visibility="invisible">
+
+        </com.idv2.HearthMaster.ui.widget.CardPopupView>
+    </FrameLayout>
+
+</LinearLayout>

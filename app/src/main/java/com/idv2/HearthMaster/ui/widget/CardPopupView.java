@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
@@ -37,7 +36,7 @@ public class CardPopupView extends FrameLayout {
     private void init(AttributeSet attrs, int defStyle) {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.widget_card_popup, null);
+        FrameLayout layout = (FrameLayout) inflater.inflate(R.layout.activity_main, null);
         addView(layout);
 
         cardView = (CardView) layout.findViewById(R.id.card_view);
