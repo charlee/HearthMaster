@@ -38,5 +38,7 @@
     <string name="all">All</string>
     <string name="set_naxxramas">Naxxramas</string>
     <string name="set_promotion">Promotion</string>
+    <string name="new_deck">New Deck</string>
+    <string name="choose_your_hero">Choose Your Hero</string>
 
 </resources>

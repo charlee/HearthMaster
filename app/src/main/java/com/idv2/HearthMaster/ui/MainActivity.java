@@ -33,23 +33,31 @@ public class MainActivity extends Activity {
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerTitles));
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position == 0) {
+                Fragment fragment;
 
-                    CardBrowserFragment fragment = new CardBrowserFragment();
+                switch (position) {
 
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.content_frame, fragment)
-                            .commit();
+                    case 1:
+                        fragment = new DeckListFragment();
+                        break;
 
-                    mDrawerList.setItemChecked(position, true);
-                    setTitle(mDrawerTitles[position]);
-                    mDrawerLayout.closeDrawer(mDrawerList);
-
+                    default:
+                        fragment = new CardBrowserFragment();
+                        break;
                 }
+
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
+
+                mDrawerList.setItemChecked(position, true);
+                setTitle(mDrawerTitles[position]);
+                mDrawerLayout.closeDrawer(mDrawerList);
             }
         });
 

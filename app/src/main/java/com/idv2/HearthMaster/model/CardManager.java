@@ -23,6 +23,7 @@ public class CardManager {
 
     private DatabaseHelper dbHelper = null;
     private RuntimeExceptionDao<Card, Integer> cardDao;
+    private RuntimeExceptionDao<Deck, Integer> deckDao;
 
     private boolean initDone;
 
@@ -30,6 +31,7 @@ public class CardManager {
         Context context = HearthMasterApp.getInstance().getApplicationContext();
         dbHelper = new OpenHelperManager().getHelper(context, DatabaseHelper.class);
         cardDao = dbHelper.getCardDao();
+        deckDao = dbHelper.getDeckDao();
     }
 
     public static CardManager getInstance() {
@@ -57,6 +59,18 @@ public class CardManager {
             e.printStackTrace();
             return new ArrayList<Card>();
         }
+    }
+
+    public List<Deck> getAllDecks() {
+        try {
+            QueryBuilder<Deck, Integer> qb = deckDao.queryBuilder();
+            qb.orderBy("id", true);
+            return qb.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<Deck>();
+        }
+
     }
 
 }

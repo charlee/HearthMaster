@@ -21,11 +21,12 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "cards.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     private Context context;
 
     private RuntimeExceptionDao<Card, Integer> cardDao = null;
+    private RuntimeExceptionDao<Deck, Integer> deckDao = null;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.db_config);
@@ -38,6 +39,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
         try {
             TableUtils.createTable(connectionSource, Card.class);
+            TableUtils.createTable(connectionSource, Deck.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,8 +69,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
         // TODO: think about how to upgrade existing db
         try {
+            // re-create Card table but keep Deck table
             TableUtils.dropTable(connectionSource, Card.class, true);
-            onCreate(database, connectionSource);
+            TableUtils.createTable(connectionSource, Card.class);
+            importData();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,6 +85,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             cardDao = getRuntimeExceptionDao(Card.class);
         }
         return cardDao;
+    }
+
+    public RuntimeExceptionDao<Deck, Integer> getDeckDao() {
+        if (deckDao == null) {
+            deckDao = getRuntimeExceptionDao(Deck.class);
+        }
+        return deckDao;
     }
 
 }

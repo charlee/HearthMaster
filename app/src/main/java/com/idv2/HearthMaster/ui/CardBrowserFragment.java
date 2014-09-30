@@ -36,8 +36,6 @@ public class CardBrowserFragment extends Fragment implements AdapterView.OnItemS
 
     private CardManager cm;
 
-    private Typeface listFont;
-
     // filter spinners
     private CardClassFilter filterClass;
     private CardQualityFilter filterQuality;
@@ -52,7 +50,6 @@ public class CardBrowserFragment extends Fragment implements AdapterView.OnItemS
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_card_browser, container, false);
-        Context context = getActivity();
 
         cm = CardManager.getInstance();
 

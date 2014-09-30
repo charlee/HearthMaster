@@ -2,6 +2,7 @@
 <resources>
     <string-array name="drawer_titles">
         <item>Card Browser</item>
+        <item>Deck Builder</item>
     </string-array>
 
 </resources>
