@@ -11,10 +11,7 @@ import android.widget.ListView;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.CardManager;
-import com.idv2.HearthMaster.model.DatabaseHelper;
 import com.idv2.HearthMaster.model.Deck;
-import com.idv2.HearthMaster.ui.widget.ClassSelectFragment;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import java.util.List;
 

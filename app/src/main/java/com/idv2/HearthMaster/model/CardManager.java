@@ -53,12 +53,31 @@ public class CardManager {
     public List<Card> getAllCards() {
         try {
             QueryBuilder<Card, Integer> qb = cardDao.queryBuilder();
-            qb.orderBy("name", true);
+            qb.orderBy(Card.FIELD_NAME, true);
             return qb.query();
         } catch (SQLException e) {
             e.printStackTrace();
             return new ArrayList<Card>();
         }
+    }
+
+    /**
+     * Get cards by class id
+     * @param classId
+     * @return
+     */
+    public List<Card> getCardsByClass(int classId) {
+        try {
+            QueryBuilder<Card, Integer> qb = cardDao.queryBuilder();
+            qb.where().eq(Card.FIELD_CARDCLASS, classId);
+            qb.orderBy(Card.FIELD_COST, true);
+            qb.orderBy(Card.FIELD_NAME, true);
+            return qb.query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<Card>();
+        }
+
     }
 
     public List<Deck> getAllDecks() {

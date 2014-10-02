@@ -1,7 +1,6 @@
-package com.idv2.HearthMaster.ui.widget;
+package com.idv2.HearthMaster.ui;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,8 +73,9 @@ public class ClassSelectFragment extends Fragment implements View.OnClickListene
         Bundle bundle = new Bundle();
         bundle.putInt(DeckBuilderFragment.CLASS_ID, cardClass);
         Fragment fragment = new DeckBuilderFragment();
+        fragment.setArguments(bundle);
         getFragmentManager().beginTransaction()
-                .add(R.id.content_frame, fragment)
+                .replace(R.id.content_frame, fragment)
                 .addToBackStack(null)
                 .commit();
     }

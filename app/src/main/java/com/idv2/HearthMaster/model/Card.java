@@ -15,6 +15,13 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Card {
 
     /**
+     * Field name
+     */
+
+    public static final String FIELD_CARDCLASS = "cardClass";
+    public static final String FIELD_NAME = "name";
+
+    /**
      * Card Class
      */
     public static final int NEUTRAL = 0;
@@ -160,6 +167,7 @@ public class Card {
             PIRATE,
             DRAGON
     );
+    public static final String FIELD_COST = "cost";
 
     @DatabaseField(id = true)
     public int id;
@@ -206,4 +214,24 @@ public class Card {
     @DatabaseField(canBeNull = false)
     public boolean collectible;
 
+
+    public Card() {}
+
+    public Card(Card card) {
+        this.id = card.id;
+        this.name = card.name;
+        this.description = card.description;
+        this.cost = card.cost;
+        this.attack = card.attack;
+        this.health = card.health;
+        this.image = card.image;
+        this.quality = card.quality;
+        this.cardType = card.cardType;
+        this.cardClass = card.cardClass;
+        this.cardSet = card.cardSet;
+        this.race = card.race;
+        this.elite = card.elite;
+        this.faction = card.faction;
+        this.collectible = card.collectible;
+    }
 }
