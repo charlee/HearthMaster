@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TabHost;
 
@@ -12,13 +13,14 @@ import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
 import com.idv2.HearthMaster.ui.widget.CardListView;
+import com.idv2.HearthMaster.ui.widget.DeckCardListView;
 
 import java.util.List;
 
 /**
  * Created by charlee on 2014-09-14.
  */
-public class DeckBuilderFragment extends Fragment {
+public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     public final static String CLASS_ID = "class_id";
 
@@ -27,9 +29,10 @@ public class DeckBuilderFragment extends Fragment {
 
     private CardListView classCardListView;
     private CardListView neutralCardListView;
-    private ListView deckCardListView;
-    private CardListView.CardAdapter classCardsAdapter;
-    private CardListView.CardAdapter neutralCardsAdapter;
+    private DeckCardListView deckCardListView;
+    private CardListView.CardAdapter classCardAdapter;
+    private CardListView.CardAdapter neutralCardAdapter;
+    private DeckCardListView.DeckCardAdapter deckCardAdapter;
     private CardManager cm;
     private List<Card> classCards;
     private List<Card> neutralCards;
@@ -62,16 +65,36 @@ public class DeckBuilderFragment extends Fragment {
 
         classCardListView = (CardListView) view.findViewById(R.id.class_card_list);
         neutralCardListView = (CardListView) view.findViewById(R.id.neutral_card_list);
-        deckCardListView = (ListView) view.findViewById(R.id.deck_card_list);
-        classCardsAdapter = (CardListView.CardAdapter) classCardListView.getAdapter();
-        neutralCardsAdapter = (CardListView.CardAdapter) neutralCardListView.getAdapter();
+        deckCardListView = (DeckCardListView) view.findViewById(R.id.deck_card_list);
+        classCardAdapter = (CardListView.CardAdapter) classCardListView.getAdapter();
+        neutralCardAdapter = (CardListView.CardAdapter) neutralCardListView.getAdapter();
+        deckCardAdapter = (DeckCardListView.DeckCardAdapter) deckCardListView.getAdapter();
 
-        classCardsAdapter.addAll(classCards);
-        classCardsAdapter.notifyDataSetChanged();
+        classCardAdapter.addAll(classCards);
+        classCardAdapter.notifyDataSetChanged();
+        classCardListView.setOnItemClickListener(this);
 
-        neutralCardsAdapter.addAll(neutralCards);
-        neutralCardsAdapter.notifyDataSetChanged();
+        neutralCardAdapter.addAll(neutralCards);
+        neutralCardAdapter.notifyDataSetChanged();
+        neutralCardListView.setOnItemClickListener(this);
+
+        deckCardListView.setOnItemClickListener(this);
 
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        if (parent == deckCardListView) {
+            // remove card
+            deckCardAdapter.remove(position);
+        } else {
+            // add card
+            Card card = (Card) parent.getItemAtPosition(position);
+            deckCardAdapter.add(card);
+        }
+
+        deckCardAdapter.notifyDataSetChanged();
     }
 }

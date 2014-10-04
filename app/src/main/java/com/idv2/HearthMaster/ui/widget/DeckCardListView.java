@@ -45,75 +45,96 @@ public class DeckCardListView extends ListView {
         deckCardAdapter = new DeckCardAdapter(context);
         this.setAdapter(deckCardAdapter);
     }
-}
 
-class DeckCard extends Card {
+    public class DeckCardAdapter extends ArrayAdapter<DeckCard> {
 
-    /**
-     * Card count
-     */
-    public int count;
-
-    public DeckCard(Card card) {
-        super(card);
-        this.count = 1;
-    }
-}
-
-class DeckCardAdapter extends ArrayAdapter<DeckCard> {
-
-    public DeckCardAdapter(Context context) {
-        super(context, 0);
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        View v = convertView;
-
-        if (v == null) {
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            v = inflater.inflate(R.layout.deck_card_list_item, null);
+        public DeckCardAdapter(Context context) {
+            super(context, 0);
         }
 
-        DeckCard deckCard = getItem(position);
-        if (deckCard != null) {
-            TextView cardCost = (TextView) v.findViewById(R.id.card_cost);
-            TextView cardName = (TextView) v.findViewById(R.id.card_name);
-            TextView cardCount = (TextView) v.findViewById(R.id.card_count);
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
 
-            cardCost.setText(String.format("%d)", deckCard.cost));
-            cardName.setText(deckCard.name);
-            cardName.setTextColor(Card.qualityColor.get(deckCard.quality));
-            cardCount.setText(deckCard.count == 1 ? "" : String.format("x%d", deckCard.count));
-        }
+            View v = convertView;
 
-        return v;
-    }
-
-    public void add(Card card) {
-
-        DeckCard deckCard = findDeckCard(card);
-        if (deckCard != null) {
-            deckCard.count++;
-        } else {
-            deckCard = new DeckCard(card);
-            this.add(deckCard);
-        }
-
-        this.sort(new Comparator<DeckCard>() {
-            @Override
-            public int compare(DeckCard lhs, DeckCard rhs) {
-                return lhs.cost < rhs.cost ? -1 : lhs.cost == rhs.cost ? 0 : 1;
+            if (v == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                v = inflater.inflate(R.layout.deck_card_list_item, null);
             }
-        });
+
+            DeckCard deckCard = getItem(position);
+            if (deckCard != null) {
+                TextView cardCost = (TextView) v.findViewById(R.id.card_cost);
+                TextView cardName = (TextView) v.findViewById(R.id.card_name);
+                TextView cardCount = (TextView) v.findViewById(R.id.card_count);
+
+                cardCost.setText(String.format("%d)", deckCard.cost));
+                cardName.setText(deckCard.name);
+                cardName.setTextColor(Card.qualityColor.get(deckCard.quality));
+                cardCount.setText(deckCard.count == 1 ? "" : String.format("x%d", deckCard.count));
+            }
+
+            return v;
+        }
+
+        /**
+         * Add a card to deck
+         * @param card
+         */
+        public void add(Card card) {
+
+            if (getCount() >= 30) return;           // max 30 cards
+
+            DeckCard deckCard = findDeckCard(card);
+            if (deckCard != null) {
+                if (deckCard.count >= 2) return;    // max 2 per card
+                deckCard.count++;
+            } else {
+                deckCard = new DeckCard(card);
+                this.add(deckCard);
+            }
+
+            this.sort(new Comparator<DeckCard>() {
+                @Override
+                public int compare(DeckCard lhs, DeckCard rhs) {
+                    return lhs.cost < rhs.cost ? -1 : lhs.cost == rhs.cost ? 0 : 1;
+                }
+            });
+        }
+
+        /**
+         * Remove a card from deck
+         * @param position
+         */
+        public void remove(int position) {
+
+            DeckCard deckCard = getItem(position);
+            deckCard.count--;
+
+            if (deckCard.count == 0) remove(deckCard);
+        }
+
+        private DeckCard findDeckCard(Card card) {
+            for (int i = 0; i < getCount(); i++) {
+                DeckCard deckCard = getItem(i);
+                if (card.id == deckCard.id) return deckCard;
+            }
+            return null;
+        }
     }
 
-    private DeckCard findDeckCard(Card card) {
-        for (int i = 0; i < getCount(); i++) {
-            DeckCard deckCard = getItem(i);
-            if (card.id == deckCard.id) return deckCard;
+    public class DeckCard extends Card {
+
+        /**
+         * Card count
+         */
+        public int count;
+
+        public DeckCard(Card card) {
+            super(card);
+            this.count = 1;
         }
-        return null;
     }
+
 }
+
