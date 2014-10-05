@@ -14,6 +14,7 @@ import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
 import com.idv2.HearthMaster.ui.widget.CardListView;
 import com.idv2.HearthMaster.ui.widget.DeckCardListView;
+import com.idv2.HearthMaster.ui.widget.ManaCurveView;
 
 import java.util.List;
 
@@ -36,6 +37,8 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
     private CardManager cm;
     private List<Card> classCards;
     private List<Card> neutralCards;
+
+    private ManaCurveView manaCurveView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,6 +83,8 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
 
         deckCardListView.setOnItemClickListener(this);
 
+        manaCurveView = (ManaCurveView) view.findViewById(R.id.mana_curve);
+
         return view;
     }
 
@@ -96,5 +101,9 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
         }
 
         deckCardAdapter.notifyDataSetChanged();
+
+        // update mana curve
+        int[] manaCurve = deckCardAdapter.getManaCurve();
+        manaCurveView.setCurve(manaCurve);
     }
 }

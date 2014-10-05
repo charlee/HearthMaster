@@ -4,49 +4,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <TabHost
-        android:id="@+id/card_class_tabhost"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-        <LinearLayout
+        <TabHost
+            android:id="@+id/card_class_tabhost"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_weight="2">
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.idv2.HearthMaster.ui.widget.CardListView
-                    android:id="@+id/class_card_list"
+                <TabWidget
+                    android:id="@android:id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:compact="true" />
+                    android:layout_height="wrap_content" />
 
-                <com.idv2.HearthMaster.ui.widget.CardListView
-                    android:id="@+id/neutral_card_list"
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:compact="true" />
-            </FrameLayout>
-        </LinearLayout>
+                    android:layout_height="match_parent">
 
-    </TabHost>
+                    <com.idv2.HearthMaster.ui.widget.CardListView
+                        android:id="@+id/class_card_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:compact="true" />
 
-    <com.idv2.HearthMaster.ui.widget.DeckCardListView
-        android:id="@+id/deck_card_list"
+                    <com.idv2.HearthMaster.ui.widget.CardListView
+                        android:id="@+id/neutral_card_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:compact="true" />
+                </FrameLayout>
+            </LinearLayout>
+
+        </TabHost>
+
+        <com.idv2.HearthMaster.ui.widget.DeckCardListView
+            android:id="@+id/deck_card_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        />
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+
+        <com.idv2.HearthMaster.ui.widget.ManaCurveView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mana_curve"
+            />
+
+
+    </LinearLayout>
+
 </LinearLayout>

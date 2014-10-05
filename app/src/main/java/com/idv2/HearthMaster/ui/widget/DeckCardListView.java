@@ -6,13 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
+import com.idv2.HearthMaster.model.Deck;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by charlee on 2014-10-01.
@@ -42,14 +47,38 @@ public class DeckCardListView extends ListView {
     private void init(AttributeSet attrs, int defStyle) {
 
         Context context = getContext();
-        deckCardAdapter = new DeckCardAdapter(context);
+        deckCardAdapter = new DeckCardAdapter();
         this.setAdapter(deckCardAdapter);
     }
 
-    public class DeckCardAdapter extends ArrayAdapter<DeckCard> {
+    public class DeckCardAdapter extends BaseAdapter {
 
-        public DeckCardAdapter(Context context) {
-            super(context, 0);
+        private List<DeckCard> deckCards;
+        private int cardCount = 0;
+
+        public DeckCardAdapter() {
+            super();
+            cardCount = 0;
+            deckCards = new ArrayList<DeckCard>();
+        }
+
+        @Override
+        public int getCount() {
+            return deckCards.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return deckCards.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public int getCardCount() {
+            return cardCount;
         }
 
         @Override
@@ -62,7 +91,7 @@ public class DeckCardListView extends ListView {
                 v = inflater.inflate(R.layout.deck_card_list_item, null);
             }
 
-            DeckCard deckCard = getItem(position);
+            DeckCard deckCard = deckCards.get(position);
             if (deckCard != null) {
                 TextView cardCost = (TextView) v.findViewById(R.id.card_cost);
                 TextView cardName = (TextView) v.findViewById(R.id.card_name);
@@ -83,18 +112,19 @@ public class DeckCardListView extends ListView {
          */
         public void add(Card card) {
 
-            if (getCount() >= 30) return;           // max 30 cards
+            if (cardCount >= 30) return;           // max 30 cards
 
             DeckCard deckCard = findDeckCard(card);
             if (deckCard != null) {
-                if (deckCard.count >= 2) return;    // max 2 per card
+                if (deckCard.quality == Card.LEGENDARY && deckCard.count == 1 || deckCard.count >= 2) return;    // max 2 per card
                 deckCard.count++;
             } else {
                 deckCard = new DeckCard(card);
-                this.add(deckCard);
+                deckCards.add(deckCard);
             }
+            cardCount++;
 
-            this.sort(new Comparator<DeckCard>() {
+            Collections.sort(deckCards, new Comparator<DeckCard>() {
                 @Override
                 public int compare(DeckCard lhs, DeckCard rhs) {
                     return lhs.cost < rhs.cost ? -1 : lhs.cost == rhs.cost ? 0 : 1;
@@ -108,15 +138,28 @@ public class DeckCardListView extends ListView {
          */
         public void remove(int position) {
 
-            DeckCard deckCard = getItem(position);
+            DeckCard deckCard = deckCards.get(position);
             deckCard.count--;
 
-            if (deckCard.count == 0) remove(deckCard);
+            if (deckCard.count == 0) deckCards.remove(position);
+        }
+
+        /**
+         * Get mana curve
+         * @return
+         */
+        public int[] getManaCurve() {
+            int[] manaCurve = new int[8];
+            for (DeckCard deckCard: deckCards) {
+                if (deckCard.cost >= 7) manaCurve[7] += deckCard.count;
+                else manaCurve[deckCard.cost] += deckCard.count;
+            }
+
+            return manaCurve;
         }
 
         private DeckCard findDeckCard(Card card) {
-            for (int i = 0; i < getCount(); i++) {
-                DeckCard deckCard = getItem(i);
+            for (DeckCard deckCard: deckCards) {
                 if (card.id == deckCard.id) return deckCard;
             }
             return null;
