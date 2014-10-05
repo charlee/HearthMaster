@@ -5,14 +5,12 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
-import com.idv2.HearthMaster.model.Deck;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,6 +51,8 @@ public class DeckCardListView extends ListView {
 
     public class DeckCardAdapter extends BaseAdapter {
 
+        public static final int MAX_DECK_CARD_COUNT = 30;
+
         private List<DeckCard> deckCards;
         private int cardCount = 0;
 
@@ -77,8 +77,16 @@ public class DeckCardListView extends ListView {
             return position;
         }
 
+        /**
+         * Return current count of cards in the deck.
+         * @return
+         */
         public int getCardCount() {
             return cardCount;
+        }
+
+        public int getMaxCardCount() {
+            return MAX_DECK_CARD_COUNT;
         }
 
         @Override
@@ -112,7 +120,7 @@ public class DeckCardListView extends ListView {
          */
         public void add(Card card) {
 
-            if (cardCount >= 30) return;           // max 30 cards
+            if (cardCount >= MAX_DECK_CARD_COUNT) return;           // max 30 cards
 
             DeckCard deckCard = findDeckCard(card);
             if (deckCard != null) {
@@ -140,7 +148,9 @@ public class DeckCardListView extends ListView {
 
             DeckCard deckCard = deckCards.get(position);
             deckCard.count--;
+            cardCount--;
 
+            // clear card if no more exists
             if (deckCard.count == 0) deckCards.remove(position);
         }
 
