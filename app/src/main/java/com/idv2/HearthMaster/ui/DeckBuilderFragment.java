@@ -15,6 +15,7 @@ import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
 import com.idv2.HearthMaster.ui.widget.CardListView;
 import com.idv2.HearthMaster.ui.widget.CardPopupView;
+import com.idv2.HearthMaster.ui.widget.CardStatsView;
 import com.idv2.HearthMaster.ui.widget.DeckCardListView;
 import com.idv2.HearthMaster.ui.widget.ManaCurveView;
 
@@ -39,6 +40,7 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
     private CardManager cm;
     private List<Card> classCards;
     private List<Card> neutralCards;
+    private CardStatsView cardStatsView;
 
     private ManaCurveView manaCurveView;
 
@@ -97,6 +99,8 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
 
         cardPopup = (CardPopupView) view.findViewById(R.id.card_popup);
 
+        cardStatsView = (CardStatsView) view.findViewById(R.id.card_stats);
+
         return view;
     }
 
@@ -120,6 +124,10 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
 
         // update card count indicator
         updateCardCount();
+
+        // update stats
+        cardStatsView.updateStats(deckCardAdapter.getAllDeckCards());
+
     }
 
     /**

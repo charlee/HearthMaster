@@ -40,5 +40,8 @@
     <string name="set_promotion">Promotion</string>
     <string name="new_deck">New Deck</string>
     <string name="choose_your_hero">Choose Your Hero</string>
+    <string name="stats_minion">Minion:</string>
+    <string name="stats_spell">Spell:</string>
+    <string name="stats_weapon">Weapon:</string>
 
 </resources>

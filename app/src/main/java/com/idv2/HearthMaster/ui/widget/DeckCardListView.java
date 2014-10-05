@@ -89,6 +89,10 @@ public class DeckCardListView extends ListView {
             return MAX_DECK_CARD_COUNT;
         }
 
+        public List<DeckCard> getAllDeckCards() {
+            return this.deckCards;
+        }
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
