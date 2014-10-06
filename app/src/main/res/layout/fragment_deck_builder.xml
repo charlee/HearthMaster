@@ -59,6 +59,30 @@
                 android:layout_weight="3"
                 android:orientation="vertical">
 
+
+                <LinearLayout
+                    android:id="@+id/deck_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/deck_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Deck name"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/class_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Class name"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
                 <com.idv2.HearthMaster.ui.widget.DeckCardListView
                     android:id="@+id/deck_card_list"
                     android:layout_width="match_parent"
@@ -90,8 +114,7 @@
             <com.idv2.HearthMaster.ui.widget.CardStatsView
                 android:id="@+id/card_stats"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

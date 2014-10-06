@@ -43,5 +43,8 @@
     <string name="stats_minion">Minion:</string>
     <string name="stats_spell">Spell:</string>
     <string name="stats_weapon">Weapon:</string>
+    <string name="deck_name_custom">Custom %s</string>
+    <string name="dialog_enter_deck_name">Enter deck name</string>
+    <string name="dialog_edit_deck_name">Edit deck name</string>
 
 </resources>

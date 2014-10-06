@@ -1,11 +1,14 @@
 package com.idv2.HearthMaster.ui;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -46,15 +49,19 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
 
     private TextView deckCardCount;
     private CardPopupView cardPopup;
+    private TextView deckNameView;
+    private TextView classNameView;
+
+    private String deckName;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        int cardClass = getArguments().getInt(CLASS_ID);
+        int cardClassId = getArguments().getInt(CLASS_ID);
 
         cm = CardManager.getInstance();
 
-        classCards = cm.getCardsByClass(cardClass);
+        classCards = cm.getCardsByClass(cardClassId);
         neutralCards = cm.getCardsByClass(Card.NEUTRAL);
 
         View view = inflater.inflate(R.layout.fragment_deck_builder, container, false);
@@ -65,7 +72,7 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
 
         TabHost.TabSpec classTab = tabHost.newTabSpec(TAB_CLASS_CARDS);
         classTab.setContent(R.id.class_card_list);
-        classTab.setIndicator(getString(Card.className.get(cardClass)));
+        classTab.setIndicator(getString(Card.className.get(cardClassId)));
         tabHost.addTab(classTab);
 
         TabHost.TabSpec neutralTab = tabHost.newTabSpec(TAB_NEUTRAL_CARDS);
@@ -73,6 +80,7 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
         neutralTab.setIndicator(getString(Card.className.get(Card.NEUTRAL)));
         tabHost.addTab(neutralTab);
 
+        // class specific cards list, neutral cards list, deck cards list
         classCardListView = (CardListView) view.findViewById(R.id.class_card_list);
         neutralCardListView = (CardListView) view.findViewById(R.id.neutral_card_list);
         deckCardListView = (DeckCardListView) view.findViewById(R.id.deck_card_list);
@@ -92,14 +100,53 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
 
         deckCardListView.setOnItemClickListener(this);
 
+        // mana curve widget
         manaCurveView = (ManaCurveView) view.findViewById(R.id.mana_curve);
 
         deckCardCount = (TextView) view.findViewById(R.id.deck_card_count);
         updateCardCount();
 
+        // card preview popup
         cardPopup = (CardPopupView) view.findViewById(R.id.card_popup);
 
+        // card stats widget
         cardStatsView = (CardStatsView) view.findViewById(R.id.card_stats);
+
+
+        // card name and class display
+        deckName = String.format(getString(R.string.deck_name_custom), getString(Card.className.get(cardClassId)));
+        deckNameView = (TextView) view.findViewById(R.id.deck_name);
+        classNameView = (TextView) view.findViewById(R.id.class_name);
+
+        updateDeckName(deckName);
+        classNameView.setText(Card.className.get(cardClassId));
+
+        // click header to change deck name
+        View deckHeader = view.findViewById(R.id.deck_header);
+        deckHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // setup dialog view
+                final View dialogView = inflater.inflate(R.layout.dialog_deck_name, null);
+                final EditText deckNameEdit = (EditText) dialogView.findViewById(R.id.deck_name_edit);
+                deckNameEdit.setText(deckName);
+
+                // create dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setView(dialogView)
+                        .setTitle(R.string.dialog_edit_deck_name)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // save name
+                                updateDeckName(deckNameEdit.getEditableText().toString());
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .create()
+                        .show();
+            }
+        });
 
         return view;
     }
@@ -135,6 +182,15 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
      */
     private void updateCardCount() {
         deckCardCount.setText(String.format("%d/%d", deckCardAdapter.getCardCount(), deckCardAdapter.getMaxCardCount()));
+    }
+
+    /**
+     * update deck name displayed in the view
+     * @param deckName
+     */
+    private void updateDeckName(String deckName) {
+        this.deckName = deckName;
+        deckNameView.setText(deckName);
     }
 
     /**
