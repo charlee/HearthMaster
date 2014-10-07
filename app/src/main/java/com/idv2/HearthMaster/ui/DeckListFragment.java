@@ -1,6 +1,7 @@
 package com.idv2.HearthMaster.ui;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.idv2.HearthMaster.R;
+import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
 import com.idv2.HearthMaster.model.Deck;
 
@@ -33,7 +36,7 @@ public class DeckListFragment extends Fragment {
 
         // setup deck list
         deckList = (ListView) view.findViewById(R.id.deck_list);
-        deckAdapter = new ArrayAdapter<Deck>(getActivity(), android.R.layout.simple_list_item_1);
+        deckAdapter = new DeckAdapter(getActivity(), 0);
         deckList.setAdapter(deckAdapter);
 
         cm = CardManager.getInstance();
@@ -54,5 +57,29 @@ public class DeckListFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public class DeckAdapter extends ArrayAdapter<Deck> {
+
+        public DeckAdapter(Context context, int resource) {
+            super(context, resource);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = convertView;
+
+            if (v == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                v = inflater.inflate(android.R.layout.simple_list_item_2, null);
+            }
+
+            Deck deck = getItem(position);
+
+            ((TextView) v.findViewById(android.R.id.text1)).setText(deck.name);
+            ((TextView) v.findViewById(android.R.id.text2)).setText(Card.className.get(deck.classId));
+
+            return v;
+        }
     }
 }

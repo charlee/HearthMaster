@@ -13,15 +13,18 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.google.common.base.Joiner;
 import com.idv2.HearthMaster.R;
 import com.idv2.HearthMaster.model.Card;
 import com.idv2.HearthMaster.model.CardManager;
+import com.idv2.HearthMaster.model.Deck;
 import com.idv2.HearthMaster.ui.widget.CardListView;
 import com.idv2.HearthMaster.ui.widget.CardPopupView;
 import com.idv2.HearthMaster.ui.widget.CardStatsView;
 import com.idv2.HearthMaster.ui.widget.DeckCardListView;
 import com.idv2.HearthMaster.ui.widget.ManaCurveView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,6 +56,7 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
     private TextView classNameView;
 
     private String deckName;
+    private int deckId;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -140,6 +144,9 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
                             public void onClick(DialogInterface dialog, int which) {
                                 // save name
                                 updateDeckName(deckNameEdit.getEditableText().toString());
+
+                                // save deck to db
+                                saveDeck();
                             }
                         })
                         .setNegativeButton(android.R.string.cancel, null)
@@ -147,6 +154,10 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
                         .show();
             }
         });
+
+        // save deck to database
+        Deck deck = new Deck(cardClassId, deckName, "");
+        deckId = cm.createDeck(deck);
 
         return view;
     }
@@ -175,6 +186,8 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
         // update stats
         cardStatsView.updateStats(deckCardAdapter.getAllDeckCards());
 
+        // save deck to db
+        saveDeck();
     }
 
     /**
@@ -182,6 +195,27 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
      */
     private void updateCardCount() {
         deckCardCount.setText(String.format("%d/%d", deckCardAdapter.getCardCount(), deckCardAdapter.getMaxCardCount()));
+    }
+
+    /**
+     * Save deck to db
+     */
+    private void saveDeck() {
+        List<DeckCardListView.DeckCard> deckCards = deckCardAdapter.getAllDeckCards();
+        List<Integer> deckCardIds = new ArrayList<Integer>();
+
+        for (DeckCardListView.DeckCard deckCard: deckCards) {
+            for (int i = 0; i < deckCard.count; i++) {
+                deckCardIds.add(deckCard.id);
+            }
+        }
+
+        String deckCardIdStr = Joiner.on(',').join(deckCardIds);
+
+        Deck deck = cm.getDeck(deckId);
+        deck.cards = deckCardIdStr;
+        deck.name = deckName;
+        cm.updateDeck(deck);
     }
 
     /**

@@ -14,8 +14,22 @@ public class Deck {
     public int id;
 
     @DatabaseField(canBeNull = false)
-    public String name;
+    public int classId;
 
     @DatabaseField(canBeNull = false)
+    public String name;
+
+    /**
+     * comma separated string consist of card ids
+     */
+    @DatabaseField(canBeNull = false)
     public String cards;
+
+    public Deck() {}
+
+    public Deck(int classId, String name, String cards) {
+        this.classId = classId;
+        this.name = name;
+        this.cards = cards;
+    }
 }

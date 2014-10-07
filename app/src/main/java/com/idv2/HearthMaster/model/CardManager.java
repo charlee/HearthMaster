@@ -89,7 +89,23 @@ public class CardManager {
             e.printStackTrace();
             return new ArrayList<Deck>();
         }
+    }
 
+    public Deck getDeck(int deckId) {
+        return deckDao.queryForId(deckId);
+    }
+
+    public void updateDeck(Deck deck) {
+        deckDao.update(deck);
+    }
+
+    /**
+     * Create a deck
+     * @param deck created deck id
+     * @return
+     */
+    public int createDeck(Deck deck) {
+        return deckDao.create(deck);
     }
 
 }

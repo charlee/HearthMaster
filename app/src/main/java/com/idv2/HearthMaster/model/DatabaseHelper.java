@@ -21,7 +21,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "cards.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
 
     private Context context;
 
@@ -72,6 +72,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             // re-create Card table but keep Deck table
             TableUtils.dropTable(connectionSource, Card.class, true);
             TableUtils.createTable(connectionSource, Card.class);
+            TableUtils.createTable(connectionSource, Deck.class);
             importData();
 
         } catch (SQLException e) {
