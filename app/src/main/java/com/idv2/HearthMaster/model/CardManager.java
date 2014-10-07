@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import com.idv2.HearthMaster.HearthMasterApp;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
@@ -105,7 +106,20 @@ public class CardManager {
      * @return
      */
     public int createDeck(Deck deck) {
-        return deckDao.create(deck);
+        try {
+            deckDao.create(deck);
+            QueryBuilder<Deck, Integer> qb = deckDao.queryBuilder();
+            qb.selectRaw("MAX(id)");
+            GenericRawResults<String[]> results = deckDao.queryRaw(qb.prepareStatementString());
+            // TODO
+            String[] result = results.getResults().get(0);
+            int max = Integer.parseInt(result[0]);
+
+            return max;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 }

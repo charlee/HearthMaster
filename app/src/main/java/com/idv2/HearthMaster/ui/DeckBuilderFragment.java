@@ -33,6 +33,7 @@ import java.util.List;
 public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     public final static String CLASS_ID = "class_id";
+    public static final String DECK_ID = "deck_id";
 
     private final static String TAB_CLASS_CARDS = "tab_class_cards";
     private final static String TAB_NEUTRAL_CARDS = "tab_neutral_cards";
@@ -61,9 +62,20 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        int cardClassId = getArguments().getInt(CLASS_ID);
-
         cm = CardManager.getInstance();
+
+        Bundle bundle = getArguments();
+        deckId = bundle.getInt(DECK_ID, 0);
+
+        int cardClassId;
+        Deck deck = null;
+
+        if (deckId != 0) {
+            deck = cm.getDeck(deckId);
+            cardClassId = deck.classId;
+        } else {
+            cardClassId = bundle.getInt(CLASS_ID);
+        }
 
         classCards = cm.getCardsByClass(cardClassId);
         neutralCards = cm.getCardsByClass(Card.NEUTRAL);
@@ -118,7 +130,12 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
 
 
         // card name and class display
-        deckName = String.format(getString(R.string.deck_name_custom), getString(Card.className.get(cardClassId)));
+        if (deck == null) {
+            deckName = String.format(getString(R.string.deck_name_custom), getString(Card.className.get(cardClassId)));
+        } else {
+            deckName = deck.name;
+        }
+
         deckNameView = (TextView) view.findViewById(R.id.deck_name);
         classNameView = (TextView) view.findViewById(R.id.class_name);
 
@@ -155,9 +172,22 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
             }
         });
 
-        // save deck to database
-        Deck deck = new Deck(cardClassId, deckName, "");
-        deckId = cm.createDeck(deck);
+        if (deck == null) {
+            // save deck to database
+            deck = new Deck(cardClassId, deckName, "");
+            deckId = cm.createDeck(deck);
+        } else {
+            // setup initial deck cards
+            List<Integer> cardIds = parseCardIdString(deck.cards);
+            for (int cardId: cardIds) {
+                Card card = cm.getCard(cardId);
+                deckCardAdapter.add(card);
+            }
+
+            updateCardCount();
+            cardStatsView.updateStats(deckCardAdapter.getAllDeckCards());
+            manaCurveView.setCurve(deckCardAdapter.getManaCurve());
+        }
 
         return view;
     }
@@ -241,5 +271,24 @@ public class DeckBuilderFragment extends Fragment implements AdapterView.OnItemC
         cardPopup.show(card.id);
 
         return true;            // prevent click event occuring
+    }
+
+    /**
+     * Parse card id string to card id list
+     * @param cardIds
+     * @return
+     */
+    private List<Integer> parseCardIdString(String cardIds) {
+        String[] parts = cardIds.split(",");
+        List<Integer> cardIdList = new ArrayList<Integer>();
+        for (String part: parts) {
+            try {
+                int cardId = Integer.parseInt(part);
+                cardIdList.add(cardId);
+            } catch (NumberFormatException e) {
+            }
+        }
+
+        return cardIdList;
     }
 }

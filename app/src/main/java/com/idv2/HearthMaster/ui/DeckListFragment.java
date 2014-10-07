@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -43,6 +44,26 @@ public class DeckListFragment extends Fragment {
         List<Deck> decks = cm.getAllDecks();
         deckAdapter.addAll(decks);
         deckAdapter.notifyDataSetChanged();
+
+        deckList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Deck deck = deckAdapter.getItem(position);
+                if (deck != null) {
+
+                    // start deck builder
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(DeckBuilderFragment.DECK_ID, deck.id);
+                    Fragment fragment = new DeckBuilderFragment();
+                    fragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.content_frame, fragment)
+                            .addToBackStack(null)
+                            .commit();
+                }
+            }
+        });
 
         newDeckButton = (Button)view.findViewById(R.id.new_deck);
         newDeckButton.setOnClickListener(new View.OnClickListener() {
