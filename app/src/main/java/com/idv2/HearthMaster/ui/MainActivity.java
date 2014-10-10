@@ -11,16 +11,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.idv2.HearthMaster.R;
 
 
 public class MainActivity extends Activity {
 
-
     private String[] mDrawerTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+
+    private long lastBackPressed = 0;
+
+    private final static int BACK_QUIT_THRESHOLD = 3000;            // in ms, time between two back press to quit app
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,5 +91,20 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * show message when back button is pressed
+     */
+    @Override
+    public void onBackPressed() {
 
+        long currentBackPressed = System.currentTimeMillis();
+        int backStackEntryCount = getFragmentManager().getBackStackEntryCount();
+
+        if ((currentBackPressed - lastBackPressed < BACK_QUIT_THRESHOLD) || backStackEntryCount > 0) {         // if at the top fragment stack level and pressed quick enough
+            super.onBackPressed();
+        } else {
+            lastBackPressed = currentBackPressed;
+            Toast.makeText(this, getString(R.string.press_again_to_quit), Toast.LENGTH_SHORT).show();
+        }
+    }
 }
