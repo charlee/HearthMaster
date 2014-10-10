@@ -74,6 +74,7 @@ public class ClassSelectFragment extends Fragment implements View.OnClickListene
         bundle.putInt(DeckBuilderFragment.CLASS_ID, cardClass);
         Fragment fragment = new DeckBuilderFragment();
         fragment.setArguments(bundle);
+        getFragmentManager().popBackStack();            // restore the backstack so that back button will skip class select screen
         getFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, fragment)
                 .addToBackStack(null)
