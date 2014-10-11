@@ -47,5 +47,8 @@
     <string name="dialog_enter_deck_name">Enter deck name</string>
     <string name="dialog_edit_deck_name">Edit deck name</string>
     <string name="press_again_to_quit">Press again to quit</string>
+    <string name="action_about">About</string>
+    <string name="drawer_close">close drawer</string>
+    <string name="drawer_open">open drawer</string>
 
 </resources>

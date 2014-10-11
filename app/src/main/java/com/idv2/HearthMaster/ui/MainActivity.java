@@ -3,7 +3,11 @@ package com.idv2.HearthMaster.ui;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +25,11 @@ public class MainActivity extends Activity {
     private String[] mDrawerTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     private long lastBackPressed = 0;
+
+    private int currentDrawerPosition = 0;
 
     private final static int BACK_QUIT_THRESHOLD = 3000;            // in ms, time between two back press to quit app
 
@@ -33,6 +40,29 @@ public class MainActivity extends Activity {
 
         mDrawerTitles = getResources().getStringArray(R.array.drawer_titles);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                getActionBar().setTitle(mDrawerTitles[currentDrawerPosition]);
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getActionBar().setTitle(R.string.app_name);
+            }
+        };
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerTitles));
@@ -54,6 +84,8 @@ public class MainActivity extends Activity {
                         break;
                 }
 
+                currentDrawerPosition = position;
+
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, fragment)
@@ -71,6 +103,18 @@ public class MainActivity extends Activity {
 
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -84,8 +128,16 @@ public class MainActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
+
             return true;
         }
         return super.onOptionsItemSelected(item);
