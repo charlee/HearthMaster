@@ -50,5 +50,7 @@
     <string name="action_about">About</string>
     <string name="drawer_close">close drawer</string>
     <string name="drawer_open">open drawer</string>
+    <string name="data_version">Data Version: </string>
+    <string name="version">Version: </string>
 
 </resources>

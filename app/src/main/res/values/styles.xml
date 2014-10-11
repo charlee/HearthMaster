@@ -3,6 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light">
         <!-- Customize your theme here. -->
+        <!-- item name="android:actionBarStyle">@style/BlueActionBar</item -->
+    </style>
+
+    <style name="BlueActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#ff88baff</item>
     </style>
 
 </resources>
