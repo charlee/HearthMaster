@@ -122,4 +122,12 @@ public class CardManager {
         }
     }
 
+    /**
+     * Delete a deck
+     * @param deckId
+     */
+    public void deleteDeck(int deckId) {
+        deckDao.deleteById(deckId);
+    }
+
 }

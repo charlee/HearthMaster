@@ -48,6 +48,19 @@ public class Card {
             .put(DRUID, R.string.class_druid)
             .build();
 
+    public static final ImmutableMap<Integer, Integer> classIcon = ImmutableMap.<Integer, Integer>builder()
+            .put(NEUTRAL, 0)
+            .put(WARRIOR, R.drawable.class_warrior)
+            .put(PALADIN, R.drawable.class_paladin)
+            .put(HUNTER, R.drawable.class_hunter)
+            .put(ROGUE, R.drawable.class_rogue)
+            .put(PRIEST, R.drawable.class_priest)
+            .put(SHAMAN, R.drawable.class_shaman)
+            .put(MAGE, R.drawable.class_mage)
+            .put(WARLOCK, R.drawable.class_warlock)
+            .put(DRUID, R.drawable.class_druid)
+            .build();
+
     public static final ImmutableList<Integer> allClasses = ImmutableList.of(
             NEUTRAL,
             WARRIOR,

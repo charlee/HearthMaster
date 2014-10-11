@@ -21,7 +21,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "cards.db";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 10;
 
     private Context context;
 
@@ -67,12 +67,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
 
-        // TODO: think about how to upgrade existing db
         try {
             // re-create Card table but keep Deck table
             TableUtils.dropTable(connectionSource, Card.class, true);
             TableUtils.createTable(connectionSource, Card.class);
-            TableUtils.createTable(connectionSource, Deck.class);
             importData();
 
         } catch (SQLException e) {

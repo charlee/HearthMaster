@@ -150,7 +150,7 @@ INSERT INTO card VALUES(555,'Arcane Intellect','Draw 2 cards.',3,0,0,'CS2_023',0
 INSERT INTO card VALUES(95,'Nourish','Choose One - Gain 2 Mana Crystals; or Draw 3 cards.',5,0,0,'EX1_164',3,5,11,3,0,0,3,1);
 INSERT INTO card VALUES(1688,'Angry Chicken','Enrage: +5 Attack.',1,1,1,'EX1_009',3,4,0,3,20,0,0,1);
 INSERT INTO card VALUES(145,'Mindgames','Put a copy of a random minion from your opponent''s deck into the battlefield.',4,0,0,'EX1_345',4,5,5,3,0,0,3,1);
-INSERT INTO card VALUES(559,'Leeroy Jenkins','Charge. Battlecry: Summon two 1/1 Whelps for your opponent.',4,6,2,'EX1_116',5,4,0,3,0,1,2,1);
+INSERT INTO card VALUES(559,'Leeroy Jenkins','Charge. Battlecry: Summon two 1/1 Whelps for your opponent.',5,6,2,'EX1_116',5,4,0,3,0,1,2,1);
 INSERT INTO card VALUES(768,'Gurubashi Berserker','Whenever this minion takes damage, gain +3 Attack.',5,2,7,'EX1_399',0,4,0,2,0,0,3,1);
 INSERT INTO card VALUES(178,'Windspeaker','Battlecry: Give a friendly minion Windfury.',4,3,3,'EX1_587',0,4,7,2,0,0,3,1);
 INSERT INTO card VALUES(493,'Force of Nature','Summon three 2/2 Treants with Charge that die at the end of the turn.',6,0,0,'EX1_571',4,5,11,3,0,0,3,1);
@@ -209,7 +209,7 @@ INSERT INTO card VALUES(692,'Druid of the Claw','Choose One - Charge; or +2 Heal
 INSERT INTO card VALUES(237,'Auchenai Soulpriest','Your cards and powers that restore Health now deal damage instead.',4,3,5,'EX1_591',3,4,5,3,0,0,3,1);
 INSERT INTO card VALUES(903,'Bestial Wrath','Give a Beast +2 Attack and Immune this turn.',1,0,0,'EX1_549',4,5,3,3,0,0,3,1);
 INSERT INTO card VALUES(239,'Rockbiter Weapon','Give a friendly character +3 Attack this turn.',1,0,0,'CS2_045',0,5,7,2,0,0,3,1);
-INSERT INTO card VALUES(1241,'Starving Buzzard','Whenever you summon a Beast, draw a card.',2,2,1,'CS2_237',0,4,3,2,20,0,0,1);
+INSERT INTO card VALUES(1241,'Starving Buzzard','Whenever you summon a Beast, draw a card.',5,3,2,'CS2_237',0,4,3,2,20,0,0,1);
 INSERT INTO card VALUES(1084,'Mirror Image','Summon two 0/2 minions with Taunt.',1,0,0,'CS2_027',0,5,8,2,0,0,3,1);
 INSERT INTO card VALUES(982,'Corruption','Choose an enemy minion.   At the start of your turn, destroy it.',1,0,0,'CS2_063',0,5,9,2,0,0,3,1);
 INSERT INTO card VALUES(1158,'Preparation','The next spell you cast this turn costs (3) less.',0,0,0,'EX1_145',4,5,4,3,0,0,3,1);
@@ -252,7 +252,7 @@ INSERT INTO card VALUES(51,'Windfury','Give a minion Windfury.',2,0,0,'CS2_039',
 INSERT INTO card VALUES(1147,'Nat Pagle','At the start of your turn, you have a 50% chance to draw an extra card.',2,0,4,'EX1_557',5,4,0,3,0,1,3,1);
 INSERT INTO card VALUES(1003,'Houndmaster','Battlecry: Give a friendly Beast +2/+2 and Taunt.',4,4,3,'DS1_070',0,4,3,2,0,0,3,1);
 INSERT INTO card VALUES(395,'Water Elemental','Freeze any character damaged by this minion.',4,3,6,'CS2_033',0,4,8,2,0,0,3,1);
-INSERT INTO card VALUES(1662,'Eaglehorn Bow','Whenever a Secret is revealed, gain +1 Durability.',3,3,2,'EX1_536',3,7,3,3,0,0,0,1);
+INSERT INTO card VALUES(1662,'Eaglehorn Bow','Whenever a friendly Secret is revealed, gain +1 Durability.',3,3,2,'EX1_536',3,7,3,3,0,0,0,1);
 INSERT INTO card VALUES(1080,'Archmage Antonidas','Whenever you cast a spell, put a ''Fireball'' spell into your hand.',7,5,7,'EX1_559',5,4,8,3,0,1,3,1);
 INSERT INTO card VALUES(296,'Kill Command','Deal 3 damage.  If you have a Beast, deal 5 damage instead.',3,0,0,'EX1_539',0,5,3,2,0,0,3,1);
 INSERT INTO card VALUES(513,'Mana Tide Totem','At the end of your turn, draw a card.',3,0,3,'EX1_575',3,4,7,3,21,0,3,1);
