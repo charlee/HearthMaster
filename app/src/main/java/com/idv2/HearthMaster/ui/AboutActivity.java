@@ -31,7 +31,7 @@ public class AboutActivity extends Activity {
             e.printStackTrace();
         }
 
-        dataVersionText.setText("1.2.0.6485");
+        dataVersionText.setText(R.string.data_version_code);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
