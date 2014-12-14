@@ -13,8 +13,8 @@ INSERT INTO card VALUES(1133,'Patient Assassin','Stealth. Destroy any minion dam
 INSERT INTO card VALUES(1029,'Violet Teacher','Whenever you cast a spell, summon a 1/1 Violet Apprentice.',4,3,5,'NEW1_026',3,4,0,3,0,0,0,1);
 INSERT INTO card VALUES(538,'Arathi Weaponsmith','Battlecry: Equip a 2/2 weapon.',4,3,3,'EX1_398',1,4,1,3,0,0,3,1);
 INSERT INTO card VALUES(1659,'Acolyte of Pain','Whenever this minion takes damage, draw a card.',3,1,3,'EX1_007',1,4,0,3,0,0,0,1);
-INSERT INTO card VALUES(841,'Holy Nova','Deal 2 damage to all enemies.  Restore 2 Health to all  friendly characters.',5,0,0,'CS1_112',0,5,5,2,0,0,3,1);
-INSERT INTO card VALUES(1026,'Commanding Shout','Your minions can''t be reduced below 1 Health this turn.  Draw a card.',2,0,0,'NEW1_036',3,5,1,3,0,0,0,1);
+INSERT INTO card VALUES(841,'Holy Nova','Deal 2 damage to all enemies. Restore 2 Health to all friendly characters.',5,0,0,'CS1_112',0,5,5,2,0,0,3,1);
+INSERT INTO card VALUES(1026,'Commanding Shout','Your minions can''t be reduced below 1 Health this turn. Draw a card.',2,0,0,'NEW1_036',3,5,1,3,0,0,0,1);
 INSERT INTO card VALUES(774,'Unbound Elemental','Whenever you play a card with Overload, gain +1/+1.',3,2,4,'EX1_258',1,4,7,3,0,0,3,1);
 INSERT INTO card VALUES(70,'Blessing of Might','Give a minion +3 Attack.',1,0,0,'CS2_087',0,5,2,2,0,0,3,1);
 INSERT INTO card VALUES(943,'Blessing of Kings','Give a minion +4/+4. (+4 Attack/+4 Health)',4,0,0,'CS2_092',0,5,2,2,0,0,3,1);
@@ -49,10 +49,10 @@ INSERT INTO card VALUES(1366,'Mass Dispel','Silence all enemy minions. Draw a ca
 INSERT INTO card VALUES(801,'Crazed Alchemist','Battlecry: Swap the Attack and Health of a minion.',2,2,2,'EX1_059',3,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(220,'Shadow Madness','Gain control of an enemy minion with 3 or less Attack until end of turn.',4,0,0,'EX1_334',3,5,5,3,0,0,3,1);
 INSERT INTO card VALUES(756,'Equality','Change the Health of ALL minions to 1.',2,0,0,'EX1_619',3,5,2,3,0,0,3,1);
-INSERT INTO card VALUES(1658,'Alarm-o-Bot','At the start of your turn, swap this minion with a random one in your hand.',3,0,3,'EX1_006',3,4,0,3,0,0,0,1);
+INSERT INTO card VALUES(1658,'Alarm-o-Bot','At the start of your turn, swap this minion with a random one in your hand.',3,0,3,'EX1_006',3,4,0,3,17,0,0,1);
 INSERT INTO card VALUES(437,'Animal Companion','Summon a random Beast Companion.',3,0,0,'NEW1_031',0,5,3,2,0,0,0,1);
 INSERT INTO card VALUES(1634,'Young Priestess','At the end of your turn, give another random friendly minion +1 Health.',1,2,1,'EX1_004',3,4,0,3,0,0,0,1);
-INSERT INTO card VALUES(932,'Gadgetzan Auctioneer','Whenever you cast a spell, draw a card.',5,4,4,'EX1_095',3,4,0,3,0,0,3,1);
+INSERT INTO card VALUES(932,'Gadgetzan Auctioneer','Whenever you cast a spell, draw a card.',6,4,4,'EX1_095',3,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(86,'Starfall','Choose One - Deal 5 damage to a minion; or 2 damage to all enemy minions.',5,0,0,'NEW1_007',3,5,11,3,0,0,0,1);
 INSERT INTO card VALUES(430,'Cone of Cold','Freeze a minion and the minions next to it, and deal 1 damage to them.',4,0,0,'EX1_275',1,5,8,3,0,0,3,1);
 INSERT INTO card VALUES(767,'Earth Shock','Silence a minion, then deal 1 damage to it.',1,0,0,'EX1_245',1,5,7,3,0,0,3,1);
@@ -66,10 +66,11 @@ INSERT INTO card VALUES(785,'Execute','Destroy a damaged enemy minion.',1,0,0,'C
 INSERT INTO card VALUES(1171,'Bloodlust','Give your minions +3 Attack this turn.',5,0,0,'CS2_046',0,5,7,2,0,0,3,1);
 INSERT INTO card VALUES(287,'Kidnapper','Combo: Return a minion to its owner''s hand.',6,5,3,'NEW1_005',4,4,4,3,0,0,0,1);
 INSERT INTO card VALUES(736,'Old Murk-Eye','Charge. Has +1 Attack for each other Murloc on the battlefield.',4,2,4,'EX1_062',5,4,0,4,14,1,3,1);
+INSERT INTO card VALUES(1796,'Stalagg','Deathrattle: If Feugen also died this game, summon Thaddius.',5,7,4,'FP1_014',5,4,0,12,0,1,0,1);
 INSERT INTO card VALUES(180,'Backstab','Deal 2 damage to an undamaged minion.',0,0,0,'CS2_072',0,5,4,2,0,0,3,1);
 INSERT INTO card VALUES(1063,'Murloc Warleader','ALL other Murlocs have +2/+1.',3,3,3,'EX1_507',4,4,0,3,14,0,3,1);
 INSERT INTO card VALUES(365,'Shadowstep','Return a friendly minion to your hand. It costs (2) less.',0,0,0,'EX1_144',1,5,4,3,0,0,3,1);
-INSERT INTO card VALUES(404,'Ancestral Spirit','Choose a minion. When that minion is destroyed, return it to the battlefield.',2,0,0,'CS2_038',3,5,7,3,0,0,3,1);
+INSERT INTO card VALUES(404,'Ancestral Spirit','Give a minion "Deathrattle: Resummon this minion."',2,0,0,'CS2_038',3,5,7,3,0,0,3,1);
 INSERT INTO card VALUES(763,'Defender of Argus','Battlecry: Give adjacent minions +1/+1 and Taunt.',4,2,3,'EX1_093',3,4,0,3,0,0,2,1);
 INSERT INTO card VALUES(421,'Assassin''s Blade','',5,3,4,'CS2_080',0,7,4,2,0,0,3,1);
 INSERT INTO card VALUES(1657,'Big Game Hunter','Battlecry: Destroy a minion with an Attack of 7 or more.',3,4,2,'EX1_005',4,4,0,3,0,0,0,1);
@@ -85,7 +86,7 @@ INSERT INTO card VALUES(906,'Acidic Swamp Ooze','Battlecry: Destroy your opponen
 INSERT INTO card VALUES(1522,'Blessed Champion','Double a minion''s Attack.',5,0,0,'EX1_355',3,5,2,3,0,0,0,1);
 INSERT INTO card VALUES(1261,'Savannah Highmane','Deathrattle: Summon two 2/2 Hyenas.',6,6,5,'EX1_534',3,4,3,3,20,0,0,1);
 INSERT INTO card VALUES(985,'Dire Wolf Alpha','Adjacent minions have +1 Attack.',2,2,2,'EX1_162',1,4,0,3,20,0,3,1);
-INSERT INTO card VALUES(1373,'Blessing of Wisdom','Choose a minion.  Whenever it attacks, draw a card.',1,0,0,'EX1_363',1,5,2,3,0,0,0,1);
+INSERT INTO card VALUES(1373,'Blessing of Wisdom','Choose a minion. Whenever it attacks, draw a card.',1,0,0,'EX1_363',1,5,2,3,0,0,0,1);
 INSERT INTO card VALUES(242,'Abusive Sergeant','Battlecry: Give a minion +2 Attack this turn.',1,2,1,'CS2_188',1,4,0,3,0,0,2,1);
 INSERT INTO card VALUES(1721,'Sylvanas Windrunner','Deathrattle: Take control of a random enemy minion.',6,5,5,'EX1_016',5,4,0,3,0,1,0,1);
 INSERT INTO card VALUES(285,'Cruel Taskmaster','Battlecry: Deal 1 damage to a minion and give it +2 Attack.',2,2,2,'EX1_603',1,4,1,3,0,0,3,1);
@@ -98,7 +99,7 @@ INSERT INTO card VALUES(459,'Deadly Poison','Give your weapon +2 Attack.',1,0,0,
 INSERT INTO card VALUES(667,'Fan of Knives','Deal 1 damage to all enemy minions. Draw a card.',3,0,0,'EX1_129',0,5,4,2,0,0,3,1);
 INSERT INTO card VALUES(866,'Shieldbearer','Taunt',1,0,4,'EX1_405',1,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(860,'Sense Demons','Put 2 random Demons from your deck into your hand.',3,0,0,'EX1_317',1,5,9,3,0,0,3,1);
-INSERT INTO card VALUES(1023,'Shield Block','Gain 5 Armor.  Draw a card.',3,0,0,'EX1_606',0,5,1,2,0,0,3,1);
+INSERT INTO card VALUES(1023,'Shield Block','Gain 5 Armor. Draw a card.',3,0,0,'EX1_606',0,5,1,2,0,0,3,1);
 INSERT INTO card VALUES(920,'Ancient of Lore','Choose One - Draw 2 cards; or Restore 5 Health.',7,5,5,'NEW1_008',4,4,11,3,0,0,0,1);
 INSERT INTO card VALUES(1370,'Oasis Snapjaw','',4,2,7,'CS2_119',0,4,0,2,20,0,0,1);
 INSERT INTO card VALUES(41,'Frostwolf Grunt','Taunt',2,2,2,'CS2_121',0,4,0,2,0,0,3,1);
@@ -112,7 +113,7 @@ INSERT INTO card VALUES(381,'Soul of the Forest','Give your minions "Deathrattle
 INSERT INTO card VALUES(997,'Bloodsail Corsair','Battlecry: Remove 1 Durability from your opponent''s weapon.',1,1,2,'NEW1_025',3,4,0,3,23,0,0,1);
 INSERT INTO card VALUES(570,'Tinkmaster Overspark','Battlecry: Transform another random minion into a 5/5 Devilsaur or a 1/1 Squirrel.',3,3,3,'EX1_083',5,4,0,3,0,1,2,1);
 INSERT INTO card VALUES(192,'Ice Block','Secret: When your hero takes fatal damage, prevent it and become Immune this turn.',3,0,0,'EX1_295',4,5,8,3,0,0,3,1);
-INSERT INTO card VALUES(75,'Brawl','Destroy all minions except one.  (chosen randomly)',5,0,0,'EX1_407',4,5,1,3,0,0,3,1);
+INSERT INTO card VALUES(75,'Brawl','Destroy all minions except one. (chosen randomly)',5,0,0,'EX1_407',4,5,1,3,0,0,3,1);
 INSERT INTO card VALUES(196,'Vanish','Return all minions to their owner''s hand.',6,0,0,'NEW1_004',0,5,4,2,0,0,0,1);
 INSERT INTO card VALUES(1693,'King Mukla','Battlecry: Give your opponent 2 Bananas.',3,5,5,'EX1_014',5,4,0,3,20,1,0,1);
 INSERT INTO card VALUES(847,'Truesilver Champion','Whenever your hero attacks, restore 2 Health to it.',4,4,2,'CS2_097',0,7,2,2,0,0,3,1);
@@ -136,7 +137,7 @@ INSERT INTO card VALUES(606,'Timber Wolf','Your other Beasts have +1 Attack.',1,
 INSERT INTO card VALUES(456,'Captain Greenskin','Battlecry: Give your weapon +1/+1.',5,5,4,'NEW1_024',5,4,0,3,23,1,0,1);
 INSERT INTO card VALUES(389,'Elven Archer','Battlecry: Deal 1 damage.',1,1,1,'CS2_189',0,4,0,2,0,0,1,1);
 INSERT INTO card VALUES(351,'Master Swordsmith','At the end of your turn, give another random friendly minion +1 Attack.',2,1,3,'NEW1_037',3,4,0,3,0,0,0,1);
-INSERT INTO card VALUES(338,'Grommash Hellscream','Charge.  Enrage: +6 Attack',8,4,9,'EX1_414',5,4,1,3,0,1,3,1);
+INSERT INTO card VALUES(338,'Grommash Hellscream','Charge Enrage: +6 Attack',8,4,9,'EX1_414',5,4,1,3,0,1,3,1);
 INSERT INTO card VALUES(211,'Sea Giant','Costs (1) less for each other minion on the battlefield.',10,8,8,'EX1_586',4,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(631,'Doomguard','Charge. Battlecry: Discard two random cards.',5,5,7,'EX1_310',3,4,9,3,15,0,3,1);
 INSERT INTO card VALUES(32,'Al''Akir the Windlord','Windfury, Charge, Divine Shield, Taunt',8,3,5,'NEW1_010',5,4,7,3,0,1,0,1);
@@ -160,14 +161,14 @@ INSERT INTO card VALUES(30,'Thoughtsteal','Copy 2 cards from your opponent''s de
 INSERT INTO card VALUES(1281,'Scavenging Hyena','Whenever a friendly Beast dies, gain +2/+1.',2,2,2,'EX1_531',1,4,3,3,20,0,0,1);
 INSERT INTO card VALUES(1117,'SI:7 Agent','Combo: Deal 2 damage.',3,3,3,'EX1_134',3,4,4,3,0,0,3,1);
 INSERT INTO card VALUES(9,'Prophet Velen','Double the damage and healing of your spells and Hero Power.',7,7,7,'EX1_350',5,4,5,3,0,1,3,1);
-INSERT INTO card VALUES(974,'Soulfire','Deal 4 damage. Discard a random card.',0,0,0,'EX1_308',0,5,9,2,0,0,3,1);
+INSERT INTO card VALUES(974,'Soulfire','Deal 4 damage. Discard a random card.',1,0,0,'EX1_308',0,5,9,2,0,0,3,1);
 INSERT INTO card VALUES(995,'Ogre Magi','Spell Damage +1',4,4,4,'CS2_197',0,4,0,2,0,0,3,1);
 INSERT INTO card VALUES(475,'Murloc Tidecaller','Whenever a Murloc is summoned, gain +1 Attack.',1,1,2,'EX1_509',3,4,0,3,14,0,3,1);
 INSERT INTO card VALUES(748,'Kirin Tor Mage','Battlecry: The next Secret you play this turn costs (0).',3,4,3,'EX1_612',3,4,8,3,0,0,3,1);
 INSERT INTO card VALUES(765,'Thrallmar Farseer','Windfury',3,2,3,'EX1_021',1,4,0,3,0,0,1,1);
 INSERT INTO card VALUES(496,'Frostwolf Warlord','Battlecry: Gain +1/+1 for each other friendly minion on the battlefield.',5,4,4,'CS2_226',0,4,0,2,0,0,1,1);
 INSERT INTO card VALUES(614,'Sorcerer''s Apprentice','Your spells cost (1) less.',2,3,2,'EX1_608',1,4,8,3,0,0,3,1);
-INSERT INTO card VALUES(1365,'Holy Fire','Deal 5 damage.  Restore 5 Health to your hero.',6,0,0,'EX1_624',3,5,5,3,0,0,0,1);
+INSERT INTO card VALUES(1365,'Holy Fire','Deal 5 damage. Restore 5 Health to your hero.',6,0,0,'EX1_624',3,5,5,3,0,0,0,1);
 INSERT INTO card VALUES(715,'Mana Wraith','ALL minions cost (1) more.',2,2,2,'EX1_616',3,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(757,'Argent Squire','Divine Shield',1,1,1,'EX1_008',1,4,0,3,0,0,2,1);
 INSERT INTO card VALUES(605,'Ancient Watcher','Can''t Attack.',2,4,5,'EX1_045',3,4,0,3,0,0,2,1);
@@ -190,9 +191,9 @@ INSERT INTO card VALUES(400,'Battle Rage','Draw a card for each damaged friendly
 INSERT INTO card VALUES(670,'Nightblade','Battlecry: Deal 3 damage to the enemy hero.',5,4,4,'EX1_593',0,4,0,2,0,0,3,1);
 INSERT INTO card VALUES(415,'Youthful Brewmaster','Battlecry: Return a friendly minion from the battlefield to your hand.',2,3,2,'EX1_049',1,4,0,3,0,0,2,1);
 INSERT INTO card VALUES(1656,'The Black Knight','Battlecry: Destroy an enemy minion with Taunt.',6,4,5,'EX1_002',5,4,0,3,0,1,0,1);
-INSERT INTO card VALUES(1142,'Demonfire','Deal 2 damage to a minion.   If it’s a friendly Demon, give it +2/+2 instead.',2,0,0,'EX1_596',1,5,9,3,0,0,3,1);
+INSERT INTO card VALUES(1142,'Demonfire','Deal 2 damage to a minion. If it''s a friendly Demon, give it +2/+2 instead.',2,0,0,'EX1_596',1,5,9,3,0,0,3,1);
 INSERT INTO card VALUES(140,'Redemption','Secret: When one of your minions dies, return it to life with 1 Health.',1,0,0,'EX1_136',1,5,2,3,0,0,3,1);
-INSERT INTO card VALUES(777,'Lord Jaraxxus','Battlecry: Destroy your hero and replace him with Lord Jaraxxus.',9,3,15,'EX1_323',5,4,9,3,15,1,0,1);
+INSERT INTO card VALUES(777,'Lord Jaraxxus','Battlecry: Destroy your hero and replace it with Lord Jaraxxus.',9,3,15,'EX1_323',5,4,9,3,15,1,0,1);
 INSERT INTO card VALUES(268,'Cold Blood','Give a minion +2 Attack. Combo: +4 Attack instead.',1,0,0,'CS2_073',1,5,4,3,0,0,3,1);
 INSERT INTO card VALUES(1655,'Lightwarden','Whenever a character is healed, gain +2 Attack.',1,1,2,'EX1_001',3,4,0,3,0,0,0,1);
 INSERT INTO card VALUES(791,'Questing Adventurer','Whenever you play a card, gain +1/+1.',3,2,2,'EX1_044',3,4,0,3,0,0,2,1);
@@ -207,15 +208,15 @@ INSERT INTO card VALUES(630,'Sprint','Draw 4 cards.',7,0,0,'CS2_077',0,5,4,2,0,0
 INSERT INTO card VALUES(887,'Master of Disguise','Battlecry: Give a friendly minion Stealth.',4,4,4,'NEW1_014',3,4,4,3,0,0,0,1);
 INSERT INTO card VALUES(692,'Druid of the Claw','Choose One - Charge; or +2 Health and Taunt.',5,4,4,'EX1_165',1,4,11,3,0,0,3,1);
 INSERT INTO card VALUES(237,'Auchenai Soulpriest','Your cards and powers that restore Health now deal damage instead.',4,3,5,'EX1_591',3,4,5,3,0,0,3,1);
-INSERT INTO card VALUES(903,'Bestial Wrath','Give a Beast +2 Attack and Immune this turn.',1,0,0,'EX1_549',4,5,3,3,0,0,3,1);
+INSERT INTO card VALUES(903,'Bestial Wrath','Give a friendly Beast +2 Attack and Immune this turn.',1,0,0,'EX1_549',4,5,3,3,0,0,3,1);
 INSERT INTO card VALUES(239,'Rockbiter Weapon','Give a friendly character +3 Attack this turn.',1,0,0,'CS2_045',0,5,7,2,0,0,3,1);
 INSERT INTO card VALUES(1241,'Starving Buzzard','Whenever you summon a Beast, draw a card.',5,3,2,'CS2_237',0,4,3,2,20,0,0,1);
 INSERT INTO card VALUES(1084,'Mirror Image','Summon two 0/2 minions with Taunt.',1,0,0,'CS2_027',0,5,8,2,0,0,3,1);
-INSERT INTO card VALUES(982,'Corruption','Choose an enemy minion.   At the start of your turn, destroy it.',1,0,0,'CS2_063',0,5,9,2,0,0,3,1);
+INSERT INTO card VALUES(982,'Corruption','Choose an enemy minion. At the start of your turn, destroy it.',1,0,0,'CS2_063',0,5,9,2,0,0,3,1);
 INSERT INTO card VALUES(1158,'Preparation','The next spell you cast this turn costs (3) less.',0,0,0,'EX1_145',4,5,4,3,0,0,3,1);
 INSERT INTO card VALUES(420,'Cairne Bloodhoof','Deathrattle: Summon a 4/5 Baine Bloodhoof.',6,4,5,'EX1_110',5,4,0,3,0,1,2,1);
-INSERT INTO card VALUES(804,'Mortal Strike','Deal 4 damage.  If you have 12 or less Health, deal 6 instead.',4,0,0,'EX1_408',3,5,1,3,0,0,3,1);
-INSERT INTO card VALUES(896,'Flare','All minions lose Stealth. Destroy all enemy Secrets. Draw a card.',1,0,0,'EX1_544',3,5,3,3,0,0,3,1);
+INSERT INTO card VALUES(804,'Mortal Strike','Deal 4 damage. If you have 12 or less Health, deal 6 instead.',4,0,0,'EX1_408',3,5,1,3,0,0,3,1);
+INSERT INTO card VALUES(896,'Flare','All minions lose Stealth. Destroy all enemy Secrets. Draw a card.',2,0,0,'EX1_544',3,5,3,3,0,0,3,1);
 INSERT INTO card VALUES(69,'Silver Hand Knight','Battlecry: Summon a 2/2 Squire.',5,4,4,'CS2_151',1,4,0,3,0,0,2,1);
 INSERT INTO card VALUES(1068,'Guardian of Kings','Battlecry: Restore 6 Health to your hero.',7,5,6,'CS2_088',0,4,2,2,0,0,3,1);
 INSERT INTO card VALUES(186,'Ancient Brewmaster','Battlecry: Return a friendly minion from the battlefield to your hand.',4,5,4,'EX1_057',1,4,0,3,0,0,2,1);
@@ -224,7 +225,7 @@ INSERT INTO card VALUES(971,'Frost Shock','Deal 1 damage to an enemy character a
 INSERT INTO card VALUES(773,'Healing Touch','Restore 8 Health.',3,0,0,'CS2_007',0,5,11,2,0,0,3,1);
 INSERT INTO card VALUES(1122,'Venture Co. Mercenary','Your minions cost (3) more.',5,7,6,'CS2_227',1,4,0,3,0,0,1,1);
 INSERT INTO card VALUES(163,'Sacrificial Pact','Destroy a Demon. Restore 5 Health to your hero.',0,0,0,'NEW1_003',0,5,9,2,0,0,0,1);
-INSERT INTO card VALUES(23,'Bane of Doom','Deal 2 damage to a character.  If that kills it, summon a random Demon.',5,0,0,'EX1_320',4,5,9,3,0,0,3,1);
+INSERT INTO card VALUES(23,'Bane of Doom','Deal 2 damage to a character. If that kills it, summon a random Demon.',5,0,0,'EX1_320',4,5,9,3,0,0,3,1);
 INSERT INTO card VALUES(440,'Abomination','Taunt. Deathrattle: Deal 2 damage to ALL characters.',5,4,4,'EX1_097',3,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(397,'Flesheating Ghoul','Whenever a minion dies, gain +1 Attack.',3,2,3,'tt_004',1,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(251,'Loot Hoarder','Deathrattle: Draw a card.',2,2,1,'EX1_096',1,4,0,3,0,0,3,1);
@@ -236,9 +237,9 @@ INSERT INTO card VALUES(724,'Southsea Deckhand','Has Charge while you have a wea
 INSERT INTO card VALUES(216,'Bloodfen Raptor','',2,3,2,'CS2_172',0,4,0,2,20,0,1,1);
 INSERT INTO card VALUES(940,'Cleave','Deal 2 damage to two random enemy minions.',2,0,0,'CS2_114',0,5,1,2,0,0,3,1);
 INSERT INTO card VALUES(602,'Fen Creeper','Taunt',5,3,6,'CS1_069',1,4,0,3,0,0,2,1);
-INSERT INTO card VALUES(823,'Starfire','Deal 5 damage.  Draw a card.',6,0,0,'EX1_173',0,5,11,2,0,0,3,1);
+INSERT INTO card VALUES(823,'Starfire','Deal 5 damage. Draw a card.',6,0,0,'EX1_173',0,5,11,2,0,0,3,1);
 INSERT INTO card VALUES(922,'Goldshire Footman','Taunt',1,1,2,'CS1_042',0,4,0,2,0,0,2,1);
-INSERT INTO card VALUES(374,'Ragnaros the Firelord','Can''t Attack.  At the end of your turn, deal 8 damage to a random enemy.',8,8,8,'EX1_298',5,4,0,3,0,1,3,1);
+INSERT INTO card VALUES(374,'Ragnaros the Firelord','Can''t Attack. At the end of your turn, deal 8 damage to a random enemy.',8,8,8,'EX1_298',5,4,0,3,0,1,3,1);
 INSERT INTO card VALUES(1108,'Rampage','Give a damaged minion +3/+3.',2,0,0,'CS2_104',1,5,1,3,0,0,3,1);
 INSERT INTO card VALUES(530,'Captain''s Parrot','Battlecry: Put a random Pirate from your deck into your hand.',2,1,1,'NEW1_016',4,4,0,4,20,0,0,1);
 INSERT INTO card VALUES(567,'Windfury Harpy','Windfury',6,4,5,'EX1_033',1,4,0,3,0,0,2,1);
@@ -246,15 +247,15 @@ INSERT INTO card VALUES(68,'Stranglethorn Tiger','Stealth',5,5,5,'EX1_028',1,4,0
 INSERT INTO card VALUES(1362,'Circle of Healing','Restore 4 Health to ALL minions.',0,0,0,'EX1_621',1,5,5,3,0,0,0,1);
 INSERT INTO card VALUES(455,'Snake Trap','Secret: When one of your minions is attacked, summon three 1/1 Snakes.',2,0,0,'EX1_554',4,5,3,3,0,0,3,1);
 INSERT INTO card VALUES(272,'Cabal Shadow Priest','Battlecry: Take control of an enemy minion that has 2 or less Attack.',6,4,5,'EX1_091',4,4,5,3,0,0,3,1);
-INSERT INTO card VALUES(511,'Upgrade!','If you have a weapon, give it +1/+1.  Otherwise equip a 1/3 weapon.',1,0,0,'EX1_409',3,5,1,3,0,0,3,1);
+INSERT INTO card VALUES(511,'Upgrade!','If you have a weapon, give it +1/+1. Otherwise equip a 1/3 weapon.',1,0,0,'EX1_409',3,5,1,3,0,0,3,1);
 INSERT INTO card VALUES(546,'Shield Slam','Deal 1 damage to a minion for each Armor you have.',1,0,0,'EX1_410',4,5,1,3,0,0,3,1);
 INSERT INTO card VALUES(51,'Windfury','Give a minion Windfury.',2,0,0,'CS2_039',0,5,7,2,0,0,3,1);
 INSERT INTO card VALUES(1147,'Nat Pagle','At the start of your turn, you have a 50% chance to draw an extra card.',2,0,4,'EX1_557',5,4,0,3,0,1,3,1);
 INSERT INTO card VALUES(1003,'Houndmaster','Battlecry: Give a friendly Beast +2/+2 and Taunt.',4,4,3,'DS1_070',0,4,3,2,0,0,3,1);
 INSERT INTO card VALUES(395,'Water Elemental','Freeze any character damaged by this minion.',4,3,6,'CS2_033',0,4,8,2,0,0,3,1);
 INSERT INTO card VALUES(1662,'Eaglehorn Bow','Whenever a friendly Secret is revealed, gain +1 Durability.',3,3,2,'EX1_536',3,7,3,3,0,0,0,1);
-INSERT INTO card VALUES(1080,'Archmage Antonidas','Whenever you cast a spell, put a ''Fireball'' spell into your hand.',7,5,7,'EX1_559',5,4,8,3,0,1,3,1);
-INSERT INTO card VALUES(296,'Kill Command','Deal 3 damage.  If you have a Beast, deal 5 damage instead.',3,0,0,'EX1_539',0,5,3,2,0,0,3,1);
+INSERT INTO card VALUES(1080,'Archmage Antonidas','Whenever you cast a spell, add a ''Fireball'' spell to your hand.',7,5,7,'EX1_559',5,4,8,3,0,1,3,1);
+INSERT INTO card VALUES(296,'Kill Command','Deal 3 damage. If you have a Beast, deal 5 damage instead.',3,0,0,'EX1_539',0,5,3,2,0,0,3,1);
 INSERT INTO card VALUES(513,'Mana Tide Totem','At the end of your turn, draw a card.',3,0,3,'EX1_575',3,4,7,3,21,0,3,1);
 INSERT INTO card VALUES(919,'Drain Life','Deal 2 damage. Restore 2 Health to your hero.',3,0,0,'CS2_061',0,5,9,2,0,0,3,1);
 INSERT INTO card VALUES(138,'Doomsayer','At the start of your turn, destroy ALL minions.',2,0,7,'NEW1_021',4,4,0,3,0,0,0,1);
@@ -291,9 +292,9 @@ INSERT INTO card VALUES(814,'Snipe','Secret: When your opponent plays a minion, 
 INSERT INTO card VALUES(680,'Southsea Captain','Your other Pirates have +1/+1.',3,3,3,'NEW1_027',4,4,0,3,23,0,0,1);
 INSERT INTO card VALUES(577,'Bite','Give your hero +4 Attack this turn and 4 Armor.',4,0,0,'EX1_570',3,5,11,3,0,0,3,1);
 INSERT INTO card VALUES(201,'Defias Ringleader','Combo: Summon a 2/1 Defias Bandit.',2,2,2,'EX1_131',1,4,4,3,0,0,3,1);
-INSERT INTO card VALUES(778,'Harvest Golem','Deathrattle: Summon a 2/1 Damaged Golem.',3,2,3,'EX1_556',1,4,0,3,0,0,3,1);
+INSERT INTO card VALUES(778,'Harvest Golem','Deathrattle: Summon a 2/1 Damaged Golem.',3,2,3,'EX1_556',1,4,0,3,17,0,3,1);
 INSERT INTO card VALUES(1144,'King Krush','Charge',9,8,8,'EX1_543',5,4,3,3,20,1,3,1);
-INSERT INTO card VALUES(1135,'Lorewalker Cho','Whenever a player casts a spell, put a copy into the other player’s hand.',2,0,4,'EX1_100',5,4,0,3,0,1,3,1);
+INSERT INTO card VALUES(1135,'Lorewalker Cho','Whenever a player casts a spell, put a copy into the other player''s hand.',2,0,4,'EX1_100',5,4,0,3,0,1,3,1);
 INSERT INTO card VALUES(141,'Hunter''s Mark','Change a minion''s Health to 1.',0,0,0,'CS2_084',0,5,3,2,0,0,3,1);
 INSERT INTO card VALUES(175,'Dalaran Mage','Spell Damage +1',3,1,4,'EX1_582',0,4,0,2,0,0,3,1);
 INSERT INTO card VALUES(1037,'Twilight Drake','Battlecry: Gain +1 Health for each card in your hand.',4,4,1,'EX1_043',3,4,0,3,24,0,3,1);
@@ -312,7 +313,7 @@ INSERT INTO card VALUES(469,'Blood Imp','Stealth. At the end of your turn, give 
 INSERT INTO card VALUES(1087,'Pyroblast','Deal 10 damage.',10,0,0,'EX1_279',4,5,8,3,0,0,3,1);
 INSERT INTO card VALUES(191,'Murloc Raider','',1,2,1,'CS2_168',0,4,0,2,14,0,2,1);
 INSERT INTO card VALUES(366,'Spellbender','Secret: When an enemy casts a spell on a minion, summon a 1/3 as the new target.',3,0,0,'tt_010',4,5,8,3,0,0,3,1);
-INSERT INTO card VALUES(609,'Faerie Dragon','Can''t be targeted by Spells or Hero Powers.',2,3,2,'NEW1_023',1,4,0,3,24,0,0,1);
+INSERT INTO card VALUES(609,'Faerie Dragon','Can''t be targeted by spells or Hero Powers.',2,3,2,'NEW1_023',1,4,0,3,24,0,0,1);
 INSERT INTO card VALUES(710,'Sinister Strike','Deal 3 damage to the enemy hero.',1,0,0,'CS2_075',0,5,4,2,0,0,3,1);
 INSERT INTO card VALUES(846,'Power Overwhelming','Give a friendly minion +4/+4 until end of turn. Then, it dies. Horribly.',1,0,0,'EX1_316',1,5,9,3,0,0,3,1);
 INSERT INTO card VALUES(447,'Arcane Explosion','Deal 1 damage to all enemy minions.',2,0,0,'CS2_025',0,5,8,2,0,0,3,1);
@@ -332,12 +333,12 @@ INSERT INTO card VALUES(596,'Armorsmith','Whenever a friendly minion takes damag
 INSERT INTO card VALUES(976,'Murloc Tidehunter','Battlecry: Summon a 1/1 Murloc Scout.',2,2,1,'EX1_506',0,4,0,2,14,0,3,1);
 INSERT INTO card VALUES(699,'Tundra Rhino','Your Beasts have Charge.',5,2,5,'DS1_178',0,4,3,2,20,0,3,1);
 INSERT INTO card VALUES(969,'Summoning Portal','Your minions cost (2) less, but not less than (1).',4,0,4,'EX1_315',1,4,9,3,0,0,3,1);
-INSERT INTO card VALUES(250,'Hammer of Wrath','Deal 3 damage.  Draw a card.',4,0,0,'CS2_094',0,5,2,2,0,0,3,1);
+INSERT INTO card VALUES(250,'Hammer of Wrath','Deal 3 damage. Draw a card.',4,0,0,'CS2_094',0,5,2,2,0,0,3,1);
 INSERT INTO card VALUES(622,'Stormwind Knight','Charge',4,2,5,'CS2_131',0,4,0,2,0,0,2,1);
 INSERT INTO card VALUES(762,'Mad Bomber','Battlecry: Deal 3 damage randomly split between all other characters.',2,3,2,'EX1_082',1,4,0,3,0,0,2,1);
 INSERT INTO card VALUES(476,'Consecration','Deal 2 damage to all enemies.',4,0,0,'CS2_093',0,5,2,2,0,0,3,1);
 INSERT INTO card VALUES(1073,'Knife Juggler','After you summon a minion, deal 1 damage to a random enemy.',2,3,2,'NEW1_019',3,4,0,3,0,0,0,1);
-INSERT INTO card VALUES(621,'Ice Barrier','Secret: As soon as your hero is attacked, gain 8 Armor.',3,0,0,'EX1_289',1,5,8,3,0,0,3,1);
+INSERT INTO card VALUES(621,'Ice Barrier','Secret: When your hero is attacked, gain 8 Armor.',3,0,0,'EX1_289',1,5,8,3,0,0,3,1);
 INSERT INTO card VALUES(383,'Light''s Justice','',1,1,4,'CS2_091',0,7,2,2,0,0,3,1);
 INSERT INTO card VALUES(864,'Lava Burst','Deal 5 damage. Overload: (2)',3,0,0,'EX1_241',3,5,7,3,0,0,3,1);
 INSERT INTO card VALUES(734,'Mind Control Tech','Battlecry: If your opponent has 4 or more minions, take control of one at random.',3,3,3,'EX1_085',3,4,0,3,0,0,2,1);
@@ -350,7 +351,7 @@ INSERT INTO card VALUES(290,'Ironbeak Owl','Battlecry: Silence a minion.',2,2,1,
 INSERT INTO card VALUES(904,'Eviscerate','Deal 2 damage. Combo: Deal 4 damage instead.',2,0,0,'EX1_124',1,5,4,3,0,0,3,1);
 INSERT INTO card VALUES(232,'Repentance','Secret: When your opponent plays a minion, reduce its Health to 1.',1,0,0,'EX1_379',1,5,2,3,0,0,3,1);
 INSERT INTO card VALUES(759,'Sunwalker','Taunt. Divine Shield',6,4,5,'EX1_032',3,4,0,3,0,0,2,1);
-INSERT INTO card VALUES(1074,'Slam','Deal 2 damage to a minion.  If it survives, draw a card.',2,0,0,'EX1_391',1,5,1,3,0,0,3,1);
+INSERT INTO card VALUES(1074,'Slam','Deal 2 damage to a minion. If it survives, draw a card.',2,0,0,'EX1_391',1,5,1,3,0,0,3,1);
 INSERT INTO card VALUES(643,'Sword of Justice','Whenever you summon a minion, give it +1/+1 and this loses 1 Durability.',3,1,5,'EX1_366',4,7,2,3,0,0,3,1);
 INSERT INTO card VALUES(636,'Whirlwind','Deal 1 damage to ALL minions.',1,0,0,'EX1_400',0,5,1,2,0,0,3,1);
 INSERT INTO card VALUES(556,'Illidan Stormrage','Whenever you play a card, summon a 2/1 Flame of Azzinoth.',6,7,5,'EX1_614',5,4,0,3,15,1,3,1);
@@ -367,7 +368,7 @@ INSERT INTO card VALUES(254,'Innervate','Gain 2 Mana Crystals this turn only.',0
 INSERT INTO card VALUES(1141,'Earth Elemental','Taunt. Overload: (3)',5,7,8,'EX1_250',4,4,7,3,0,0,3,1);
 INSERT INTO card VALUES(531,'Faceless Manipulator','Battlecry: Choose a minion and become a copy of it.',5,3,3,'EX1_564',4,4,0,3,0,0,3,1);
 INSERT INTO card VALUES(679,'Divine Favor','Draw cards until you have as many in hand as your opponent.',3,0,0,'EX1_349',3,5,2,3,0,0,3,1);
-INSERT INTO card VALUES(979,'Demolisher','At the start of your turn, deal 2 damage to a random enemy.',3,1,4,'EX1_102',3,4,0,3,0,0,3,1);
+INSERT INTO card VALUES(979,'Demolisher','At the start of your turn, deal 2 damage to a random enemy.',3,1,4,'EX1_102',3,4,0,3,17,0,3,1);
 INSERT INTO card VALUES(891,'Sunfury Protector','Battlecry: Give adjacent minions Taunt.',2,2,3,'EX1_058',3,4,0,3,0,0,2,1);
 INSERT INTO card VALUES(618,'Dust Devil','Windfury. Overload: (2)',1,3,1,'EX1_243',1,4,7,3,0,0,3,1);
 INSERT INTO card VALUES(291,'Holy Light','Restore 6 Health.',2,0,0,'CS2_089',0,5,2,2,0,0,3,1);
@@ -380,37 +381,155 @@ INSERT INTO card VALUES(413,'Stormpike Commando','Battlecry: Deal 2 damage.',5,4
 INSERT INTO card VALUES(67,'Silverback Patriarch','Taunt',3,1,4,'CS2_127',0,4,0,2,20,0,1,1);
 INSERT INTO card VALUES(311,'Gladiator''s Longbow','Your hero is Immune while attacking.',7,5,2,'DS1_188',4,7,3,3,0,0,3,1);
 INSERT INTO card VALUES(1754,'Elite Tauren Chieftain','Battlecry: Give both players the power to ROCK! (with a Power Chord card)',5,5,5,'PRO_001',5,4,0,11,0,1,0,1);
-
----------------------------
--- Naxxramas Set
----------------------------
-INSERT INTO card VALUES(1753,'Zombie Chow','Deathrattle: Restore 5 Health to the enemy hero.',1,2,3,'FP1_001',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1781,'Haunted Creeper','Deathrattle: Summon two 1/1 Spectral Spiders.',2,1,2,'FP1_002',1,4,0,12,20,0,0,1)
-INSERT INTO card VALUES(1783,'Mad Scientist','Deathrattle: Put a Secret from your deck into the battlefield.',2,2,2,'FP1_004',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1784,'Shade of Naxxramas','Stealth. At the start of your turn, gain +1/+1.',3,2,2,'FP1_005',4,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1786,'Nerubian Egg','Deathrattle: Summon a 4/4 Nerubian.',2,0,2,'FP1_007',3,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1789,'Spectral Knight','Can''t be targeted by spells or Hero Powers.',5,4,6,'FP1_008',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1790,'Deathlord','Taunt. Deathrattle: Your opponent puts a minion from their deck into the battlefield.',3,2,8,'FP1_009',3,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1791,'Maexxna','Destroy any minion damaged by this minion.',6,2,8,'FP1_010',5,4,0,12,20,1,0,1)
-INSERT INTO card VALUES(1793,'Sludge Belcher','Taunt. Deathrattle: Summon a 1/2 Slime with Taunt.',5,3,5,'FP1_012',3,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1794,'Kel''Thuzad','At the end of each turn, summon all friendly minions that died this turn.',8,6,8,'FP1_013',5,4,0,12,0,1,0,1)
-INSERT INTO card VALUES(1796,'Stalagg','Deathrattle: If Feugen also died this game, summon Thaddius.',5,7,4,'FP1_014',5,4,0,12,0,1,0,1)
-INSERT INTO card VALUES(1797,'Feugen','Deathrattle: If Stalagg also died this game, summon Thaddius.',5,4,7,'FP1_015',5,4,0,12,0,1,0,1)
-INSERT INTO card VALUES(1799,'Wailing Soul','Battlecry: Silence your other minions.',4,3,5,'FP1_016',3,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1800,'Nerub''ar Weblord','Minions with Battlecry cost (2) more.',2,1,4,'FP1_017',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1801,'Duplicate','Secret: When a friendly minion dies, put 2 copies of it into your hand.',3,0,0,'FP1_018',1,5,8,12,0,0,0,1)
-INSERT INTO card VALUES(1802,'Poison Seeds','Destroy all minions and summon 2/2 Treants to replace them.',4,0,0,'FP1_019',1,5,11,12,0,0,0,1)
-INSERT INTO card VALUES(1804,'Avenge','Secret: When one of your minions dies, give a random friendly minion +3/+2.',1,0,0,'FP1_020',1,5,2,12,0,0,0,1)
-INSERT INTO card VALUES(1805,'Death''s Bite','Deathrattle: Deal 1 damage to all minions.',4,4,2,'FP1_021',1,7,1,12,0,0,0,1)
-INSERT INTO card VALUES(1806,'Voidcaller','Deathrattle: Put a random Demon from your hand into the battlefield.',4,3,4,'FP1_022',1,4,9,12,15,0,0,1)
-INSERT INTO card VALUES(1807,'Dark Cultist','Deathrattle: Give a random friendly minion +3 Health.',3,3,4,'FP1_023',1,4,5,12,0,0,0,1)
-INSERT INTO card VALUES(1808,'Unstable Ghoul','Taunt. Deathrattle: Deal 1 damage to all minions.',2,1,3,'FP1_024',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1809,'Reincarnate','Destroy a minion, then return it to life with full Health.',2,0,0,'FP1_025',1,5,7,12,0,0,0,1)
-INSERT INTO card VALUES(1810,'Anub''ar Ambusher','Deathrattle: Return a random friendly minion to your hand.',4,5,5,'FP1_026',1,4,4,12,0,0,0,1)
-INSERT INTO card VALUES(1858,'Echoing Ooze','Battlecry: Summon an exact copy of this minion at the end of the turn.',2,1,2,'FP1_003',4,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1860,'Webspinner','Deathrattle: Add a random Beast card to your hand.',1,1,1,'FP1_011',1,4,3,12,20,0,0,1)
-INSERT INTO card VALUES(1861,'Stoneskin Gargoyle','At the start of your turn, restore this minion to full Health.',3,1,4,'FP1_027',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1910,'Undertaker','Whenever you summon a minion with Deathrattle, gain +1/+1.',1,1,2,'FP1_028',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1913,'Dancing Swords','Deathrattle: Your opponent draws a card.',3,4,4,'FP1_029',1,4,0,12,0,0,0,1)
-INSERT INTO card VALUES(1914,'Loatheb','Battlecry: Enemy spells cost (5) more next turn.',5,5,5,'FP1_030',5,4,0,12,0,1,0,1)
-INSERT INTO card VALUES(1915,'Baron Rivendare','Your minions trigger their Deathrattles twice.',4,1,7,'FP1_031',5,4,0,12,0,1,0,1)
+INSERT INTO card VALUES(1807,'Dark Cultist','Deathrattle: Give a random friendly minion +3 Health.',3,3,4,'FP1_023',1,4,5,12,0,0,0,1);
+INSERT INTO card VALUES(1783,'Mad Scientist','Deathrattle: Put a Secret from your deck into the battlefield.',2,2,2,'FP1_004',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1805,'Death''s Bite','Deathrattle: Deal 1 damage to all minions.',4,4,2,'FP1_021',1,7,1,12,0,0,0,1);
+INSERT INTO card VALUES(1799,'Wailing Soul','Battlecry: Silence your other minions.',4,3,5,'FP1_016',3,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1791,'Maexxna','Destroy any minion damaged by this minion.',6,2,8,'FP1_010',5,4,0,12,20,1,0,1);
+INSERT INTO card VALUES(1810,'Anub''ar Ambusher','Deathrattle: Return a random friendly minion to your hand.',4,5,5,'FP1_026',1,4,4,12,0,0,0,1);
+INSERT INTO card VALUES(1861,'Stoneskin Gargoyle','At the start of your turn, restore this minion to full Health.',3,1,4,'FP1_027',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1806,'Voidcaller','Deathrattle: Put a random Demon from your hand into the battlefield.',4,3,4,'FP1_022',1,4,9,12,15,0,0,1);
+INSERT INTO card VALUES(1915,'Baron Rivendare','Your minions trigger their Deathrattles twice.',4,1,7,'FP1_031',5,4,0,12,0,1,0,1);
+INSERT INTO card VALUES(1802,'Poison Seeds','Destroy all minions and summon 2/2 Treants to replace them.',4,0,0,'FP1_019',1,5,11,12,0,0,0,1);
+INSERT INTO card VALUES(1801,'Duplicate','Secret: When a friendly minion dies, put 2 copies of it into your hand.',3,0,0,'FP1_018',1,5,8,12,0,0,0,1);
+INSERT INTO card VALUES(1910,'Undertaker','Whenever you summon a minion with Deathrattle, gain +1/+1.',1,1,2,'FP1_028',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1786,'Nerubian Egg','Deathrattle: Summon a 4/4 Nerubian.',2,0,2,'FP1_007',3,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1794,'Kel''Thuzad','At the end of each turn, summon all friendly minions that died this turn.',8,6,8,'FP1_013',5,4,0,12,0,1,0,1);
+INSERT INTO card VALUES(1793,'Sludge Belcher','Taunt. Deathrattle: Summon a 1/2 Slime with Taunt.',5,3,5,'FP1_012',3,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1790,'Deathlord','Taunt. Deathrattle: Your opponent puts a minion from their deck into the battlefield.',3,2,8,'FP1_009',3,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1804,'Avenge','Secret: When one of your minions dies, give a random friendly minion +3/+2.',1,0,0,'FP1_020',1,5,2,12,0,0,0,1);
+INSERT INTO card VALUES(1753,'Zombie Chow','Deathrattle: Restore 5 Health to the enemy hero.',1,2,3,'FP1_001',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1800,'Nerub''ar Weblord','Minions with Battlecry cost (2) more.',2,1,4,'FP1_017',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1860,'Webspinner','Deathrattle: Add a random Beast card to your hand.',1,1,1,'FP1_011',1,4,3,12,20,0,0,1);
+INSERT INTO card VALUES(1858,'Echoing Ooze','Battlecry: Summon an exact copy of this minion at the end of the turn.',2,1,2,'FP1_003',4,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1781,'Haunted Creeper','Deathrattle: Summon two 1/1 Spectral Spiders.',2,1,2,'FP1_002',1,4,0,12,20,0,0,1);
+INSERT INTO card VALUES(1789,'Spectral Knight','Can''t be targeted by spells or Hero Powers.',5,4,6,'FP1_008',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1797,'Feugen','Deathrattle: If Stalagg also died this game, summon Thaddius.',5,4,7,'FP1_015',5,4,0,12,0,1,0,1);
+INSERT INTO card VALUES(1784,'Shade of Naxxramas','Stealth. At the start of your turn, gain +1/+1.',3,2,2,'FP1_005',4,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1808,'Unstable Ghoul','Taunt. Deathrattle: Deal 1 damage to all minions.',2,1,3,'FP1_024',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1914,'Loatheb','Battlecry: Enemy spells cost (5) more next turn.',5,5,5,'FP1_030',5,4,0,12,0,1,0,1);
+INSERT INTO card VALUES(1809,'Reincarnate','Destroy a minion, then return it to life with full Health.',2,0,0,'FP1_025',1,5,7,12,0,0,0,1);
+INSERT INTO card VALUES(1913,'Dancing Swords','Deathrattle: Your opponent draws a card.',3,4,4,'FP1_029',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1927,'Flamecannon','Deal 4 damage to a random enemy minion.',2,0,0,'GVG_001',1,5,8,13,0,0,0,1);
+INSERT INTO card VALUES(1928,'Snowchugger','Freeze any character damaged by this minion.',2,2,3,'GVG_002',1,4,8,13,17,0,0,1);
+INSERT INTO card VALUES(1929,'Unstable Portal','Add a random minion to your hand. It costs (3) less.',2,0,0,'GVG_003',3,5,8,13,0,0,0,1);
+INSERT INTO card VALUES(1934,'Goblin Blastmage','Battlecry: If you have a Mech, deal 4 damage randomly split among all enemies.',4,5,4,'GVG_004',3,4,8,13,0,0,0,1);
+INSERT INTO card VALUES(1941,'Echo of Medivh','Put a copy of each friendly minion into your hand.',4,0,0,'GVG_005',4,5,8,13,0,0,0,1);
+INSERT INTO card VALUES(1940,'Mechwarper','Your Mechs cost (1) less.',2,2,3,'GVG_006',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(1939,'Flame Leviathan','When you draw this, deal 2 damage to all characters.',7,7,7,'GVG_007',5,4,8,13,17,1,0,1);
+INSERT INTO card VALUES(1938,'Lightbomb','Deal damage to each minion equal to its Attack.',6,0,0,'GVG_008',4,5,5,13,0,0,0,1);
+INSERT INTO card VALUES(1937,'Shadowbomber','Battlecry: Deal 3 damage to each hero.',1,2,1,'GVG_009',4,4,5,13,0,0,0,1);
+INSERT INTO card VALUES(1935,'Velen''s Chosen','Give a minion +2/+4 and Spell Damage +1.',3,0,0,'GVG_010',1,5,5,13,0,0,0,1);
+INSERT INTO card VALUES(1936,'Shrinkmeister','Battlecry: Give a minion -2 Attack this turn.',2,3,2,'GVG_011',1,4,5,13,0,0,0,1);
+INSERT INTO card VALUES(1933,'Light of the Naaru','Restore 3 Health. If the target is still damaged, summon a Lightwarden.',1,0,0,'GVG_012',3,5,5,13,0,0,0,1);
+INSERT INTO card VALUES(1932,'Cogmaster','Has +2 Attack while you have a Mech.',1,1,2,'GVG_013',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(1931,'Vol''jin','Battlecry: Swap Health with another minion.',5,6,2,'GVG_014',5,4,5,13,0,1,0,1);
+INSERT INTO card VALUES(2093,'Darkbomb','Deal 3 damage.',2,0,0,'GVG_015',1,5,9,13,0,0,0,1);
+INSERT INTO card VALUES(1982,'Fel Reaver','Whenever your opponent plays a card, discard the top 3 cards of your deck.',5,8,8,'GVG_016',4,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2094,'Call Pet','Draw a card. If it''s a Beast, it costs (4) less.',2,0,0,'GVG_017',3,5,3,13,0,0,0,1);
+INSERT INTO card VALUES(2172,'Mistress of Pain','Whenever this minion deals damage, restore that much Health to your hero.',2,1,4,'GVG_018',3,4,9,13,15,0,0,1);
+INSERT INTO card VALUES(1985,'Demonheart','Deal 5 damage to a minion.  If it''s a friendly Demon, give it +5/+5 instead.',5,0,0,'GVG_019',4,5,9,13,0,0,0,1);
+INSERT INTO card VALUES(1997,'Fel Cannon','At the end of your turn, deal 2 damage to a non-Mech minion.',4,3,5,'GVG_020',3,4,9,13,17,0,0,1);
+INSERT INTO card VALUES(1986,'Mal''Ganis','Your other Demons have +2/+2. Your hero is Immune.',9,9,7,'GVG_021',5,4,9,13,15,1,0,1);
+INSERT INTO card VALUES(2095,'Tinker''s Sharpsword Oil','Give your weapon +3 Attack. Combo: Give a random friendly minion +3 Attack.',4,0,0,'GVG_022',1,5,4,13,0,0,0,1);
+INSERT INTO card VALUES(1988,'Goblin Auto-Barber','Battlecry: Give your weapon +1 Attack.',2,3,2,'GVG_023',1,4,4,13,17,0,0,1);
+INSERT INTO card VALUES(1989,'Cogmaster''s Wrench','Has +2 Attack while you have a Mech.',3,1,3,'GVG_024',4,7,4,13,0,0,0,1);
+INSERT INTO card VALUES(1990,'One-eyed Cheat','Whenever you summon a Pirate, gain Stealth.',2,4,1,'GVG_025',3,4,4,13,23,0,0,1);
+INSERT INTO card VALUES(1991,'Feign Death','Trigger all Deathrattles on your minions.',2,0,0,'GVG_026',4,5,3,13,0,0,0,1);
+INSERT INTO card VALUES(1992,'Iron Sensei','At the end of your turn, give another friendly Mech +2/+2.',3,2,2,'GVG_027',3,4,4,13,17,0,0,1);
+INSERT INTO card VALUES(1993,'Trade Prince Gallywix','Whenever your opponent casts a spell, gain a copy of it and give them a Coin.',6,5,8,'GVG_028',5,4,4,13,0,1,0,1);
+INSERT INTO card VALUES(1998,'Ancestor''s Call','Put a random minion from each player''s hand into the battlefield.',4,0,0,'GVG_029',4,5,7,13,0,0,0,1);
+INSERT INTO card VALUES(2096,'Anodized Robo Cub','Taunt. Choose One - +1 Attack; or +1 Health.',2,2,2,'GVG_030',1,4,11,13,17,0,0,1);
+INSERT INTO card VALUES(1995,'Recycle','Shuffle an enemy minion into your opponent''s deck.',6,0,0,'GVG_031',3,5,11,13,0,0,0,1);
+INSERT INTO card VALUES(2225,'Grove Tender','Choose One - Give each player a Mana Crystal; or Each player draws a card.',3,2,4,'GVG_032',3,4,11,13,0,0,0,1);
+INSERT INTO card VALUES(2001,'Tree of Life','Restore all characters to full Health.',9,0,0,'GVG_033',4,5,11,13,0,0,0,1);
+INSERT INTO card VALUES(2002,'Mech-Bear-Cat','Whenever this minion takes damage, add a Spare Part card to your hand.',6,7,6,'GVG_034',3,4,11,13,17,0,0,1);
+INSERT INTO card VALUES(2003,'Malorne','Deathrattle: Shuffle this minion into your deck.',7,9,7,'GVG_035',5,4,11,13,20,1,0,1);
+INSERT INTO card VALUES(2004,'Powermace','Deathrattle: Give a random friendly Mech +2/+2.',3,3,2,'GVG_036',3,7,7,13,0,0,0,1);
+INSERT INTO card VALUES(2005,'Whirling Zap-o-matic','Windfury',2,3,2,'GVG_037',1,4,7,13,17,0,0,1);
+INSERT INTO card VALUES(2006,'Crackle','Deal 3-6 damage. Overload: (1)',2,0,0,'GVG_038',1,5,7,13,0,0,0,1);
+INSERT INTO card VALUES(2007,'Vitality Totem','At the end of your turn, restore 4 Health to your hero.',2,0,3,'GVG_039',3,4,7,13,21,0,0,1);
+INSERT INTO card VALUES(2008,'Siltfin Spiritwalker','Whenever another friendly Murloc dies, draw a card. Overload: (1)',4,2,5,'GVG_040',4,4,7,13,14,0,0,1);
+INSERT INTO card VALUES(2009,'Dark Wispers','Choose One - Summon 5 Wisps; or Give a minion +5/+5 and Taunt.',6,0,0,'GVG_041',4,5,11,13,0,0,0,1);
+INSERT INTO card VALUES(2010,'Neptulon','Battlecry: Add 4 random Murlocs to your hand. Overload: (3)',7,7,7,'GVG_042',5,4,7,13,0,1,0,1);
+INSERT INTO card VALUES(2011,'Glaivezooka','Battlecry: Give a random friendly minion +1 Attack.',2,2,2,'GVG_043',1,7,3,13,0,0,0,1);
+INSERT INTO card VALUES(2012,'Spider Tank','',3,3,4,'GVG_044',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2013,'Imp-losion','Deal 2-4 damage to a minion. Summon a 1/1 Imp for each damage dealt.',4,0,0,'GVG_045',3,5,9,13,0,0,0,1);
+INSERT INTO card VALUES(2014,'King of Beasts','Taunt. Battlecry: Gain +1 Attack for each other Beast you have.',5,2,6,'GVG_046',3,4,3,13,20,0,0,1);
+INSERT INTO card VALUES(2015,'Sabotage','Destroy a random enemy minion. Combo: And your opponent''s weapon.',4,0,0,'GVG_047',4,5,4,13,0,0,0,1);
+INSERT INTO card VALUES(2016,'Metaltooth Leaper','Battlecry: Give your other Mechs +2 Attack.',3,3,3,'GVG_048',3,4,3,13,17,0,0,1);
+INSERT INTO card VALUES(2017,'Gahz''rilla','Whenever this minion takes damage, double its Attack.',7,6,9,'GVG_049',5,4,3,13,20,1,0,1);
+INSERT INTO card VALUES(2018,'Bouncing Blade','Deal 1 damage to a random minion. Repeat until a minion dies.',3,0,0,'GVG_050',4,5,1,13,0,0,0,1);
+INSERT INTO card VALUES(2019,'Warbot','Enrage: +1 Attack.',1,1,3,'GVG_051',1,4,1,13,17,0,0,1);
+INSERT INTO card VALUES(2020,'Crush','Destroy a minion. If you have a damaged minion, this costs (4) less.',7,0,0,'GVG_052',4,5,1,13,0,0,0,1);
+INSERT INTO card VALUES(2021,'Shieldmaiden','Battlecry: Gain 5 Armor.',6,5,5,'GVG_053',3,4,1,13,0,0,0,1);
+INSERT INTO card VALUES(2022,'Ogre Warmaul','50% chance to attack the wrong enemy.',3,4,2,'GVG_054',1,7,1,13,0,0,0,1);
+INSERT INTO card VALUES(2023,'Screwjank Clunker','Battlecry: Give a friendly Mech +2/+2.',4,2,5,'GVG_055',3,4,1,13,17,0,0,1);
+INSERT INTO card VALUES(2024,'Iron Juggernaut','Battlecry: Shuffle a Mine into your opponent''s deck. When drawn, it explodes for 10 damage.',6,6,5,'GVG_056',5,4,1,13,17,1,0,1);
+INSERT INTO card VALUES(2025,'Seal of Light','Restore 4 Health to your hero and gain +2 Attack this turn.',2,0,0,'GVG_057',1,5,2,13,0,0,0,1);
+INSERT INTO card VALUES(2026,'Shielded Minibot','Divine Shield',2,2,2,'GVG_058',1,4,2,13,17,0,0,1);
+INSERT INTO card VALUES(2027,'Coghammer','Battlecry: Give a random friendly minion Divine Shield and Taunt.',3,2,3,'GVG_059',4,7,2,13,0,0,0,1);
+INSERT INTO card VALUES(2028,'Quartermaster','Battlecry: Give your Silver Hand Recruits +2/+2.',5,2,5,'GVG_060',4,4,2,13,0,0,0,1);
+INSERT INTO card VALUES(2029,'Muster for Battle','Summon three 1/1 Silver Hand Recruits. Equip a 1/4 Weapon.',3,0,0,'GVG_061',3,5,2,13,0,0,0,1);
+INSERT INTO card VALUES(2030,'Cobalt Guardian','Whenever you summon a Mech, gain Divine Shield.',5,6,3,'GVG_062',3,4,2,13,17,0,0,1);
+INSERT INTO card VALUES(2031,'Bolvar Fordragon','Whenever a friendly minion dies while this is in your hand, gain +1 Attack.',5,1,7,'GVG_063',5,4,2,13,0,1,0,1);
+INSERT INTO card VALUES(2032,'Puddlestomper','',2,3,2,'GVG_064',1,4,0,13,14,0,0,1);
+INSERT INTO card VALUES(2033,'Ogre Brute','50% chance to attack the wrong enemy.',3,4,4,'GVG_065',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2034,'Dunemaul Shaman','Windfury, Overload: (1) 50% chance to attack the wrong enemy.',4,5,4,'GVG_066',3,4,7,13,0,0,0,1);
+INSERT INTO card VALUES(2035,'Stonesplinter Trogg','Whenever your opponent casts a spell, gain +1 Attack.',2,2,3,'GVG_067',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2036,'Burly Rockjaw Trogg','Whenever your opponent casts a spell, gain +2 Attack.',4,3,5,'GVG_068',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2037,'Antique Healbot','Battlecry: Restore 8 Health to your hero.',5,3,3,'GVG_069',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2038,'Salty Dog','',5,7,4,'GVG_070',1,4,0,13,23,0,0,1);
+INSERT INTO card VALUES(2039,'Lost Tallstrider','',4,5,4,'GVG_071',1,4,0,13,20,0,0,1);
+INSERT INTO card VALUES(2040,'Shadowboxer','Whenever a character is healed, deal 1 damage to a random enemy.',2,2,3,'GVG_072',3,4,5,13,17,0,0,1);
+INSERT INTO card VALUES(2041,'Cobra Shot','Deal 3 damage to a minion and the enemy hero.',5,0,0,'GVG_073',1,5,3,13,0,0,0,1);
+INSERT INTO card VALUES(2042,'Kezan Mystic','Battlecry: Take control of a random enemy Secret.',4,4,3,'GVG_074',3,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2043,'Ship''s Cannon','Whenever you summon a Pirate, deal 2 damage to a random enemy.',2,2,3,'GVG_075',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2044,'Explosive Sheep','Deathrattle: Deal 2 damage to all minions.',2,1,1,'GVG_076',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2045,'Anima Golem','At the end of each turn, destroy this minion if it''s your only one.',6,9,9,'GVG_077',4,4,9,13,17,0,0,1);
+INSERT INTO card VALUES(2046,'Mechanical Yeti','Deathrattle: Give each player a Spare Part.',4,4,5,'GVG_078',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2047,'Force-Tank MAX','Divine Shield',8,7,7,'GVG_079',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2048,'Druid of the Fang','Battlecry: If you have a Beast, transform this minion into a 7/7.',5,4,4,'GVG_080',1,4,11,13,0,0,0,1);
+INSERT INTO card VALUES(2049,'Gilblin Stalker','Stealth',2,2,3,'GVG_081',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2050,'Clockwork Gnome','Deathrattle: Add a Spare Part card to your hand.',1,2,1,'GVG_082',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2051,'Upgraded Repair Bot','Battlecry: Give a friendly Mech +4 Health.',5,5,5,'GVG_083',3,4,5,13,17,0,0,1);
+INSERT INTO card VALUES(2052,'Flying Machine','Windfury',3,1,4,'GVG_084',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2053,'Annoy-o-Tron','Taunt Divine Shield',2,1,2,'GVG_085',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2054,'Siege Engine','Whenever you gain Armor, give this minion +1 Attack.',5,5,5,'GVG_086',3,4,1,13,17,0,0,1);
+INSERT INTO card VALUES(2055,'Steamwheedle Sniper','Your Hero Power can target minions.',2,2,3,'GVG_087',4,4,3,13,0,0,0,1);
+INSERT INTO card VALUES(2056,'Ogre Ninja','Stealth 50% chance to attack the wrong enemy.',5,6,6,'GVG_088',3,4,4,13,0,0,0,1);
+INSERT INTO card VALUES(2057,'Illuminator','If you control a Secret at the end of your turn, restore 4 health to your hero.',3,2,4,'GVG_089',3,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2058,'Madder Bomber','Battlecry: Deal 6 damage randomly split between all other characters.',5,5,4,'GVG_090',3,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2059,'Arcane Nullifier X-21','Taunt Can''t be targeted by spells or Hero Powers.',4,2,5,'GVG_091',3,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2060,'Gnomish Experimenter','Battlecry: Draw a card. If it''s a minion, transform it into a Chicken.',3,3,2,'GVG_092',3,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2061,'Target Dummy','Taunt',0,0,2,'GVG_093',3,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2062,'Jeeves','At the end of each player''s turn, that player draws until they have 3 cards.',4,1,4,'GVG_094',3,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2063,'Goblin Sapper','Has +4 Attack while your opponent has 6 or more cards in hand.',3,2,4,'GVG_095',3,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2064,'Piloted Shredder','Deathrattle: Summon a random 2-Cost minion.',4,4,3,'GVG_096',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2065,'Lil'' Exorcist','Taunt Battlecry: Gain +1/+1 for each enemy Deathrattle minion.',3,2,3,'GVG_097',3,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2066,'Gnomeregan Infantry','Charge Taunt',3,1,4,'GVG_098',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2067,'Bomb Lobber','Battlecry: Deal 4 damage to a random enemy minion.',5,3,3,'GVG_099',3,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2068,'Floating Watcher','Whenever your hero takes damage on your turn, gain +2/+2.',5,4,4,'GVG_100',1,4,9,13,15,0,0,1);
+INSERT INTO card VALUES(2069,'Scarlet Purifier','Battlecry: Deal 2 damage to all minions with Deathrattle.',3,4,3,'GVG_101',3,4,2,13,0,0,0,1);
+INSERT INTO card VALUES(2070,'Tinkertown Technician','Battlecry: If you have a Mech, gain +1/+1 and add a Spare Part to your hand.',3,3,3,'GVG_102',1,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2071,'Micro Machine','At the start of each turn, gain +1 Attack.',2,1,2,'GVG_103',1,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2072,'Hobgoblin','Whenever you play a 1-Attack minion, give it +2/+2.',3,2,3,'GVG_104',4,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2073,'Piloted Sky Golem','Deathrattle: Summon a random 4-Cost minion.',6,6,4,'GVG_105',4,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2074,'Junkbot','Whenever a friendly Mech dies, gain +2/+2.',5,1,5,'GVG_106',4,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2075,'Enhance-o Mechano','Battlecry: Give your other minions Windfury, Taunt, or Divine Shield. (at random)',4,3,2,'GVG_107',4,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2076,'Recombobulator','Battlecry: Transform a friendly minion into a random minion with the same Cost.',2,3,2,'GVG_108',4,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2077,'Mini-Mage','Stealth Spell Damage +1',4,4,1,'GVG_109',4,4,0,13,0,0,0,1);
+INSERT INTO card VALUES(2078,'Dr. Boom','Battlecry: Summon two 1/1 Boom Bots. WARNING: Bots may explode.',7,7,7,'GVG_110',5,4,0,13,0,1,0,1);
+INSERT INTO card VALUES(2079,'Mimiron''s Head','At the start of your turn, if you have at least 3 Mechs, destroy them all and form V-07-TR-0N.',5,4,5,'GVG_111',5,4,0,13,17,1,0,1);
+INSERT INTO card VALUES(2080,'Mogor the Ogre','All minions have a 50% chance to attack the wrong enemy.',6,7,6,'GVG_112',5,4,0,13,0,1,0,1);
+INSERT INTO card VALUES(2081,'Foe Reaper 4000','Also damages the minions next to whomever he attacks.',8,6,9,'GVG_113',5,4,0,13,17,1,0,1);
+INSERT INTO card VALUES(2082,'Sneed''s Old Shredder','Deathrattle: Summon a random legendary minion.',8,5,7,'GVG_114',5,4,0,13,17,1,0,1);
+INSERT INTO card VALUES(2083,'Toshley','Battlecry and Deathrattle: Add a Spare Part card to your hand.',6,5,7,'GVG_115',5,4,0,13,0,1,0,1);
+INSERT INTO card VALUES(2084,'Mekgineer Thermaplugg','Whenever an enemy minion dies, summon a Leper Gnome.',9,9,7,'GVG_116',5,4,0,13,17,1,0,1);
+INSERT INTO card VALUES(2085,'Gazlowe','Whenever you cast a 1-mana spell, add a random Mech to your hand.',6,3,6,'GVG_117',5,4,0,13,0,1,0,1);
+INSERT INTO card VALUES(2086,'Troggzor the Earthinator','Whenever your opponent casts a spell, summon a Burly Rockjaw Trogg.',7,6,6,'GVG_118',5,4,0,13,0,1,0,1);
+INSERT INTO card VALUES(2087,'Blingtron 3000','Battlecry: Equip a random weapon for each player.',5,3,4,'GVG_119',5,4,0,13,17,1,0,1);
+INSERT INTO card VALUES(2088,'Hemet Nesingwary','Battlecry: Destroy a Beast.',5,6,3,'GVG_120',5,4,0,13,0,1,0,1);
+INSERT INTO card VALUES(2233,'Clockwork Giant','Costs (1) less for each card in your opponent''s hand.',12,8,8,'GVG_121',4,4,0,13,17,0,0,1);
+INSERT INTO card VALUES(2234,'Wee Spellstopper','Adjacent minions can''t be targeted by spells or Hero Powers.',4,2,5,'GVG_122',4,4,8,13,0,0,0,1);
+INSERT INTO card VALUES(2249,'Soot Spewer','Spell Damage +1',3,3,3,'GVG_123',3,4,8,13,17,0,0,1);

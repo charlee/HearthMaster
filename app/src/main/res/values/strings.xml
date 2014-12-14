@@ -15,7 +15,7 @@
     <string name="class_druid">Druid</string>
     <string name="class_neutral">Neutral</string>
     <string name="set_basic">Basic</string>
-    <string name="set_expert">Expert</string>
+    <string name="set_expert">Classic</string>
     <string name="set_reward">Reward</string>
     <string name="set_missions">Missions</string>
     <string name="set_promition">Promotion</string>
@@ -52,5 +52,7 @@
     <string name="drawer_open">open drawer</string>
     <string name="data_version">Data Version: </string>
     <string name="version">Version: </string>
+    <string name="race_mech">Mech</string>
+    <string name="set_gvg">Goblins vs Gnomes</string>
 
 </resources>

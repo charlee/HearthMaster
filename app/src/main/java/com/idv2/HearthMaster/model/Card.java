@@ -84,6 +84,7 @@ public class Card {
     public static final int MISSIONS = 5;
     public static final int PROMOTION = 11;
     public static final int NAXXRAMAS = 12;
+    public static final int GVG = 13;
     public static final int CREDITS = 16;
 
     public static final ImmutableMap<Integer, Integer> setName = ImmutableMap.<Integer, Integer>builder()
@@ -92,6 +93,7 @@ public class Card {
             .put(REWARD, R.string.set_reward)
             .put(MISSIONS, R.string.set_missions)
             .put(NAXXRAMAS, R.string.set_naxxramas)
+            .put(GVG, R.string.set_gvg)
             .put(PROMOTION, R.string.set_promotion)
             .put(CREDITS, R.string.set_credits)
             .build();
@@ -103,7 +105,7 @@ public class Card {
             MISSIONS,
             PROMOTION,
             NAXXRAMAS,
-            CREDITS
+            GVG
     );
 
 
@@ -156,6 +158,7 @@ public class Card {
     public static final int NONE = 0;
     public static final int MURLOC = 14;
     public static final int DEMON = 15;
+    public static final int MECH = 17;
     public static final int BEAST = 20;
     public static final int TOTEM = 21;
     public static final int PIRATE = 23;
@@ -165,6 +168,7 @@ public class Card {
             .put(NONE, R.string.race_none)
             .put(MURLOC, R.string.race_murloc)
             .put(DEMON, R.string.race_demon)
+            .put(MECH, R.string.race_mech)
             .put(BEAST, R.string.race_beast)
             .put(TOTEM, R.string.race_totem)
             .put(PIRATE, R.string.race_pirate)
