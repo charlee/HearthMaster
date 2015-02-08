@@ -392,7 +392,7 @@ INSERT INTO card VALUES(1806,'Voidcaller','Deathrattle: Put a random Demon from 
 INSERT INTO card VALUES(1915,'Baron Rivendare','Your minions trigger their Deathrattles twice.',4,1,7,'FP1_031',5,4,0,12,0,1,0,1);
 INSERT INTO card VALUES(1802,'Poison Seeds','Destroy all minions and summon 2/2 Treants to replace them.',4,0,0,'FP1_019',1,5,11,12,0,0,0,1);
 INSERT INTO card VALUES(1801,'Duplicate','Secret: When a friendly minion dies, put 2 copies of it into your hand.',3,0,0,'FP1_018',1,5,8,12,0,0,0,1);
-INSERT INTO card VALUES(1910,'Undertaker','Whenever you summon a minion with Deathrattle, gain +1/+1.',1,1,2,'FP1_028',1,4,0,12,0,0,0,1);
+INSERT INTO card VALUES(1910,'Undertaker','Whenever you summon a minion with Deathrattle, gain +1 Attack.',1,1,2,'FP1_028',1,4,0,12,0,0,0,1);
 INSERT INTO card VALUES(1786,'Nerubian Egg','Deathrattle: Summon a 4/4 Nerubian.',2,0,2,'FP1_007',3,4,0,12,0,0,0,1);
 INSERT INTO card VALUES(1794,'Kel''Thuzad','At the end of each turn, summon all friendly minions that died this turn.',8,6,8,'FP1_013',5,4,0,12,0,1,0,1);
 INSERT INTO card VALUES(1793,'Sludge Belcher','Taunt. Deathrattle: Summon a 1/2 Slime with Taunt.',5,3,5,'FP1_012',3,4,0,12,0,0,0,1);
