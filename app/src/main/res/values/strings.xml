@@ -51,9 +51,10 @@
     <string name="drawer_close">close drawer</string>
     <string name="drawer_open">open drawer</string>
     <string name="data_version">Data Version: </string>
-    <string name="data_version_code">2.1.0.7628</string>
+    <string name="data_version_code">2.6.0.8834</string>
     <string name="version">Version: </string>
     <string name="race_mech">Mech</string>
     <string name="set_gvg">Goblins vs Gnomes</string>
+    <string name="set_bm">Blackrock Mountain</string>
 
 </resources>

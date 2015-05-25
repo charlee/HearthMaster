@@ -85,6 +85,7 @@ public class Card {
     public static final int PROMOTION = 11;
     public static final int NAXXRAMAS = 12;
     public static final int GVG = 13;
+    public static final int BM = 14;
     public static final int CREDITS = 16;
 
     public static final ImmutableMap<Integer, Integer> setName = ImmutableMap.<Integer, Integer>builder()
@@ -94,6 +95,7 @@ public class Card {
             .put(MISSIONS, R.string.set_missions)
             .put(NAXXRAMAS, R.string.set_naxxramas)
             .put(GVG, R.string.set_gvg)
+            .put(BM, R.string.set_bm)
             .put(PROMOTION, R.string.set_promotion)
             .put(CREDITS, R.string.set_credits)
             .build();
@@ -105,7 +107,8 @@ public class Card {
             MISSIONS,
             PROMOTION,
             NAXXRAMAS,
-            GVG
+            GVG,
+            BM
     );
 
 
