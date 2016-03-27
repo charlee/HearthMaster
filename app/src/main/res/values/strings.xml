@@ -56,5 +56,6 @@
     <string name="race_mech">Mech</string>
     <string name="set_gvg">Goblins vs Gnomes</string>
     <string name="set_bm">Blackrock Mountain</string>
+    <string name="copyright_notice">This app is only for personal use. No commercial redistribution is allowed.\n\nHeroes of Warcraft is a trademark, and Hearthstone is a registered trademark of Blizzard Entertainment, Inc. in the U.S. and/or other countries.\n\nAll the contents and images included in this app are copyrighted materials of Blizzard Entertainment.</string>
 
 </resources>
